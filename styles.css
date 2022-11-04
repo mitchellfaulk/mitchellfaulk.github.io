@@ -2,21 +2,21 @@
 	height: 80px;
   	background-color: dimgray;    
   	color: white;
+	display: flex;
 }
 
 .heading{
-	width: 500px;
+	flex: 50%;
     	height: 80px;
     	background: red;
     	overflow: hidden;
-	float: left;
 	padding-left: 30px;
 }
 
 .buttons{
+	flex: 50%;
 	height: 80px;
     	background: blue;
-	float: left;
 }
 
 .body {
