@@ -53,7 +53,7 @@ main {
 }
 
 #landing-image {
-  background: landing_image.png;
+  background: url('landing_image.png');
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
