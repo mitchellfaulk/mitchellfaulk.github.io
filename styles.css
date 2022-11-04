@@ -60,7 +60,7 @@ main {
   height: 80vh;
   flex: 0 1 60vw;
   margin: 0;
-  border-width: .75rem;
+  border-width: .70rem;
   border-style: none solid none solid;
   border-color: white
 }
