@@ -77,9 +77,11 @@ main {
   padding-left: 1rem;
 }
 
-.caption {
+.about {
   padding: 0.8rem;
   text-align: left;
+  padding-right: 1rem;
+  padding-left: 1rem;
 }
 
 .caption {
