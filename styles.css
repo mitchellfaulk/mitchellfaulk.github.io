@@ -6,15 +6,16 @@
 }
 
 .heading{
-	flex: 50%;
+	flex: 34%;
     	height: 80px;
     	background: red;
     	overflow: hidden;
-	padding-left: 30px;
+	padding-left: 15px;
+	padding-bottom: 15px;
 }
 
 .buttons{
-	flex: 50%;
+	flex: 66%;
 	height: 80px;
     	background: blue;
 }
