@@ -60,8 +60,7 @@ main {
   height: 80vh;
   flex: 0 1 60vw;
   margin: 0;
-  padding-left: 1rem;
-  padding-right: 1rem;
+  border: 1rem solid white;
 }
 
 #header {
