@@ -3,6 +3,20 @@
   	color: white;
 }
 
+.heading{
+	width: auto;
+    height: 200px;
+    background: red;
+    overflow: hidden;
+}
+
+.buttons{
+	height: 200px;
+    width: 200px;
+    background: blue;
+    float: left;
+}
+
 .body {
 	background-color: gainsboro;
 	color: black
