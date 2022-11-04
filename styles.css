@@ -3,6 +3,7 @@
   	background-color: dimgray;    
   	color: white;
 	display: flex;
+	align-items: flex-end;
 }
 
 .heading{
