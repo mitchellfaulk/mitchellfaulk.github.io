@@ -62,21 +62,6 @@ main {
   margin: 0;
 }
 
-.btn {
-  padding: 0.5rem 2rem;
-  border: 1px #ccc solid;
-  display: inline-block;
-  margin: 2rem 0 0;
-  border-radius: 50px;
-  text-decoration: none;
-  color: #333;
-  transition: background 500ms ease;
-}
-
-.btn:hover {
-  background: #f4f4f4;
-}
-
 #header {
   padding: 1.5rem;
   text-align: center;
