@@ -5,17 +5,18 @@
 }
 
 .heading{
-	width: 300px;
+	width: 500px;
     	height: 80px;
     	background: red;
     	overflow: hidden;
 	float: left;
+	padding-left: 30px;
 }
 
 .buttons{
 	height: 80px;
     	background: blue;
-	float: right;
+	float: left;
 }
 
 .body {
