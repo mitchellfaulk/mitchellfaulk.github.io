@@ -1,5 +1,4 @@
 .header {
-	width: 1000px;
 	height: 200px;
   	background-color: dimgray;    
   	color: white;
@@ -7,16 +6,17 @@
 
 .heading{
 	width: auto;
-    height: 200px;
-    background: red;
-    overflow: hidden;
+    	height: 200px;
+    	background: red;
+    	overflow: hidden;
+	align: left
 }
 
 .buttons{
 	height: 200px;
-    width: 200px;
-    background: blue;
-    float: left;
+    	background: blue;
+    	float: left;
+	align: right
 }
 
 .body {
