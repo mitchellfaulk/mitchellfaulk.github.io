@@ -1,22 +1,21 @@
 .header {
-	height: 200px;
+	height: 80px;
   	background-color: dimgray;    
   	color: white;
 }
 
 .heading{
-	width: auto;
-    	height: 200px;
+	width: 260;
+    	height: 80px;
     	background: red;
     	overflow: hidden;
-	align: left
+	float: left;
 }
 
 .buttons{
-	height: 200px;
+	height: 80px;
     	background: blue;
-    	float: left;
-	align: right
+	float: right;
 }
 
 .body {
