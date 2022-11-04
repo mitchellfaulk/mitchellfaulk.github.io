@@ -7,10 +7,10 @@
 
 .heading{
 	flex: 34%;
-    	height: 80px;
+    	height: 60px;
     	background: red;
-	padding-left: 15px;
-	padding-bottom: 15px;
+	padding-left: 20px;
+	padding-bottom: 20px;
 }
 
 .buttons{
