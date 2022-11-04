@@ -24,8 +24,6 @@ h2 {
 img {
   display: block;
   width: 100%;
-  padding-left: 40px;
-  padding-right: 40px;
 }
 
 main {
@@ -62,6 +60,8 @@ main {
   height: 80vh;
   flex: 0 1 60vw;
   margin: 0;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
 #header {
