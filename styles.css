@@ -41,13 +41,12 @@ a:link {
 }
 
 a:visited {
-  color: #500b0b;
+  color: #83544a;
   background-color: transparent;
   text-decoration: none;
 }
 
 a:hover {
-  color: #83544a;
   background-color: transparent;
   text-decoration: underline;
 }
@@ -110,7 +109,7 @@ a:active {
   padding-right: 1rem;
   padding-left: 1rem;
   padding-bottom: 1rem;
-  color: #696969;
+  color: #000000;
 }
 
 .caption {
@@ -118,7 +117,7 @@ a:active {
   padding-right: 1rem;
   padding-left: 1rem;
   padding-bottom: 3rem;
-  color: #696969;
+  color: #000000;
 }
 
 footer {
