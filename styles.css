@@ -109,7 +109,7 @@ a:active {
   padding-right: 1rem;
   padding-left: 1rem;
   padding-bottom: 1rem;
-  color: #000000;
+  color: #333;
 }
 
 .caption {
@@ -117,7 +117,7 @@ a:active {
   padding-right: 1rem;
   padding-left: 1rem;
   padding-bottom: 3rem;
-  color: #000000;
+  color: #333;
 }
 
 footer {
