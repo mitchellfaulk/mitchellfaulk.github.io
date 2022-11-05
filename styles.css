@@ -76,8 +76,6 @@ main {
 }
 
 #header h2 {
-  border-left: dotted 1px #fff;
-  border-right: dotted 1px #fff;
   display: inline-block;
   padding-right: 1rem;
   padding-left: 1rem;
