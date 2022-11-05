@@ -110,6 +110,7 @@ a:active {
   padding-right: 1rem;
   padding-left: 1rem;
   padding-bottom: 1rem;
+  color: #808080;
 }
 
 .caption {
@@ -117,7 +118,7 @@ a:active {
   padding-right: 1rem;
   padding-left: 1rem;
   padding-bottom: 3rem;
-  color: #6b6b5d;
+  color: ##808080;
 }
 
 footer {
