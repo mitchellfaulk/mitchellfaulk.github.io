@@ -34,29 +34,6 @@ main {
     -30px 0px 40px rgba(0, 0, 0, 0.1);
 }
 
-a:link {
-  color: #c80505;
-  background-color: transparent;
-  text-decoration: none;
-}
-
-a:visited {
-  color: #83544a;
-  background-color: transparent;
-  text-decoration: none;
-}
-
-a:hover {
-  background-color: transparent;
-  text-decoration: underline;
-}
-
-a:active {
-  color: #776859;
-  background-color: transparent;
-  text-decoration: underline;
-}
-
 #landing {
   background: #fff;
 }
@@ -94,6 +71,7 @@ a:active {
 #navigation{
   background-color: #333;
   overflow: hidden;
+  padding: 1.5rem;
 }
 
 .header {
@@ -135,6 +113,29 @@ footer {
 footer h3 {
   font-size: 3rem;
   margin-bottom: 0;
+}
+
+a:link {
+  color: #c80505;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+a:visited {
+  color: #83544a;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+a:hover {
+  background-color: transparent;
+  text-decoration: underline;
+}
+
+a:active {
+  color: #776859;
+  background-color: transparent;
+  text-decoration: underline;
 }
 
 /* Screen Sizes 500px and Up */
