@@ -69,10 +69,8 @@ main {
 }
 
 #navigation{
-  background-color: #333;
   overflow: hidden;
   padding: 1.5rem;
-  float: left;
 }
 
 .header {
