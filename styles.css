@@ -103,7 +103,7 @@ a:active {
   color: #fff;
 }
 
-#header h2 {
+.header h2 {
   display: inline-block;
   padding-right: 1rem;
   padding-left: 1rem;
