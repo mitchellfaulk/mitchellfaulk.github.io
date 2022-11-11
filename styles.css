@@ -91,7 +91,12 @@ a:active {
   border-color: white
 }
 
-#header {
+#navigation{
+  background-color: #333;
+  overflow: hidden;
+}
+
+.header {
   padding: 1.5rem;
   text-align: center;
   background: #333;
@@ -104,7 +109,7 @@ a:active {
   padding-left: 1rem;
 }
 
-.about {
+#about {
   text-align: left;
   padding-right: 1rem;
   padding-left: 1rem;
