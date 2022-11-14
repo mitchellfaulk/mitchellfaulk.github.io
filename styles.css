@@ -27,7 +27,7 @@ img {
   width: 100%;
 }
 
-main {
+container {
   max-width: 600px;
   margin: auto;
   box-shadow: 30px 0px 40px rgba(0, 0, 0, 0.1),
