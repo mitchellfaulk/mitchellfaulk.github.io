@@ -56,25 +56,23 @@ main {
 }
 
 #navigation {
-  background: #eee;
+  background: #bbb;
   overflow: hidden;
   position: fixed;
   bottom: 0;
   width: 100%;
+  max-width: 600px;
 }
 
 #navigation a {
   display: block;
   float: left;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
+  padding: 1rem 1rem;
   color: #83544a;
 }
 
 #navigation a:hover {
-  background-color: #bbb;
+  background-color: #eee;
   text-decoration: none;
 }
 
