@@ -174,8 +174,8 @@ li {
   }
   
   #navigation {
+  position: sticky;
   top: 0;
-  bottom: none;
   }
 }
   
