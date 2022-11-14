@@ -127,6 +127,10 @@ a:active {
   text-decoration: underline;
 }
 
+ul p {
+  margin-bottom: none ;
+}
+
 /* Screen Sizes 500px and Up */
 @media (min-width: 500px) {
   #home {
