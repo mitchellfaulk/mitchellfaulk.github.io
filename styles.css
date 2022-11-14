@@ -58,6 +58,9 @@ main {
 #navigation {
   background: #eee;
   overflow: hidden;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
 }
 
 #navigation a {
@@ -67,10 +70,17 @@ main {
   padding-right: 1rem;
   padding-top: 1rem;
   padding-bottom: 1rem;
+  color: #83544a;
 }
 
 #navigation a:hover {
   background-color: #bbb;
+}
+
+#navigation a:visited {
+  color: #83544a;
+  background-color: transparent;
+  text-decoration: none;
 }
 
 #landing-image {
