@@ -69,6 +69,7 @@ main {
   float: left;
   padding: 1rem;
   color: #83544a;
+  font-size: .75rem;
 }
 
 #navigation a:hover {
