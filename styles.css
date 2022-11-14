@@ -146,18 +146,30 @@ a:active {
   text-decoration: underline;
 }
 
+.project {
+  display: block;
+  border-bottom-style: solid;
+  border-color: #bbb;
+  padding: 1rem;
+}
+
 .project-image {
-  height: 80vh;
-  flex: 0 1 60vw;
+  height: auto;
+  width: auto;
   margin: 0;
+  text-align:center;
 }
 
 .project-text {
-  display: flex;
-  flex: 0 1 40vw;
-  height: 20vh;
+  display: block;
   padding-left: 1rem;
   padding-right: 1rem;
+}
+
+img {
+  max-width: 90vh;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 ul p {
@@ -187,13 +199,28 @@ li {
   font-size: 1rem;
   padding: 1rem 1rem;
   }
-  
-  .project-text {
-    height: 100vh;
+
+  img {
+  max-width: 33vw;
+  }
+
+  .project {
+  display: flex;
+  border-bottom-style: solid;
+  border-color: #bbb;
+  padding: 1rem;
   }
 
   .project-image {
-    height: 100vh;
+  flex-basis: 33vw;
+  margin: 0;
+  }
+
+  .project-text {
+  display: block;
+  flex-basis: 67vw;
+  padding-left: 1rem;
+  padding-right: 1rem;
   }
 }
 
