@@ -67,7 +67,7 @@ main {
 #navigation a {
   display: block;
   float: left;
-  padding: 1rem 1rem;
+  padding: 1rem;
   color: #83544a;
 }
 
@@ -172,4 +172,14 @@ li {
   #landing-image {
     height: 100vh;
   }
+  
+  #navigation {
+  top: 0;
+  }
+}
+  
+  #navigation a {
+  padding: 1rem 1rem;
+  }
+}
 }
