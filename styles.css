@@ -70,6 +70,10 @@ main {
   padding-right: 1rem;
 }
 
+#navigation a:hover {
+  background-color: #111;
+}
+
 #landing-image {
   background: url('landing_image.png');
   background-position: center;
