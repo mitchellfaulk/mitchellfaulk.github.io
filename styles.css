@@ -55,6 +55,19 @@ main {
   font-family: 'Roboto Condensed', sans-serif;
 }
 
+#landing-image {
+  background: url('landing_image.png');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 80vh;
+  flex: 0 1 60vw;
+  margin: 0;
+  border-width: .70rem;
+  border-style: none solid none solid;
+  border-color: white
+}
+
 #navigation {
   background: #bbb;
   overflow: hidden;
@@ -81,19 +94,6 @@ main {
   color: #83544a;
   background-color: transparent;
   text-decoration: none;
-}
-
-#landing-image {
-  background: url('landing_image.png');
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  height: 80vh;
-  flex: 0 1 60vw;
-  margin: 0;
-  border-width: .70rem;
-  border-style: none solid none solid;
-  border-color: white
 }
 
 .header {
@@ -149,6 +149,21 @@ a:active {
   color: #776859;
   background-color: transparent;
   text-decoration: underline;
+}
+
+.project-image {
+  display: flex;
+  height: 80vh;
+  flex: 0 1 60vw;
+  margin: 0;
+}
+
+.project-text {
+  display: flex;
+  flex: 0 1 40vw;
+  height: 20vh;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
 ul p {
