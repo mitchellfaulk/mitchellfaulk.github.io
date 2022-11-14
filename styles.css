@@ -69,7 +69,7 @@ main {
   float: left;
   color: #83544a;
   font-size: 1rem;
-  padding: .4rem;
+  padding: .4rem .4rem;
 }
 
 #navigation a:hover {
@@ -177,7 +177,7 @@ li {
   
   #navigation a {
   font-size: 1rem;
-  padding: 1rem;
+  padding: 1rem 1rem;
   }
 }
 }
