@@ -128,7 +128,8 @@ a:active {
 }
 
 ul p {
-  margin-bottom: 0rem;
+  margin-top: none;
+  margin-bottom: none;
 }
 
 /* Screen Sizes 500px and Up */
