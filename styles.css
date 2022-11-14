@@ -58,8 +58,8 @@ main {
 #navigation {
   background: #bbb;
   overflow: hidden;
-  position: fixed;
-  bottom: 0;
+  position: sticky;
+  top: 0;
   width: 100%;
   max-width: 600px;
 }
@@ -67,7 +67,6 @@ main {
 #navigation a {
   display: block;
   float: left;
-  padding: .25rem .25rem;
   color: #83544a;
   font-size: .75rem;
 }
@@ -172,11 +171,6 @@ li {
 
   #landing-image {
     height: 100vh;
-  }
-  
-  #navigation {
-  position: sticky;
-  top: 0;
   }
 }
   
