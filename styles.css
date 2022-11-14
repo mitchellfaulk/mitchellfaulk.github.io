@@ -75,6 +75,7 @@ main {
 
 #navigation a:hover {
   background-color: #bbb;
+  text-decoration: none;
 }
 
 #navigation a:visited {
