@@ -27,10 +27,6 @@ img {
   width: 100%;
 }
 
-container {
-  padding-bottom: 10rem;
-}
-
 main {
   max-width: 600px;
   margin: auto;
@@ -69,10 +65,12 @@ main {
   float: left;
   padding-left: 1rem;
   padding-right: 1rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 }
 
 #navigation a:hover {
-  background-color: #111;
+  background-color: #bbb;
 }
 
 #landing-image {
