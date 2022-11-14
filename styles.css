@@ -59,9 +59,14 @@ main {
   font-family: 'Roboto Condensed', sans-serif;
 }
 
-#navigation{
+#navigation {
   background: #eee;
   overflow: hidden;
+}
+
+#navigation a {
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
 #landing-image {
