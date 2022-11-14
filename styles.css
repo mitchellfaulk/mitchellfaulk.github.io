@@ -85,16 +85,7 @@ main {
   padding-left: 1rem;
 }
 
-#about {
-  text-align: left;
-  padding-right: 1rem;
-  padding-left: 1rem;
-  padding-bottom: 1rem;
-  color: #333;
-}
-
 .caption {
-  text-align: center;
   padding-right: 1rem;
   padding-left: 1rem;
   padding-bottom: 3rem;
