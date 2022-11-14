@@ -67,7 +67,7 @@ main {
 #navigation a {
   display: block;
   float: left;
-  padding: .75rem;
+  padding: .25rem .25rem;
   color: #83544a;
   font-size: .75rem;
 }
