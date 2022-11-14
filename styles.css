@@ -193,5 +193,13 @@ li {
   font-size: 1rem;
   padding: 1rem 1rem;
   }
+  
+  .project-text {
+    height: 100vh;
+  }
+
+  .project-image {
+    height: 100vh;
+  }
 }
 
