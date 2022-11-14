@@ -62,13 +62,13 @@ main {
   top: 0;
   width: 100%;
   max-width: 600px;
+  font-size: .75rem;
 }
 
 #navigation a {
   display: block;
   float: left;
   color: #83544a;
-  font-size: .75rem;
 }
 
 #navigation a:hover {
