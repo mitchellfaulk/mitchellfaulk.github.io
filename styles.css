@@ -22,11 +22,6 @@ h2 {
   margin: 0;
 }
 
-img {
-  display: block;
-  width: 100%;
-}
-
 main {
   max-width: 600px;
   margin: auto;
