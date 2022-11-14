@@ -152,7 +152,6 @@ a:active {
 }
 
 .project-image {
-  display: flex;
   height: 80vh;
   flex: 0 1 60vw;
   margin: 0;
