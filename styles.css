@@ -60,13 +60,13 @@ main {
 }
 
 #navigation {
-  float: left;
   background: #eee;
   overflow: hidden;
 }
 
 #navigation a {
   display: block;
+  float: left;
   padding-left: 1rem;
   padding-right: 1rem;
 }
