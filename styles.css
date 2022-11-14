@@ -60,6 +60,7 @@ main {
 }
 
 #navigation {
+  float: left;
   background: #eee;
   overflow: hidden;
 }
