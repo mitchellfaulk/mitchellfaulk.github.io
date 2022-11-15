@@ -190,7 +190,7 @@ a:active {
 }
 
 .project h3 {
-  margin-top: 0;
+  margin-top: .5rem;
 }
 
 .project a {
@@ -203,6 +203,8 @@ a:active {
   margin-top: 0.25rem;
   margin-bottom: 0.25rem;
   display: inline-block;
+  text-transform: uppercase;
+  font-family: 'Roboto Condensed', sans-serif;
 }
 
 .project a:hover {
