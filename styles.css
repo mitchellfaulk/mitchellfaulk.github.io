@@ -218,6 +218,10 @@ img {
   margin-right: auto;
 }
 
+ul {
+  padding-left: 0;
+}
+
 ul p {
   margin: 0;
 }
