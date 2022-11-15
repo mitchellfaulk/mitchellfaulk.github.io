@@ -84,7 +84,6 @@ main {
 }
 
 #navigation a:visited {
-  color: #fff;
   background-color: transparent;
   text-decoration: none;
 }
