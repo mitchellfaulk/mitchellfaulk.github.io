@@ -88,6 +88,11 @@ main {
   text-decoration: none;
 }
 
+#navigation a:active {
+  background-color: #eee;
+  color: #83544a;
+}
+
 .button-container {
   display: flex;
   flex-direction: row;
