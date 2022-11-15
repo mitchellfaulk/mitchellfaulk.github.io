@@ -190,7 +190,7 @@ a:active {
 }
 
 .project h3 {
-  margin-top: .5rem;
+  margin-top: 1rem;
 }
 
 .project a {
@@ -275,6 +275,10 @@ li {
 
   .header {
     padding: 1.5rem 1.5rem 1.5rem 1.5rem;
+  }
+
+  .project h3 {
+    margin-top: 0rem;
   }
 
 }
