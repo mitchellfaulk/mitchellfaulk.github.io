@@ -65,12 +65,14 @@ main {
 
 #navigation {
   background: #403531;
-  overflow: hidden;
   position: sticky;
   top: 0;
   width: 100%;
   max-width: 600px;
-  text-align: center;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
 }
 
 #navigation a {
@@ -82,20 +84,18 @@ main {
 #navigation a:hover {
   background-color: #eee;
   text-decoration: none;
+  color: #83544a;
 }
 
 #navigation a:visited {
-  color: #83544a;
+  color: #fff;
   background-color: transparent;
   text-decoration: none;
 }
 
-ol {
-  list-style-type: none;
+.nav-button {
   margin: 0;
-  padding: 0;
-  display: flex;
-  align-items: center;
+  padding: .4rem .4rem;
 }
 
 .header {
