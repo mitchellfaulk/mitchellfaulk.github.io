@@ -208,12 +208,8 @@ li {
     height: 100vh;
   }
 
-  #navigation {
-    text-align: center;
-  }
-
-  #navigation a {
-  font-size: 1rem;
+  .nav-button {
+  font-size: 1.5rem;
   padding: 1rem 1rem;
   }
 
