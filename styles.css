@@ -8,6 +8,7 @@ body {
   height: auto;
 }
 
+
 h1 {
   font-weight: 400;
   font-size: 2.5rem;
@@ -69,12 +70,15 @@ main {
   top: 0;
   width: 100%;
   max-width: 100vw;
+  text-transform: uppercase;
+  font-family: 'Roboto Condensed', sans-serif;
 }
 
 #navigation a {
   color: #fff;
   font-size: 1rem;
-  padding: .4rem .4rem;
+  margin: auto;
+  padding: .4rem;
 }
 
 #navigation a:hover {
@@ -98,12 +102,14 @@ main {
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  padding-left: 1rem;
-  padding-right: 1rem;
+}
+
+.header-container {
+  padding-top: 3rem;
 }
 
 .header {
-  padding: 3.5rem 1.5rem 1.5rem 1.5rem;
+  padding: 1.5rem 1.5rem 1.5rem 1.5rem;
   text-align: center;
   background: #696969;
   color: #fff;
@@ -113,12 +119,13 @@ main {
   display: inline-block;
   padding-right: 1rem;
   padding-left: 1rem;
+  text-transform: uppercase;
 }
 
 .caption {
+  padding-top: 1rem;
   padding-right: 1rem;
   padding-left: 1rem;
-  padding-bottom: 1rem;
   color: #333;
 }
 
@@ -182,6 +189,27 @@ a:active {
   padding-right: 1rem;
 }
 
+.project h3 {
+  margin-top: 0;
+}
+
+.project a {
+  background-color: #78645c;
+  padding: .5rem;
+  border-radius: .5rem;
+  border: 1px solid #382e2b;
+  font-size: 0.85rem;
+  color: #fff;
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
+  display: inline-block;
+}
+
+.project a:hover {
+  background-color: #5c4c47;
+  text-decoration: none;
+}
+
 img {
   max-width: 90vw;
   margin-left: auto;
@@ -239,8 +267,12 @@ li {
     padding-right: 1rem;
   }
 
+  .header-container{
+    padding-top: 4rem;
+  }
+
   .header {
-    padding: 4.5rem 1.5rem 1.5rem 1.5rem;
+    padding: 1.5rem 1.5rem 1.5rem 1.5rem;
   }
 
 }
