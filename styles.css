@@ -99,7 +99,7 @@ main {
 }
 
 .header {
-  padding: 4.5rem 1.5rem 1.5rem 1.5rem;
+  padding: 3.5rem 1.5rem 1.5rem 1.5rem;
   text-align: center;
   background: #696969;
   color: #fff;
@@ -204,31 +204,36 @@ li {
   }
 
   #navigation a {
-  font-size: 1rem;
-  padding: 1rem 1rem;
+    font-size: 1rem;
+    padding: 1rem 1rem;
   }
 
   img {
-  max-width: 33vw;
+    max-width: 33vw;
   }
 
   .project {
-  display: flex;
-  border-bottom-style: solid;
-  border-color: #bbb;
-  padding: 1rem;
+    display: flex;
+    border-bottom-style: solid;
+    border-color: #bbb;
+    padding: 1rem;
   }
 
   .project-image {
-  flex-basis: 33vw;
-  margin: 0;
+    flex-basis: 33vw;
+    margin: 0;
   }
 
   .project-text {
-  display: block;
-  flex-basis: 67vw;
-  padding-left: 1rem;
-  padding-right: 1rem;
+    display: block;
+    flex-basis: 67vw;
+    padding-left: 1rem;
+    padding-right: 1rem;
   }
+
+  .header {
+    padding: 4.5rem 1.5rem 1.5rem 1.5rem;
+  }
+
 }
 
