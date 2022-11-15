@@ -64,18 +64,17 @@ main {
 }
 
 #navigation {
-  background: #bbb;
+  background: #403531;
   overflow: hidden;
   position: sticky;
   top: 0;
   width: 100%;
   max-width: 600px;
+  text-align: center;
 }
 
 #navigation a {
-  display: block;
-  float: left;
-  color: #83544a;
+  color: #fff;
   font-size: 1rem;
   padding: .4rem .4rem;
 }
@@ -91,10 +90,18 @@ main {
   text-decoration: none;
 }
 
+ol {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+}
+
 .header {
   padding: 4.5rem 1.5rem 1.5rem 1.5rem;
   text-align: center;
-  background: #333;
+  background: #696969;
   color: #fff;
 }
 
@@ -194,6 +201,10 @@ li {
 
   #landing-image {
     height: 100vh;
+  }
+
+  #navigation {
+    text-align: center;
   }
 
   #navigation a {
