@@ -273,13 +273,13 @@ li {
   }
 
   .project-image {
-    flex-basis: 33vw;
+    flex: 0 0 33vw;
     margin: 0;
   }
 
   .project-text {
     display: block;
-    flex-basis: 67vw;
+    flex: 0 1 67vw;
     padding-left: 1rem;
     padding-right: 1rem;
   }
