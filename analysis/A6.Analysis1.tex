@@ -1,0 +1,105 @@
+\documentclass[12pt]{article}
+
+\usepackage{amsmath, amssymb, xypic}
+\usepackage[margin=1in]{geometry}
+
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\newcommand{\floor}[1]{\left\lfloor#1\right\rfloor}
+
+\begin{document}
+\begin{center}
+Assignment 6\\
+Intro to Modern Analysis
+\end{center}
+
+
+
+\noindent \textbf{1.} Suppose $f_n$ and $g_n$ are sequences of functions converging uniformly on $E$. 
+\begin{enumerate}
+\item[(a)] Show that $f_n + g_n$ converges uniformly on $E$. 
+\item[(b)] If $f_n$ and $g_n$ are bounded, show that $f_ng_n$ converges uniformly on $E$. 
+\item[(c)] Find an example where $f_ng_n$ does not converge uniformly on $E$. 
+\end{enumerate}
+
+\medskip
+
+\noindent \textbf{2.} Suppose $f_n$ is an equicontinuous sequence of functions on a compact set $K$ and $f_n$ converges pointwise on $K$. Show that $f_n$ converges uniformly on $K$. 
+
+\medskip
+
+\noindent \textbf{3.} Let $A$ be a bounded subset of the space $C([a,b])$ of continuous and bounded real-valued functions on $[a,b]$ with the $\sup$ norm. Show that the set of all functions $F : [a,b] \to \mathbb{R}$ of the form 
+\[
+F(x) = \int_a^x f(t) \: dt
+\]
+for $f \in A$ is uniformly bounded and equicontinuous. 
+
+\medskip
+
+\noindent \textbf{4.} Let $X$ and $Y$ be two metric spaces, and assume that $X$ and $Y$ are compact. Let $M_{X,Y}$ denote the collection of all mappings $f : X \to Y$. 
+\begin{enumerate}
+\item[(a)] Prove that the function $d : M_{X,Y} \times M_{X,Y} \to \mathbb{R}$ defined by 
+\[
+d(f,g) = \sup_{x \in X} d_Y(f(x), g(x))
+\]
+is a metric on $M_{X,Y}$. 
+\item[(b)] Let $C_{X,Y}$ denote the subset of \emph{continuous} mappings. Prove that $C_{X,Y}$ is closed in $M_{X,Y}$. (Hint: At some point you need to show that the limit of a uniformly convergent sequence of mappings is a continuous mapping.)
+\end{enumerate}
+
+
+
+
+\medskip
+
+\noindent \textbf{5.} Let $A$ be a subset of $C([a,b])$. Suppose that 
+\begin{enumerate}
+\item[(i)] $A$ is uniformly bounded 
+\item[(ii)] there is a constant $M > 0$ such that $|f'(x)| \leqslant M$ for each $f \in A$ and each $x \in [a,b]$. 
+\end{enumerate}
+Show if $f_n$ is any sequence in $A$, then there is a subsequence $f_{n_k}$ that converges uniformly on $[a,b]$. 
+
+\medskip
+
+\noindent \textbf{6.} Let $X = C([0,1])$ be the space of continuous and bounded real-valued functions on $[0,1]$ together with the supremum norm. Let $A$ be the unit ball of $X$ given by 
+\[
+A = \{f \in X : \sup_{t \in [0,1]} |f(t)| \leqslant 1\}.
+\]
+\begin{enumerate}
+\item[(a)] Show that $A$ is closed and bounded in $X$. 
+\item[(b)] Show that $A$ is not compact. (Hint: Find a sequence $f_n \in A$ that admits no convergent subsequence. Example 7.21 of Rudin might be helpful.)
+\end{enumerate}
+
+\medskip
+
+\noindent \textbf{7.} Recall the space $m$ of bounded sequences of real numbers together with the metric 
+\[
+d(x,y) = \sup_{k=1, 2, \ldots} |x_k - y_k|.
+\]
+\begin{enumerate}
+\item[(a)] Give a simple proof to show that $m$ is complete by showing that $m = C(X)$ for some suitable space $X$. (Recall that $C(X)$ denotes the space of continuous bounded real-valued functions on $X$ together with the supremum norm.) 
+\item[(b)] Let $A$ denote the unit ball in $m$ given by 
+\[
+A = \{x \in m : \sup_{k=1, 2, \ldots} |x_k| \leqslant 1\}.
+\]
+Show that $A$ is not compact. (Hint: Consider the idea of Problem 7(b).)
+\end{enumerate}
+
+\medskip
+
+\noindent \textbf{8.} More generally, let $X$ be any infinite-dimensional vector space equipped with an inner product $\langle -, - \rangle$ in such a way that the induced metric is complete. In particular, there is a norm on $X$ defined by 
+\[
+\norm{x} = \sqrt{\langle x, x \rangle}
+\]
+and the metric is given by 
+\[
+d(x,y) = \norm{x - y}.
+\] 
+Let $A$ denote the unit ball 
+\[
+A = \{x \in X : \norm{x} \leqslant 1\}.
+\]
+We know that $A$ is closed and bounded essentially from the definitions. Show that $A$ is not compact. (Hint: Construct a sequence $x_n \in A$ as follows. Pick $x_1 \in A$ such that $\norm{x_1} = 1$. Once $x_1, \ldots, x_n$ are chosen, use Graham-Schmidt to find an $x_{n+1} \in A$ such that $\norm{x_{n+1}} = 1$ and $x_{n+1}$ is orthogonal to each $x_1, \ldots, x_n$. Argue that for distinct $m, n$ we have $\norm{x_n - x_m} \geqslant 1/2$. The polarization identity 
+\[
+\langle x, y \rangle = \frac{1}{2} (\norm{x}^2 + \norm{y}^2 - \norm{x-y}^2)
+\]
+might be useful.)
+\end{document}

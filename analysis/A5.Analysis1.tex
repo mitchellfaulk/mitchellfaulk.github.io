@@ -1,0 +1,114 @@
+\documentclass[12pt]{article}
+
+\usepackage{amsmath, amssymb, xypic}
+\usepackage[margin=1in]{geometry}
+
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\newcommand{\floor}[1]{\left\lfloor#1\right\rfloor}
+
+\begin{document}
+\begin{center}
+Assignment 5\\
+Intro to Modern Analysis
+\end{center}
+
+
+
+\noindent \textbf{1.} Let $n$ be a given fixed positive integer. Find a function such that $f^{(n-1)}$ is continuous, but $f^{(n)}$ is not. 
+
+\medskip
+
+\noindent \textbf{2.} Let $f$ be continuous on $[a,b]$ and differentiable on $(a,b)$. Suppose that $f'(x) \ne 0$ for each $x$ in $(a,b)$. Show that $f$ is injective on $[a,b]$. 
+
+\medskip
+
+
+
+\noindent \textbf{3.} Suppose the derivative $f'$ is continuous on $(a,b)$ and $f'(x) \ne 0$ for each $x$ in $(a,b)$.  
+\begin{enumerate}
+\item[(a)] Show that $f$ admits an inverse $g$ defined on the image of $f$. 
+\item[(b)] Prove that $g$ is differentiable and the derivative satisfies 
+\[
+g'(f(x)) = \frac{1}{f'(x)}
+\]
+for each $x \in (a,b)$. 
+\end{enumerate}
+
+\medskip
+
+\noindent \textbf{4.} Let $f$ be continuous on $[a,b]$ and differentiable on $(a,b)$. Set $f(a) = y$ and suppose that $|f'(x)| \leqslant M$ for each $x \in (a,b)$. How large can $f(b)$ be? How small can $f(b)$ be? Prove that the values you find are actually achieved by demonstrating two functions which achieve them. 
+
+\medskip
+
+\noindent \textbf{5.} If $n$ is a positive integer and $0 \leqslant y \leqslant x$, show that 
+\[
+ny^{n-1}(x - y) \leqslant x^n - y^n \leqslant nx^{n-1}(x -y). 
+\]
+
+\medskip
+
+\noindent \textbf{6.} Suppose $f$ is continuous on $[a,b]$ and $f(x) \geqslant 0$ for each $x \in [a,b]$. Show that if  
+\[
+\int_a^b f(x)\:dx = 0,
+\]
+then $f(x) = 0$ for each $x \in [a,b]$. 
+
+\medskip
+
+\noindent \textbf{7.} Define $f$ on $[a,b]$ by 
+\[
+f(x) = \begin{cases}
+1 & x \; \text{rational} \\
+0 & x \; \text{irrational}
+\end{cases}.
+\]
+Show that $f$ is not Riemann integrable on $[a,b]$.
+
+\medskip
+
+\noindent \textbf{8.} Let $f$ be defined on $(0,1]$. Suppose that $f$ is Riemann integrable on $(c,1]$ for each $c \in (0,1)$. 
+\begin{enumerate}
+\item[(a)] If $f$ is Riemann integrable on $[0,1]$, show that 
+\[
+\int_0^1 f(x)\: dx = \lim_{c \to 0}\int_c^1 f(x)\:dx.
+\]
+\item[(b)] Construct a function $f$ for which the limit in (a) exists, even though the same limit fails to exist for $|f|$ in place of $f$. 
+\end{enumerate} 
+
+\medskip
+
+\noindent \textbf{9.} Let $p$ and $q$ be positive real numbers satisfying 
+\[
+\frac{1}{p} + \frac{1}{q} = 1.
+\]
+\begin{enumerate}
+\item[(a)] Show that for any nonnegative numbers $u,v \geqslant 0$, we have 
+\[
+uv \leqslant \frac{u^p}{p} + \frac{v^q}{q}.
+\]
+\item[(b)] Show that if $f$ and $g$ are both nonnegative (i.e. $f \geqslant 0$ and $g \geqslant 0$) and satisfy 
+\[
+\int_a^b f(x)^p\: dx = \int_a^b g(x)^q \: dx = 1,
+\]
+then 
+\[
+\int_a^b f(x)g(x) \: dx \leqslant 1.
+\]
+\item[(c)] Show that for any two functions (not necessarily nonnegative), we have 
+\[
+\left|\int_a^b f(x)g(x) \: dx\right| \leqslant \left(\int_a^b |f(x)|^p\: dx\right)^{1/p}\left(\int_a^b |g(x)|^q\: dx\right)^{1/q}
+\]
+provided both sides make sense. This is called H\"older's inequality. 
+\end{enumerate}
+
+\medskip
+
+\noindent \textbf{10.} Prove directly from the definitions that if $f$ is Riemann integrable on $[a,b]$ and $c$ is any positive constant, then $cf$ is also integrable on $[a,b]$ and moreover
+\[
+\int_a^b cf(x) \: dx = c \int_a^b f(x)\: dx.
+\] 
+
+
+
+
+\end{document}

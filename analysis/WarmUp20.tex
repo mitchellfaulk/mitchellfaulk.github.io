@@ -1,0 +1,21 @@
+\documentclass[12pt]{article}
+
+\usepackage{amsmath, amssymb, xypic}
+\usepackage[margin=1in]{geometry}
+
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+
+\begin{document}
+\noindent \textbf{Name:} 
+
+\begin{center}
+Warm-up \#20
+\end{center}
+
+\noindent For a nonnegative integer $k$, let $C^k([a,b])$ denote the space of functions $f$ on $[a,b]$ which admit $k$ \emph{continuous} derivatives $f', f'', \ldots, f^{(k)}$. Define a norm on $C^k([a,b])$ by setting 
+\[
+\norm{f}_{C^k} = \sum_{j=0}^k \sup_{x \in [a,b]}|f^{(j)}(x)|.
+\]
+Use Arzela-Ascoli to show that any sequence $f_n$ in $C^k([a,b])$ that is bounded with respect to the $C^k$-norm admits a convergent subsequence in $C^{k-1}([a,b])$.  
+
+\end{document}

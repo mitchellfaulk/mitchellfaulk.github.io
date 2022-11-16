@@ -1,0 +1,25 @@
+\documentclass[12pt]{article}
+
+\usepackage{amsmath, amssymb, xypic}
+\usepackage[margin=1in]{geometry}
+
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+
+\begin{document}
+\noindent \textbf{Name:} 
+
+\begin{center}
+Warm-up \#16
+\end{center}
+
+\noindent Suppose $f$ is integrable on $[1,n]$ for each integer $n \geqslant 1.$ Define 
+\[
+\int_1^\infty f(x) \: dx = \lim_{n \to \infty} \int_1^n f(t) \: dt
+\]
+provided this limit exists. Suppose that 
+\begin{enumerate}
+\item[(a)] $f \geqslant 0$
+\item[(b)] $f$ is descreasing.
+\end{enumerate}
+Show that the limit above exists if and only if $\sum_n f(n)$ converges. (This is the integral test for series.)
+\end{document}

@@ -1,0 +1,128 @@
+\documentclass[12pt]{article}
+
+\usepackage{amsmath, amssymb, xypic}
+\usepackage[margin=1in]{geometry}
+
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+
+\begin{document}
+\begin{center}
+Assignment 3\\
+Intro to Modern Analysis
+\end{center}
+
+\noindent \textbf{1.} Let $X$ be a set and consider the discrete metric $d$ on $X$ defined by  
+\[
+d(p,q) = \begin{cases}
+1 & p \neq q \\
+0 & p = q
+\end{cases}.
+\]
+Show that $X$ is compact if and only if $X$ is finite. 
+
+\medskip 
+
+\noindent \textbf{2.} Let $x_n$ be the sequence of real numbers 
+\[
+x_n = \sqrt{1 + \frac{1}{n}}.
+\]
+\begin{enumerate}
+\item[(a)] Show that $x_n$ converges to $1$. 
+\item[(b)] Calculate 
+\[
+\lim_{n \to \infty} \sqrt{n^2 + n} - n.
+\]
+\end{enumerate}
+
+\noindent \textbf{3.} Let $s_n$ be a sequence of real numbers. Construct a new sequence $\sigma_n$ by the averages 
+\[
+\sigma_n = \frac{s_1 + s_2 + \cdots + s_n}{n}.
+\]
+\begin{enumerate}
+\item[(a)] If $s_n$ converges to $s$, show that $\sigma_n$ converges to $s$. 
+\item[(b)] Construct a sequence $s_n$ which does not converge but which satisfies $\sigma_n \to 0$. 
+\end{enumerate}
+
+\medskip
+
+\noindent \textbf{4.} Construct a Cauchy sequence in $\mathbb{Q}$ that does not converge (to a point of $\mathbb{Q}$). (Hint: It might be useful to use the construction from Example 1.1 of Rudin or Proposition 2 from the notes.)
+
+\medskip
+
+\noindent \textbf{5.} Let $(M,d)$ be a metric space, and let $p_n, q_n$ be two Cauchy sequences in $X$. Show that the sequence $d(p_n, q_n)$ is Cauchy in $\mathbb{R}$. 
+
+\medskip 
+
+
+\noindent \textbf{6.} For a real number $p \geqslant 1$, let $\ell^p$ denote the vector space of sequences $x = (x_1, x_2, \ldots)$ of real numbers such that  
+\[
+\sum_{n=1}^\infty |x_n|^p 
+\]
+converges. 
+\begin{enumerate}
+\item[(a)] Show that if $p \leqslant q$, then $\ell^q \subset \ell^p$. 
+\item[(b)] Suppose $p < q$. Find a sequence $x \in \ell^q$ but not in $\ell^p$. 
+\end{enumerate}
+
+\medskip
+
+\noindent \textbf{7.} Let $m$ denote the metric space whose elements are bounded infinite sequences of real numbers together with the metric 
+\[
+d(x,y) = \sup_{n=1, 2, \ldots} |x_n - y_n|.
+\]
+Show that $m$ is complete. 
+
+\medskip
+
+\noindent \textbf{8.} Let $a_n, b_n$ be sequences of real numbers. Suppose that 
+\begin{enumerate}
+\item[(i)] $\sum_n a_n$ converges
+\item[(ii)] $b_n$ is bounded
+\item[(iii)] $b_n$ is monotonic.
+\end{enumerate}
+Show that $\sum_n a_nb_n$ converges. 
+
+\medskip
+
+\noindent \textbf{9.} This problem has two parts. 
+\begin{enumerate}
+\item[(a)] Show that if $x,y$ are nonnegative real numbers, then 
+\[
+xy \leqslant \frac{1}{2} (x^2 + y^2). 
+\]
+\item[(b)] Let $a_n$ be a sequence of nonnegative real numbers, and let $b_n = \sqrt{a_n}/n$. Show that if $\sum_n a_n$ converges, then $\sum_n b_n$ converges. 
+\end{enumerate}
+
+\medskip
+
+\noindent \textbf{10.} State and prove the convergence or divergence of $\sum_n a_n$ if 
+\begin{enumerate}
+\item[(a)] $a_n = \sqrt{n+1} - \sqrt{n}$
+\item[(b)] $a_n = \frac{\sqrt{n+1} - \sqrt{n}}{n}$ 
+\item[(c)] $a_n = (\sqrt[n]{n} - 1)^n$.
+\end{enumerate}
+
+
+\noindent \textbf{Extra. (Not to be graded)} Let $(M,d)$ be a metric space. Let $\mathcal{M}$ be the set of Cauchy sequences in $M$, that is, an element $p$ of $\mathcal{M}$ consists of a sequence $P = (p_1, p_2, p_3, \ldots)$ of points of $M$. 
+\begin{enumerate}
+\item[(a)] Problem 5 shows that we can associate to any two $P,Q \in \mathcal{M}$ a real number $\Delta(p,q)$ defined by 
+\[
+\Delta(P,Q) = \lim_{n \to \infty}d(p_n,q_n).
+\]
+Show that the resulting function $\Delta : \mathcal{M} \times \mathcal{M} \to \mathbb{R}$ is symmetric and nonnegative. 
+\item[(b)] Define a relation $\sim$ on $\mathcal{M}$ by $P \sim Q$ if and only if $\Delta(P,Q) = 0$. Show that the relation $\sim$ is an equivalence relation on $\mathcal{M}$. 
+\item[(c)] Let $M^*$ denote the set $\mathcal{M}/\sim$ of equivalence classes. Show that $\Delta$ induces a well-defined map on $M^*$ which is a metric. 
+\item[(d)] Show that the resulting metric space $M^*$ is complete. 
+\item[(e)] For any point $p \in M$, let $P_p$ be the sequence whose terms are all $p$. Show that for any two points $p,q$ in $M$, we have 
+\[
+\Delta(P_p, P_q) = d(p,q).
+\]
+Conclude that there is a distance-preserving map $\varphi : M \to M^*$. 
+\item[(f)] Show that $\varphi(M)$ is dense in $M^*$. 
+\item[(g)] Show that $\varphi(M) = M^*$ if and only if $M$ is complete. 
+\end{enumerate}
+As a result of this exercise, we may finally define $\mathbb{R}$: we may set $\mathbb{R} = M^*$ for $M = \mathbb{Q}$. 
+
+
+
+\end{document}

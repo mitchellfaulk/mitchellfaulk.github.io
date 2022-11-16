@@ -1,0 +1,86 @@
+\documentclass[12pt]{article}
+
+\usepackage{amsmath, amssymb, xypic}
+\usepackage[margin=1in]{geometry}
+
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+
+\begin{document}
+\begin{center}
+Assignment 1\\
+Intro to Modern Analysis
+\end{center}
+
+\noindent \textbf{1.} For a subset $A$ of a set $X$, let $A^c$ denote the complement of $A$ given by $A^c = X \setminus A$. Let $I$ be an index set, and let $\{A_i\}_{i \in I}$ be a collection of subsets of $X$ indexed by $I$. Prove or disprove.  
+\begin{enumerate}
+\item[(a)] We have 
+\[
+\left(\bigcup_{i \in I}A_i\right)^c = \bigcap_{i \in I}A_i^c.
+\]
+\item[(b)] We have 
+\[
+\left(\bigcap_{i \in I}A_i\right)^c = \bigcup_{i \in I}A_i^c.
+\]
+\end{enumerate}
+
+\medskip
+
+\noindent \textbf{2.} Let $\{A_n\}_{n \in \mathbb{N}}$ be a sequence of nonempty subsets of $\mathbb{R}$ which are ``nested'' in the sense that 
+\[
+A_0 \supset A_1 \supset A_2 \supset \cdots.
+\]
+Is the intersection 
+\[
+\bigcap_{n \in\mathbb{N}} A_n
+\]
+nonempty? Prove or disprove. 
+
+\medskip
+
+\noindent \textbf{3.} Let $A$ denote the subset of $\mathbb{R}$ given by  
+\[
+A = \left\{\frac{|\cos(n)|}{n+1} : n \in \mathbb{N} \right\}.
+\]
+Find with proof the values $\sup A$ and $\inf A$, whenever either exists. 
+
+\medskip
+
+
+\noindent \textbf{4.} Let $A$ be a nonempty subset of $\mathbb{R}$ bounded from above, and let $x_0$ be an upper bound of $A$.  Show that $x_0$ is equal to $\sup A$ if and only if for each $\epsilon > 0$ there is an element $x \in A$ such that $x_0 - x < \epsilon$. 
+
+\medskip 
+
+\noindent \textbf{5.} Let $A$ be a nonempty set of \emph{integers} that is bounded from above. Show that $A$ has a largest element. (Hint: Let $x_0 = \sup A$. First show that $x_0$ is an integer by showing that if not, then there are integers $m,n \in A$ satisfying $x_0 - 1 < m < n < x_0$, which is an impossible statement [why?]. Then show that $x_0$ belongs to $A$.)
+
+
+\medskip
+
+
+
+
+\noindent \textbf{6.} Let $A, B$ be nonempty subsets of $\mathbb{R}$ each bounded from above. Prove or disprove. 
+\begin{enumerate}
+\item[(a)] $\sup (A \cup B) = \sup\{ \sup A, \sup B \}$.
+\item[(b)] $\sup(A \cap B) = \inf\{ \sup A, \sup B \}$. 
+\end{enumerate}
+
+\medskip
+
+\noindent \textbf{7.} For a real number $t$, let $|t|$ denote the absolute value of $t$ defined by  
+\[
+|t| = \begin{cases}
+t & t \geqslant 0 \\
+-t & t \leqslant 0
+\end{cases}.
+\] 
+\begin{enumerate}
+\item[(a)] For a real number $t$ and a nonnegative number $a$, show that $|t|\leqslant a$ if and only if $-a \leqslant t \leqslant a$. 
+\item[(b)] Let $x$ and $y$ be points of $\mathbb{R}^n$. Show that 
+\[
+\big\lvert\lVert{x}\rVert - \lVert{y}\rVert\big\rvert \leqslant \norm{x -y}. 
+\]
+\end{enumerate}
+
+
+
+\end{document}

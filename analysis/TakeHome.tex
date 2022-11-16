@@ -1,0 +1,66 @@
+\documentclass[12pt]{article}
+
+\usepackage{amsmath, amssymb, xypic}
+\usepackage[margin=1in]{geometry}
+
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+
+\begin{document}
+\noindent Take-home portion of final exam \\ Intro to Modern Analysis
+
+\medskip
+
+\noindent \textbf{1.} Is the set of irrational numbers dense in $\mathbb{R}$?
+
+\medskip
+
+\noindent \textbf{2.} For a real number $p > 1$, define a sequence $a_n$ recursively by 
+\begin{align*}
+a_0 &= 0 \\
+a_{2n+1} &= a_{2n} + \frac{p-1}{p} & n \in \mathbb{N}\;\\
+a_{2n+2} &= \frac{a_{2n+1}}{p} & n \in \mathbb{N}.
+\end{align*}
+Compute 
+\[
+\liminf_{n \to \infty}a_n \hspace{10mm} \text{and} \hspace{10mm} \limsup_{n \to \infty} a_n
+\]
+whenever either exists. 
+
+\medskip
+
+\noindent \textbf{3.}  Let $a_n$ be a sequence of real numbers. Suppose that $\sum_n |a_{n+1} - a_n|$ converges. Must $a_n$ converge?
+
+\medskip
+
+\noindent \textbf{4.} Suppose $E$ is a bounded subset of $\mathbb{R}$ and $f : E \to \mathbb{R}$ is uniformly continuous. Must $f$ be bounded? (I believe you might be able to Google this one.)
+
+\medskip
+
+
+\noindent \textbf{5.} Let $f : [0, \infty) \to \mathbb{R}$ be a differentiable function. Suppose that 
+\begin{enumerate}
+\item[(a)] $f$ is bounded from above
+\item[(b)] $f'(x) \geqslant 0$ for each $x \in [0,\infty)$.
+\end{enumerate}
+Must there be a sequence of points $t_n \to \infty$ such that $f'(t_n) \to 0$?
+
+\medskip
+
+\noindent \textbf{6.} For each positive integer $n$, let $\delta_n(x)$ be the function defined on $[-1,1]$ by 
+\[
+\delta_n(x) = \begin{cases}
+n/2 & x \in [-1/n, 1/n] \\
+0 & \text{otherwise}
+\end{cases}.
+\]
+Show that for any continuous function $f : [-1,1] \to \mathbb{R}$, we have 
+\[
+f(0) = \lim_{n \to \infty} \int_{-1}^1 \delta_n(x)f(x) \: dx.
+\]
+Give an example of an integrable function $g : [-1,1] \to \mathbb{R}$ such that 
+\[
+\lim_{n \to \infty} \int_{-1}^1 \delta_n(x) g(x) \: dx
+\]
+exists but is not equal to $g(0)$. 
+
+\end{document}

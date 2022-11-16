@@ -1,0 +1,547 @@
+\documentclass[12pt]{article}
+
+\usepackage{amsmath, amssymb, amsthm, setspace, hyperref, xypic}
+\usepackage[margin=1.25in]{geometry}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\newcommand{\ddb}{\partial\bar{\partial}}
+
+
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+\newtheorem{exercise}[definition]{Exercise}
+\newtheorem{example}[definition]{Example}
+\newtheorem{remark}[definition]{Remark}
+\newtheorem{note}[definition]{Note}
+\newtheorem{notation}[definition]{Notation}
+
+\theoremstyle{theorem}
+\newtheorem{proposition}[definition]{Proposition}
+\newtheorem{theorem}[definition]{Theorem}
+\newtheorem{corollary}[definition]{Corollary}
+\newtheorem{lemma}[definition]{Lemma}
+\newtheorem{problem}{Problem}
+
+\begin{document}
+
+\noindent Lecture notes for Analysis I \\ Mitchell Faulk
+
+\medskip
+
+
+\noindent Disclaimer: These notes are a companion to the textbook by Rudin and follow closely the content and organization of that book. The differences are mainly in presentation. 
+
+\tableofcontents
+
+\section{The real numbers}
+
+\subsection{The rational numbers}
+Let us begin with some notation. 
+\begin{itemize}
+\item By $\mathbb{N}$ we mean the set natural numbers or nonnegative integers $\mathbb{N} = \{0, 1, 2, \ldots\}$. 
+\item By $\mathbb{Z}$ we mean the set of integers $\mathbb{Z} = \{\ldots, -2, -1, 0, 1, 2, \ldots \}$. 
+\item By $\mathbb{Q}$ we mean the set of rational numbers $\mathbb{Q} = \{p/q : p, q \in \mathbb{Z}, q \ne 0\}$. 
+\end{itemize}
+If we wish to refer to the set of positive integers, we will write $\mathbb{Z}_{>0}$ or $\mathbb{N}^*$ or even $\mathbb{N} \setminus \{0\}$. 
+
+The set of rational numbers are, in some sense, as close together as possible: between any two distinct rational numbers $x$ and $y$, there is a third, namely $(x+y)/2$. 
+
+Nevertheless, perhaps surprisingly, the set of rational numbers contains gaps. In particular, rational numbers do not always admit roots, as the following proposition demonstrates.  
+
+\begin{proposition}
+There is no rational number $x$ such that $x^2 = 2$. 
+\end{proposition}
+
+\begin{proof}
+Let $x$ be a rational number, and write $x = p/q$ for some integers $p,q \in \mathbb{Z}$. We may assume that $p,q$ are relatively prime, or else we could divide them both by their greatest common divisor to obtain another representation of $x$. 
+
+Suppose the relation $x^2 = 2$ is true.  Then our representation of $x$ as $p/q$ shows that $p^2 = 2q^2$. We infer that $p^2$ is even and hence $p$ is even as well (if $p$ were odd, then $p^2$ would be odd). It follows that $4$ divides $p^2$ and thus $4$ also divides $2q^2$. We find that $q^2$ is even and thus $q$ is even as well. But we have now found that both $p$ and $q$ are even, which contradicts our assumption that they are relatively prime. We conclude that the relation $x^2 = 2$ cannot be true. 
+\end{proof}
+
+A positive number squaring to $2$ would be written $\sqrt{2}$, and the above proposition would say that $\sqrt{2} \notin \mathbb{Q}$, that is, $\sqrt{2}$ would be \emph{irrational}. However, the number $\sqrt{2}$---if such a thing exists!---would be able to be \emph{approximated} by rational numbers in the sense that there is no rational number \emph{closest} to $\sqrt{2}$, as the following proposition asserts. 
+
+\begin{proposition}
+Let $A$ be the set of rational numbers $x$ satisfying $x^2 < 2$. Then $A$ contains no largest element. 
+\end{proposition} 
+
+\begin{proof}
+Let $x$ be an arbitrary element of $A$ satisfying $x > 0$. The proof will be complete if we construct a rational number $y$ belonging to $A$ which satisfies $x < y$. 
+
+We claim that 
+\[
+y = x - \frac{x^2 - 2}{x+2} = \frac{2x +2}{x+2}
+\]
+works. Indeed, we note that $y$ is rational from the right-most expression of $y$. We also note that since $x$ belongs to $A$, the numerator $x^2 - 2$ is negative, and hence $y > x$. It is also simple algebra to compute that 
+\[
+y^2 - 2 = \frac{2(x^2 - 2)}{(x+2)^2},
+\]
+from which we conclude that $y^2 - 2$ is negative, and hence $y$ belongs to $A$ as well. 
+\end{proof}
+
+\begin{proposition}
+Let $B$ be the set of rational numbers $x$ satisfying $2 < x^2$. Then $B$ contains no smallest element. 
+\end{proposition}
+
+\begin{proof}
+The proof is similar to the previous result, so we omit it. 
+\end{proof}
+
+\begin{remark}
+The set $\mathbb{R}$ of real numbers is a way of ``filling the gaps'' present in the rational numbers, as we will discuss now. 
+\end{remark}
+
+\subsection{Ordered sets}
+
+\begin{definition}
+Let $S$ be a set. An \textbf{order} on $S$ is a relation, denoted by $<$, satisfying the following two properties. 
+\begin{enumerate}
+\item[(i)] Trichotomy: If $x$ and $y$ belong to $S$, then one and only one of the following statements is true 
+\[
+x < y, \hspace{10mm} x = y, \hspace{10mm} y < x.
+\]
+\item[(ii)] Transitivity: If $x,y,z \in S$ satisfy $x < y$ and $y < z$, then $x < z$. 
+\end{enumerate}
+By an \textbf{ordered set} we just mean a pair $(S, <)$ consisting of a set and an order. We often use the notation $x \leqslant y$ to mean that either $x < y$ or $x = y$ is true. 
+\end{definition}
+
+\begin{example}
+For example, the set $\mathbb{Q}$ enjoys an order $<$ defined by writing $x < y$ if the number $y - x$ is positive. (The sets $\mathbb{N}$ and $\mathbb{Z}$ enjoy the same order.)
+\end{example}
+
+\begin{definition}
+Let $(S, <)$ be an ordered set, and let $E$ be a subset of $S$. An \textbf{upper bound} for $E$ is an element $\beta$ of $S$ satisfying the following: If $x$ belongs to $E$, then $x \leqslant \beta$. The notion of \textbf{lower bound} is defined similarly. 
+\end{definition}
+
+\begin{example}
+An upper bound may or may not belong to $E$ itself. For example, let $E \subset \mathbb{N}$ be the subset $E = \{0\}$ consisting only of the number zero itself. Then $\beta = 0$ is an upper bound for $E$ and also belongs to $E$. However, any number $\beta' \in \mathbb{N}$ is also an upper bound for $E$. 
+\end{example}
+
+\begin{definition}
+Let $(S, <)$ be an ordered set, and let $E$ be a subset of $S$ that is bounded from above. Suppose there is a number $\alpha \in S$ satisfying the following two properties.
+\begin{enumerate}
+\item[(i)] $\alpha$ is an upper bound for $E$
+\item[(ii)] $\alpha$ is the smallest upper bound for $E$ in the sense that if $\beta$ is any upper bound for $E$, then $\alpha \leqslant \beta$. 
+\end{enumerate} 
+Then $\alpha$ is called a \textbf{least upper bound} or \textbf{supremum} of $E$. 
+\end{definition}
+
+\begin{proposition}
+The supremum of $E$, if it exists, is unique. That is, if $\alpha$ and $\alpha'$ are two suprema, then $\alpha = \alpha'$.
+\end{proposition}
+
+\begin{proof}
+This follows immediately from the definitions, but we feel the proof is instructive. Suppose $\alpha$ and $\alpha'$ are two suprema. Then in particular, $\alpha'$ is an upper bound for $E$, and so property (ii) applied to $\alpha$ asserts that $\alpha \leqslant \alpha'$. On the other hand, property (ii) applied to $\alpha'$ asserts that $\alpha' \leqslant \alpha$. We conclude that we must have $\alpha = \alpha'$ by trichotomy. 
+\end{proof}
+
+\begin{notation}
+Because the supremum is unique---if it exists!---we denote it by $\sup E$. We let the reader define the anologous notion of infimum (or greatest lower bound), which is also unique (when it exists) and which we denote by $\inf E$. 
+\end{notation}
+
+\begin{example}
+Returning to our example $E = \{0\}$ from earlier, we find that $\sup E = 0$. In particular, note that in this case $\sup E$ belongs to $E$ itself.  
+\end{example}
+
+\begin{example}
+There are also examples where $\sup E$ does not belong to $E$. 
+
+For example, consider the subset $E$ of $\mathbb{Q}$ defined by $E = \{x \in \mathbb{Q} : x < 0\}$. Then we claim that $\sup E = 0$. 
+
+To verify this, we must check two things: that $0$ is an upper bound of $E$ and that $0$ is the smallest such upper bound. Note that $0$ is upper bound for $E$ simply by virtue of the definition of $E$. Suppose that $\beta$ is another upper bound for $E$. If $\beta$ were negative, then $\beta/2$ would be a number larger than $\beta$ belonging to $E$, which would contradict the assumption that $\beta$ is an upper bound. We conclude that $\beta$ is non-positive, which means that $\beta \geqslant 0$. This is as desired. 
+
+On the other hand, if $E'$ denotes the set $E' = \{x \in \mathbb{Q} : x \leqslant 0 \}$, then the supremum $\sup E'$ is also equal to zero and in this case belongs to $E'$. 
+\end{example}
+
+\begin{example}
+There are even examples where the supremum of $E$ does not exist. For example, suppose that $A$ is the subset of $\mathbb{Q}$ considered earlier $A = \{x \in \mathbb{Q} : x^2 < 2\}$. We claim that $\sup A$ does not exist in $\mathbb{Q}$. Indeed, let $\alpha$ be any upper bound for $A$. Then $\alpha$ belongs to the set $B$ defined earlier by $B = \{x \in \mathbb{Q} : x^2 > 2\}$, and conversely any element belonging to $B$ is an upper bound for $A$. Since $B$ contains no smallest element, it is impossible for $\alpha$ to be the \emph{least} upper bound for $A$. 
+\end{example}
+
+This last example motivates the following definition. 
+
+\begin{definition}
+An ordered set $(S, <)$ is said to have the \textbf{least upper bound property} if the following is true: Whenever $E$ is a subset of $S$ that is bounded from above, then $\sup E$ exists in $S$. 
+\end{definition}
+
+The preceding example shows that $S = \mathbb{Q}$ \emph{fails} to have the least upper bound property.  The real numbers $\mathbb{R}$ constitute an attempt to repair this failure, as we will see. 
+
+\subsection{The real field}
+
+The rational numbers enjoy the operations of addition and multiplication in such a way that addition distributes over multiplication and several other nice properties are satisfied. For example, there is an additive (resp. multiplicative) identity, and each number (resp. nonzero number) has an additive inverse (resp. multiplicative inverse). Rudin lists all of these properties together in a collection called the \textbf{field axioms}. Any set together with two operations satisfying all of these axioms is called a \textbf{field}. 
+
+There are many elementary properties concerning algebraic manipulations involving addition and multiplication which follow from the field axioms, but we will not prove these here and instead refer the interested reader to Rudin for a more complete list. 
+
+\begin{example}
+For a non-example, we note that although the set of integers $\mathbb{Z}$ enjoys two binary operators of addition and multiplication, it fails to be a field because the number $2$ for example does not admit a multiplicative inverse. 
+\end{example}
+
+\begin{definition}
+By an \textbf{ordered field} we mean a field $(F, +, \cdot)$ equipped with an order $<$ in such a way that the following two properties are satisfied. 
+\begin{enumerate}
+\item[(i)] If $x,y \in F$ satisfy $x < y$, then for each $z \in F$, we have $x + z < y + z$. 
+\item[(ii)] If $x,y \in F$ satisfy $x >0$ and $y > 0$, then $x y > 0$. 
+\end{enumerate}
+There are also many properties concerning the relationship between the ordering and addition/multiplication which follow from these two properties, but we will not discuss these further and instead refer the reader to the textbook. 
+\end{definition}
+
+\begin{example}
+For example, the set $\mathbb{Q}$ of rational numbers is an ordered field when equipped with its usual ordering.
+\end{example}  
+
+The fundamental result that we will assume from this point forward is the existence of the field of real numbers. 
+
+\begin{theorem}
+There is an ordered field $\mathbb{R}$ which has the least upper bound property and which contains $\mathbb{Q}$ as a subfield. 
+\end{theorem}
+
+We will later discuss how to construct $\mathbb{R}$ from $\mathbb{Q}$. There are several ways of performing this construction, and the interested reader can find one such method in the appendix to the first chapter of Rudin. (We will discuss a different method.)
+
+The following fundamental property of the real numbers is called the \textbf{Archimedean property} and the general philosophy behind this property can be phrased by saying that it is possible to travel a mile (or any distance, really) with just a ruler. 
+
+\begin{theorem}[Archimedean property]
+Let $x$ be a positive real number. If $y$ is any real number, then there is a positive integer $n$ such that $nx > y.$
+\end{theorem}
+
+\begin{proof}
+Let $E$ denote the subset of $\mathbb{R}$ described by $E = \{nx : n \in \mathbb{Z}_{>0}\}$. Suppose that the conclusion of the theorem is false. Then $y$ is an upper bound for $E$. By the least uppper bound property, $E$ has a \emph{least} upper bound $\alpha$. Since $x$ is positive, the difference $\alpha - x$ is not an upper bound for $E$. This means that there is a positive integer $m$ such that $mx > \alpha - x$. It follows that $(m+1)x > \alpha$, which is a contradiction to the assumption that $\alpha$ is an upper bound for $E$. We conclude that the theorem is true. 
+\end{proof}
+
+
+In addition, we saw earlier that the rational numbers are in some sense as close together as possible. In particular, they are what is called \textbf{dense} in $\mathbb{R}$, as made precise in the following proposition. 
+
+\begin{proposition}
+Between any two distinct real numbers there is a rational number. 
+\end{proposition}
+
+\begin{proof}
+Let $x$ and $y$ be distinct real numbers. Up to relabeling, we may assume $x < y$. The difference $y - x$ is positive, so by the Archimedean property, there is a positive integer $n_0$ such that $n_0(y-x) > 1$, that is, $n_0x + 1 < n_0y$
+
+Let $E$ denote the set of integers given by $E = \{m \in \mathbb{Z} : m \leqslant n_0x\}$. By definition, $E$ is bounded above, and hence by Problem 5 of Assignment 1, we deduce that $E$ has a largest element $m_0$ which satisfies $m_0 \leqslant n_0x$, that is, $m_0 + 1 \leqslant n_0x + 1$. Moreover, because $m_0$ is the greatest element of $E$, we have that $m_0 + 1$ satisfies $n_0x < m_0 + 1$. We combine with the previous inequalities to find that 
+\[
+n_0x < m_0 + 1 \leqslant n_0x + 1 < n_0y.
+\]
+Upon dividing through by $n_0$, which is positive, we find that 
+\[
+x < \frac{n_0}{m_0 + 1} < y.
+\]
+Thus $n_0/(m_0 + 1)$ is the rational number we seek.
+\end{proof}
+
+Let us conclude our discussion of the real numbers by returning a construction that motivated our discussion in the first place, namely, finding a square root of $2$. 
+
+\begin{proposition}
+There is a unique positive real number $x$ satisfying $x^2 = 2$. 
+\end{proposition}
+
+\begin{proof}
+We first show the existence of such an $x$. Indeed, let $E$ denote the subset  
+\[
+E = \{t \in \mathbb{R} : t^2 < 2\}.
+\]
+Then $E$ is bounded from above, and hence has a supremum, which is positive. We set $x = \sup E$, and we hope to show that $x$ has the desired property by showing that $x^2 < 2$ and $x^2 > 2$ lead to contradictions. 
+
+We require the observation that if $a,b$ are real numbers satisfying $a < b$, then we have 
+\[
+b^2 - a^2 = (b+a)(b-a) < 2b (b-a).
+\]
+
+Now assume that $x^2 < 2$. It follows that there is a positive real number $h$ such that 
+\[
+0 < h < \frac{2 - x^2}{2(x+1)}.
+\]
+We may additionally suppose that $h$ is small enough that $h < 1$. Upon setting $a = x$ and $b = x+h$, we use the previous observation to note that 
+\begin{align*}
+(x+h)^2 - x^2 &< 2(x+h)h &\text{previous paragraph}\\
+&< 2(x+1)h &h < 1 \\
+&< 2 - x^2 &\text{choice of $h$}.
+\end{align*}
+We conclude that $x + h$ satisfies $(x+h)^2 < 2$ so that $x + h$ belongs to $E$. But this is a contradiction to the assumption that $x$ is an upper bound for $E$. 
+
+It is similarly found that the assumption $x^2 > 2$ leads to a contradiction, so we may conclude that $x^2 = 2$. 
+
+
+We now deal with uniqueness. Suppose that $y$ is another positive real number satisfying $y^2 = 2$. If it were the case that $x < y$, then we would have $x^2 = x \cdot x < x \cdot y < y \cdot y = y^2$, which is incorrect. It similarly cannot be that $y < x$. We conclude that $y = x$ by trichotomy. 
+\end{proof}
+
+One can obtain the following more general result on the existence of roots. 
+
+\begin{theorem}
+Let $x$ be a positive real number and let $n$ be a positive integer. There is a unique positive real number $y$ such that $y^n = x$. 
+\end{theorem}
+
+\subsection{Euclidean spaces}
+
+For a positive integer $n$, use the notation $\mathbb{R}^n$ for the $n$-fold Cartesian product 
+\[
+\mathbb{R}^n = \overbrace{\mathbb{R} \times \cdots \times \mathbb{R}}^{n \; \text{copies}}
+\]
+It is known from linear algebra that $\mathbb{R}^n$ is a vector space, and in particular, enjoys the operations of addition and scalar multiplication. For a vector $x \in \mathbb{R}^n$, we will write $x = (x_1, \ldots, x_n)$ for its components (with respect to the standard basis). 
+
+For two vectors $x,y \in \mathbb{R}^n$, we write $\langle x, y \rangle$ to denote the inner product of $x$ and $y$ defined by 
+\[
+\langle x, y \rangle = \sum_{k=1}^n x_k y_k,
+\]
+and we define the norm $\norm{x}$ of $x$ to be 
+\[
+\norm{x} = \sqrt{\langle x, x \rangle} = \left(\sum_{k=1}^n x_k^2\right)^{1/2}.
+\]
+When $x$ is just a real number we often write $|x| = \norm{x}$. 
+
+\begin{proposition}
+Let $x,y,z$ be points of $\mathbb{R}^n$ and let $\alpha$ be a real number. Then
+\begin{enumerate}
+\item[(a)] $\norm{x} \geqslant 0$
+\item[(b)] $\norm{x} = 0$ if and only if $x = 0$
+\item[(c)] $\norm{\alpha x} = |\alpha|\norm{x}$
+\item[(d)] $|\langle x, y \rangle \leqslant \norm{x}\norm{y}$ 
+\item[(e)] $\norm{x + y} \leqslant \norm{x} + \norm{y}$.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+The properties (a), (b), and (c) are immediate, and (d) follows from the Scharz inequality. We now prove (e). We use (d) to find that  
+\begin{align*}
+\norm{x + y}^2 &= \langle x + y, x + y \rangle \\ 
+&= \langle x, x \rangle + 2 \langle x, y \rangle + \langle y, y \rangle \\
+&\leqslant \norm{x}^2 + 2 \norm{x}\norm{y} + \norm{y}^2 \\
+&= (\norm{x} + \norm{y})^2,
+\end{align*}
+as desired. 
+\end{proof}
+
+
+\section{Topology}
+
+\subsection{Countability}
+
+\begin{definition}
+Let $X,Y$ be two sets. By a \textbf{function} $f : X \to Y$ from $X$ into $Y$ we mean the data of a subset $R \subset X \times Y$ of the Cartesian product satisfying the following property: For each $x \in X$, there is one and only one $y \in Y$ such that $(x,y)$ belongs to $R$. For a point $(x,y) \in R$, we will often write $y = f(x)$. The set $X$ is called the \textbf{domain} of $f$ and the set $Y$ is called the \textbf{codomain}. By the \textbf{image} of $f$ we mean the subset of $Y$ determined by 
+\[
+\text{im}(f) = \{f(x) : x \in X \} \subset Y.
+\] 
+\end{definition} 
+
+\begin{definition}
+Let $f : X \to Y$ be a function from $X$ into $Y$. 
+\begin{enumerate}
+\item[(i)] We say that $f$ is \textbf{injective} if whenever $x_1, x_2 \in X$ satisfy $f(x_1) = f(x_2)$, then $x_1 = x_2$. 
+\item[(ii)] We say that $f$ is \textbf{surjective} if $\text{im}(f) = Y$. 
+\item[(iii)] We say that $f$ is \textbf{bijective} if $f$ is both injective and surjective. 
+\end{enumerate}
+\end{definition}
+
+\begin{example}
+Let $f : \mathbb{R} \to \mathbb{R}$ be the function defined by $f(x) = x^2$. Then $f$ is not injective because $f(-1) = 1 = f(1)$. Additionally, $f$ is not surjective either because $\text{im}(f) = \mathbb{R}_{\geqslant 0}$. 
+
+However, the restriction of $f$ to $X = \mathbb{R}_{\geqslant 0}$ is injective, meaning that the map $f : \mathbb{R}_{\geqslant 0} \to \mathbb{R}$ defined in the same way as above is injective. 
+
+On the other hand, by restricting the codomain to $Y = \mathbb{R}_{\geqslant 0}$ then we can make $f$ surjective. 
+
+If we restrict both the domain and codomain to $X = Y = \mathbb{R}_{\geqslant 0}$, then we realize that $f : \mathbb{R}_{\geqslant 0} \to \mathbb{R}_{\geqslant 0}$ is now bijective. 
+\end{example}
+
+\begin{definition}
+A set $X$ is called \textbf{countable} if either $X$ is finite or there is a bijective map $f : \mathbb{N} \to X$. Otherwise, we say that $X$ is \textbf{uncountable}.
+\end{definition}
+
+\begin{example}
+The set of natural numbers $\mathbb{N}$ itself is countable because the identity map $\text{id}_{\mathbb{N}} : \mathbb{N} \to \mathbb{N}$ is bijective. 
+\end{example}
+
+\begin{example}
+We claim that the set $\mathbb{Z}$ of integers is countable. To see this, we will construct a bijective map $f : \mathbb{N} \to \mathbb{Z}$. We construct $f$ piecewise in the following manner 
+\[
+f(x) = \begin{cases}
+x/2 & x \: \text{even} \\
+-(x+1)/2 & x \: \text{odd}
+\end{cases}.
+\]
+The first few values of $f$ are given by 
+\begin{align*}
+f(0) &= 0 \\
+f(1) &= -1 \\
+f(2) &= 1 \\
+f(3) &= -2 \\
+f(4) &= 2 \\
+f(5) &= -3 \\
+f(6) &= 3 \\
+\vdots 
+\end{align*} 
+From here, we are convinced that $f$ will be a bijection, and it is not too difficult to verify this rigorously. 
+\end{example}
+
+\begin{example}
+Let $A$ be the collection of infinite sequences consisting of $0$s or $1$s, that is, That is, an element of $A$ consists of a sequence $s = (s_0, s_1, s_2, \ldots)$ where each $s_j$ is either $0$ or $1$. Then we claim that $A$ is uncountable. Indeed, suppose that have counted the elements of $A$ as $s^{(0)}, s^{(1)}, s^{(2)}, \ldots$, where each $s^{(j)}$ is a sequence $s^{(j)} = (s^{(j)}_0, s^{(j)}_1, s^{(j)}_2, \ldots)$. Define a new sequence $x = (x_0, x_1, x_2, \ldots)$ as follows. For each $j =0, 1, \ldots$, let $x_j$ be $1$ if $s_j^{(j)}$ is $0$ and let $x_j$ be $0$ if $s_j^{(j)}$ is $1$. Then we see that $x$ differs from each $s^{(j)}$ in the $j$th slot and hence $x$ is an element of $A$ that we have not counted! We conclude that $A$ is uncountable. 
+\end{example} 
+
+\begin{example}
+The reasoning of the previous example can be used to show that the set $\mathbb{R}$ of real numbers is uncountable. Indeed, every real number admits a decimal representation, which is itself an infinite sequence of numbers. However, one must be somewhat careful with this argument because in general a decimal representation is not unqiue (for example, $1.0000\ldots = 0.9999\ldots$). 
+\end{example}
+
+\begin{lemma}
+Let $\{X_n\}_{n \in \mathbb{N}}$ be an countable collection of finite sets, and set $X$ to be the union 
+\[
+X = \bigcup_{n \in \mathbb{N}} X_n.
+\] 
+Then $X$ is countable. 
+\end{lemma}
+
+\begin{proof}
+Just count the elements in $X_0$ first, and then $X_1$ second, and then so on. This process can continue because each $X_j$ is finite so the $j$th step will terminate in finite time. 
+\end{proof}
+
+\begin{proposition}
+Let $X$ and $Y$ be countable sets. Then the Cartesian product $X \times Y$ is countable. 
+\end{proposition}
+
+\begin{proof}
+Count $X$ as $X = \{x_0, x_1, x_2, \ldots\}$ and $Y$ as $Y = \{y_0, y_1, y_2, \ldots\}$. Let $Z$ be the Cartesian product $Z = X \times Y$. For each nonnegative integer $n \in \mathbb{N}$, let $Z_n$ denote the subset of $Z$ given by 
+\[
+Z_n = \{(x_j, y_k) : j + k = n\}.
+\]
+Then each $Z_n$ is a finite set. Because $Z$ is equal to the countable union 
+\[
+Z = \bigcup_{n \in \mathbb{N}}Z_n,
+\]
+the previous lemma asserts that $Z$ is countable. 
+\end{proof}
+
+\begin{example}
+It follows that the set $\mathbb{Q}$ of rational numbers is countable because we may regard $\mathbb{Q}$ as a subset of the Cartesian product $\mathbb{Z} \times \mathbb{Z}$, which is itself countable. 
+\end{example}
+
+\subsection{Metric spaces}
+
+\begin{definition}
+Let $X$ be a set. A \textbf{metric} on $X$ is a map $d : X \times X \to \mathbb{R}$ satisfying the following properties. 
+\begin{enumerate}
+\item[(i)] Non-degeneracy: For each point of points $p,q \in X$, we have $d(p,q) \geqslant 0$ with equality if and only if $p = q$
+\item[(ii)] Symmetry: For each pair of points $p,q \in X$, we have $d(p,q) = d(q,p)$.
+\item[(iii)] Triangle inequality: For each triple of points $p,q,r \in X$, we have $d(p,q) \leqslant d(p,r) + d(r,q)$. 
+\end{enumerate}
+By a \textbf{metric space} we mean a set $X$ together with a metric $d$ on $X$. 
+\end{definition}
+
+\begin{example}
+For example, there is a standard metric on $\mathbb{R}^n$ determined by the norm: 
+\[
+d(x,y) = \norm{x - y}.
+\]
+\end{example}
+
+\begin{example}
+As another example, let $X$ be any set, and consider the function $d$ defined by 
+\[
+d(p,q) = \begin{cases}
+0 & p =q \\
+1 & p \ne q
+\end{cases}.
+\]
+Then $d$ defines a metric on $X$ called the discrete metric. 
+\end{example}
+
+\begin{example}
+If $(X_1,d_2)$ and $(X_2,d_2)$ are two metric spaces, then the Cartesian product $X = X_1 \times X_2$ enjoys the structure of a metric space upon defining the metric 
+\[
+d((x_1, x_2), (y_1, y_2)) = \norm{\left(d_1(x_1, y_1), d_2(x_2, y_2)\right)},
+\]
+where $\norm{\cdot}$ denotes the Euclidean norm on $\mathbb{R}^2$. The metric $d$ is called the product metric. One can check that if $X_1 = X_2 = \mathbb{R}$ with the standard metric, then the resulting product metric on $\mathbb{R}^2$ agrees with the one described in a previous example. 
+\end{example}
+
+\begin{definition}
+Let $x$ be a point of a metric space $X$. Then the \textbf{open ball of radius $r$ centered around $x$}, denoted $B_r(x)$, is the subset of $X$ determined by 
+\[
+B_r(x) = \{y \in X : d(x,y) < r\}.
+\]
+\end{definition}
+
+\begin{example}
+For example, if $X = \mathbb{R}$ with the standard metric, then $B_r(x) = (x-r, x+r)$, where $(a,b) = \{x \in \mathbb{R} : a < x < b\}$ denotes the open interval of real numbers between $a$ and $b$. 
+\end{example}
+
+\begin{definition}
+Let $(X,d)$ be a metric space and let $E$ be a subset of $X$. A point $x \in E$ is called an \textbf{interior point} of $E$ if there is a real number $\delta > 0$ such that $B_\delta(x) \subset E$. That is, an interior point is one which admits an open ball around it that is entirely contained within $E$. We say that $E$ is \textbf{open} if each point of $E$ is an interior point of $E$. 
+\end{definition}
+
+\begin{example}
+Any open ball $B_r(x)$ is itself open in $X$ as a consequence of the triangle inequality. Indeed let $y$ be a point of $B_r(x)$. If $d_0$ denotes the distance $d_0 = d(x,y)$, then set $\delta = r - d_0$. The proof will be done if we can show that $B_\delta(y) \subset B_r(x)$. To this end, let $z$ be a point of $B_\delta(y)$. This means that $d(z,y) < \delta$. The triangle inequality then implies that 
+\[
+d(z,x) \leqslant d(z,y) + d(y,x) < \delta + d_0 = r.
+\]
+This completes the proof of the claim. 
+\end{example}
+
+\begin{proposition}\label{prop:openunion}
+Let $A$ be an index set, and let $\{E_\alpha\}_{\alpha \in A}$ be a collection of open subsets of a metric space $X$. 
+\begin{enumerate}
+\item[(a)] The union $\cup_\alpha E_\alpha$ is open in $X$. 
+\item[(b)] If the index set $A$ is finite, then the intersection $\cap_\alpha E_\alpha$ is open in $X$. 
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+For (a), let $x$ be a point of the union $\cup_\alpha E_\alpha$. There is an $\alpha_0 \in A$ such that $x \in E_{\alpha_0}$. Because $E_{\alpha_0}$ is open, the point $x$ is an interior point of $E_{\alpha_0}$, so there is a $\delta_0 > 0$ such that $B_{\delta_0}(x) \subset E_{\alpha_0}$. By definition of the union, we have $B_{\delta_0}(x) \subset \left(\cup_\alpha E_\alpha\right)$. We conclude that $x$ is an interior point of the union $\cup_\alpha E_\alpha$. 
+
+For (b), let $x$ be a point in the intersection $\cap_\alpha E_\alpha$. Because each $E_\alpha$ is open, for each $\alpha \in A$, there is a $\delta_\alpha > 0$ such that $B_{\delta_\alpha} \subset E_\alpha$. Let $\delta$ denote the minimum $\delta = \inf\{\delta_\alpha : \alpha \in A\}$, which is positive since the index set $A$ is finite. The proof will be complete if we can show that $B_\delta(x) \subset \left(\cap_\alpha E_\alpha \right)$. To this end, let $y$ be a point of $B_\delta(x)$. This means that $d(y,x) < \delta$. By definition of $\delta$, we have that $d(y,x) < \delta_\alpha$ for each $\alpha \in A$. It follows that $y$ belongs to each $B_{\delta_\alpha}(x)$, and hence $y$ belongs to each $E_\alpha$. This completes the proof. 
+\end{proof}
+
+\begin{definition}
+Let $E$ be a subset of a metric space $X$. A point $x \in E$ is called a \textbf{limit point} of $E$ if for each $\delta > 0$, the intersection $B_\delta(x) \cap E$ is nonempty. That is, a point is a limit point if every ball around it contains a point of $E$. We say that $E$ is \textbf{closed} if every limit point of $E$ belongs to $E$. 
+\end{definition}
+
+\begin{example}
+For a point $x \in X$ and a real number $r > 0$, let $E$ denote the subset
+\[
+E = \{y \in X: d(y,x) \leqslant r\}.
+\]
+Then we claim that $E$ is closed in $X$. Indeed, let $y$ be a limit point of $E$. Let $\delta > 0$ be arbitrary. The intersection $B_\delta(y) \cap E$ is nonempty, and so it contains a point $z$. Since $z$ belongs to $E$, we have $d(z,x) \leqslant r$, and since $z$ belongs to $B_\delta(y)$, we have $d(z,y) < \delta$. The triangle inequality implies that  
+\[
+d(y,x) \leqslant d(y,z) + d(z,x) < \delta + r.
+\]
+Since $\delta > 0$ is arbitrary, we conclude that $d(y,x) \leqslant r$. This shows that $y$ belongs to $E$. 
+\end{example}
+
+The following characterization of closed sests is useful. 
+
+\begin{lemma}
+A subset $E$ of a metric space $X$ is closed if and only if the complement $E^c = X \setminus E$ is open. 
+\end{lemma}
+
+\begin{proof}
+Suppose $E$ is closed. Let $x$ be a point of the complement $E^c$. Since $E$ is closed, $x$ is not a limit point of $E$. Thus there is a $\delta > 0$ such that the ball $B_\delta(x)$ does not intersect $E$, that is, there is a $\delta > 0$ such that $B_\delta(x) \subset E^c$. This shows that $x$ is an interior point of $E^c$. 
+
+Suppose $E^c$ is open. Let $x$ be a limit point of $E$. If $x$ belongs to $E^c$, then since $E^c$ is open, there is a $\delta > 0$ such that $B_\delta(x) \subset E^c$, which implies that $B_\delta(x) \cap E = \varnothing$, a contradiction to the assumption that $x$ is a limit point of $E$. We conclude that $x$ must belong to $E$. 
+\end{proof}
+
+The De Morgan's laws (Problem 1 of Assignment 1) together with Proposition \ref{prop:openunion} imply the following. 
+
+\begin{proposition}
+Let $A$ be an index set, and let $\{E_\alpha\}_{\alpha \in A}$ be a collection of closed subsets of a metric space $X$. 
+\begin{enumerate}
+\item[(a)] The intersection $\cap_\alpha E_\alpha$ is closed in $X$. 
+\item[(b)] If the index set $A$ is finite, then the union $\cup_\alpha E_\alpha$ is closed in $X$. 
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+Exercise. 
+\end{proof}
+
+It is important to note that the notions of open and closed are not exclusive. In particular, some sets are both open and closed, and some sets are neither. 
+
+\begin{example}
+The empty set $\varnothing$ set is by definition both open and closed sets. In addition, the whole space $X$ is both open and closed. 
+\end{example}
+
+\begin{example}
+Let $E = [a,b)$ denote the half-open interval $[a,b) = \{x \in \mathbb{R} : a \leqslant x < b\}$. Then $E$ is neither open nor closed. Indeed, the point $b$ is a limit point of $E$ which does not belong to $E$, so $E$ is not closed. On the other hand, the point $a$ is not an interior point of $E$, so $E$ is not open. 
+\end{example}
+
+
+
+
+
+\subsection{Compact sets}
+
+
+
+
+\end{document}

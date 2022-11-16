@@ -1,0 +1,123 @@
+\documentclass[12pt]{article}
+
+\usepackage{amsmath, amssymb, xypic}
+\usepackage[margin=1in]{geometry}
+
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\newcommand{\floor}[1]{\left\lfloor#1\right\rfloor}
+
+\begin{document}
+\begin{center}
+Assignment 4\\
+Intro to Modern Analysis
+\end{center}
+
+\noindent \textbf{1.} Let $X, Y$ be metric spaces. 
+\begin{enumerate}
+\item[(a)] Show that the identity map $f : X \to X$ defined by $f(x) = x$ is continuous. 
+\item[(b)] For a point $q$ of $Y$, show that the constant map $g : X \to Y$ defined by $g(x) =q$ is continuous. 
+\end{enumerate}
+
+\medskip
+
+\noindent \textbf{2.} Let $f : \mathbb{R}^k \to \mathbb{R}$ denote the function determined by the norm $f(x) = \norm{x}$. Show that $f$ is continuous. 
+
+\medskip
+
+\noindent \textbf{3.} Let $X,Y$ be metric spaces. Suppose $X$ is equipped with the discrete metric 
+\[
+d(p,q) = \begin{cases}
+1 & p \ne q \\
+0 & p = q
+\end{cases}.
+\]
+Show that any function $f : X \to Y$ is continuous. 
+
+\medskip
+
+\noindent \textbf{4.} Let $X,Y$ be metric spaces. Suppose $X$ is connected and $Y$ satisfies the property that every singleton set $\{y\}$ is open in $Y$. Show that a function $f : X \to Y$ is continuous if and only if $f$ is constant. Deduce that any continuous function $\mathbb{R} \to \mathbb{N}$ is constant. 
+
+\medskip
+
+\noindent \textbf{5.} Let $f : X \to Y$ be continuous. 
+\begin{enumerate}
+\item[(a)] For any subset $E \subset X$, show that 
+\[
+f(\overline{E}) \subset \overline{f(E)}. 
+\]
+Also, find an example where the inclusion is strict. 
+\item[(b)] If $E$ is dense in $X$ and $f$ is surjective, show that $f(E)$ is dense in $Y$. 
+\item[(c)] Let $g : X \to Y$ be another continuous function, and let $X_0 \subset X$ be a dense subset of $X$. Show that if $f(x) = g(x)$ for each $x \in X_0$, then $f(x) = g(x)$ for each $x \in X$. 
+\end{enumerate}
+
+
+\medskip
+
+\noindent \textbf{6.} Let $I$ denote the unit interval $I = [0,1]$ of $\mathbb{R}$. Show that any continuous map $f : I \to I$ has a fixed point, that is, a point $x_0 \in I$ such that $f(x_0) = x_0$. 
+
+\medskip
+
+
+
+\noindent \textbf{7.} Let $f : \mathbb{R} \to \mathbb{R}$ be the function defined by $f(x) = (x+1)^2.$ Let $\epsilon > 0$ be given. 
+\begin{enumerate}
+\item[(a)] Find a $\delta > 0$ such that if $x$ satisfies $|x - 3| < \delta$, then $|f(x) - f(3)| < \epsilon$. 
+\item[(b)] Find a function $\delta : \mathbb{R} \to \mathbb{R}_{> 0}$ such that if $x, p \in \mathbb{R}$ satisfy $|x - p| < \delta(p)$, then $|f(x) - f(p)| < \epsilon$. (Note that part (a) determines a possible value for $\delta(3)$.)
+\item[(c)] Is it possible to choose $\delta(p)$ from (b) to be independent of $p$, that is, to be a constant function? Why or why not?
+\item[(d)] What if the domains of $f$ and $\delta$ are restricted to $[-2,0]$? Then is it possible to make $\delta(p)$ constant? Why or why not?
+\end{enumerate}
+
+\medskip
+
+
+
+
+\noindent \textbf{8.} Let $f : \mathbb{R}_{\geqslant 0} \to \mathbb{R}_{\geqslant 0}$ be the square root function $f(x) = \sqrt{x}$. Show that $f$ is uniformly continuous (even though the domain of $f$ is not compact). 
+
+\medskip
+
+\noindent \textbf{9.} Let $f : \mathbb{R} \to \mathbb{R}$ denote the function defined by 
+\[
+f(x) = \begin{cases}
+\frac{1}{n} & x = m/n \; \text{for $m,n$ relatively prime integers with $n > 0$} \\
+0 & x \; \text{is irrational}
+\end{cases}.
+\]
+(And when $x = 0$, take $n = 1$.) Prove that $f$ is continuous at every irrational number and discontinuous at every rational number. 
+
+\medskip 
+
+\noindent \textbf{10.} Let $\alpha$ be a positive irrational number. Let $E$ denote the subset of $\mathbb{R}$ given by 
+\[
+E = \{m + n\alpha : m, n \in \mathbb{Z}\}.
+\]
+The goal of this problem is to show that $E$ is dense in $\mathbb{R}$. 
+
+
+\begin{enumerate}
+\item[(a)] Show that if $e \in E$, then $-e \in E$. 
+\item[(b)] Let $\floor{\alpha}$ denote the largest nonnegative integer smaller than $\alpha$. In other words, 
+\[
+\floor{\alpha} = \sup(\mathbb{Z} \cap (-\infty, \alpha]).
+\]
+Note that $0 \leqslant \alpha - \floor{\alpha} < 1$. For each positive integer $k$, let 
+\[
+\beta_k = k\alpha - \floor{k\alpha}. 
+\]
+Show that if $j \ne k$, then $\beta_j \ne \beta_k$. 
+\item[(c)] Let $N$ be an integer satisfying $N \geqslant 2$. For each integer $\ell$, let 
+\[
+A_\ell = \left[\frac{\ell}{N}, \frac{\ell + 1}{N}\right).
+\]
+Show that there is an integer $\ell$ satisfying $0 \leqslant \ell \leqslant N-1$ and integers $j,k$ satisfying $1 \leqslant j < k \leqslant N+1$ such that 
+\[
+\beta_j, \beta_k \in A_\ell.
+\]
+\item[(d)] Use (b) to show that there is an element $e \in E$ such that $0 < e < \frac{1}{N}$. 
+\item[(e)] For each integer $\ell \geqslant 0$, show that there is an element of $E$ in $A_\ell$.  Deduce from (a) that there is also an element in $A_{-\ell}$.  
+\item[(f)] For each point $x \in \mathbb{R}$ and each $\epsilon > 0$, show that there is a point in the intersection $E \cap B_\epsilon(x)$. 
+\item[(g)] Deduce that $E$ is dense in $\mathbb{R}$. 
+\end{enumerate}
+
+
+\end{document}
