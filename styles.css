@@ -210,6 +210,10 @@ a:active {
   text-decoration: none;
 }
 
+.padding{
+  height: 5rem;
+}
+
 img {
   width: 100%;
   height: auto;
