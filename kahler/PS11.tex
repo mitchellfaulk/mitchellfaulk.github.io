@@ -1,0 +1,96 @@
+\documentclass[12pt]{article}
+
+\usepackage{amsmath, amssymb, amsthm, setspace, hyperref, xypic, mathrsfs,enumitem}
+\usepackage[margin=1.25in]{geometry}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\newcommand{\ddb}{\partial\bar{\partial}}
+
+\DeclareMathOperator{\Spec}{Spec}
+
+
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+\newtheorem{exercise}[definition]{Exercise}
+\newtheorem{example}[definition]{Example}
+\newtheorem{remark}[definition]{Remark}
+\newtheorem{note}[definition]{Note}
+\newtheorem{notation}[definition]{Notation}
+
+\theoremstyle{theorem}
+\newtheorem{proposition}[definition]{Proposition}
+\newtheorem{theorem}[definition]{Theorem}
+\newtheorem{corollary}[definition]{Corollary}
+\newtheorem{lemma}[definition]{Lemma}
+\newtheorem{problem}[definition]{Problem}
+\newtheorem{conjecture}[definition]{Conjecture}
+\newtheorem{task}[definition]{Task}
+
+\begin{document}
+\noindent Problem Set 11 \\
+\noindent Hilbert Mumford Criterion \\
+\noindent Summer 2021 \\
+
+\medskip
+
+\noindent For simplicity, let's work over the field $\mathbb{C}$. We also simplify our lives by considering the following situation. Let $G$ be a linear reductive group acting on a scheme $X$, where $X \subset \mathbb{C}^n$ is affine, $G$ acts linearly (through a faithful embedding into $GL_n$), and the action is linearized using a character $\chi$ of $G$.\footnote{This situation is very different from the one in MFK, where, in particular, $X$ is projective and the action is linearized through any invertible sheaf $L$ over $X$, not necessarily the trivial sheaf. Nevertheless, certain similarities persist.} The last condition means the following. We view $G$ as acting on the trivial line bundle $X \times \mathbb{C}$ by the rule 
+\[
+g \cdot (x,z) = (g \cdot x, \chi(g)z)
+\]
+where $\chi : G \to GL_1 = \mathbb{C}^*$ is a fixed character. Let $L_\chi$ denote the trivial line bundle together with this choice of linearization. Note that with these conventions, we have a natural isomorphism 
+\[
+L_{\chi^{\otimes m}} \simeq (L_\chi)^{\otimes m}. 
+\] 
+
+A section of the trivial bundle can be identified with a regular function $s : X \to \mathbb{C}$. I will call such a section \emph{$\chi$-equivariant} if 
+\[
+s(g \cdot x) = \chi(g)s(x),
+\]
+that is, if $s$ is an equivariant morphism with respect to the actions of $G$ on $X$ and $\mathbb{C}$. The space of $\chi$-equivariant sections will be denoted $H^0(X, L_\chi)$. It is a subspace of the space of regular functions on $X$. A point $x \in X$ is called \emph{semistable} if there is a positive integer $m$ and a $\chi^m$-equivariant section $s \in H^0(X, L_\chi^{\otimes m})$ such that $s(x) \ne 0$. The subset of semistable points will be denoted $X_{\text{ss}}(L_\chi)$. 
+
+
+
+\begin{enumerate}[label=\textbf{\arabic*.}]
+\item Let $X = \mathbb{C}^n$. Let $G = \mathbb{C}^*$ act on $X$ through the usual diagonal action. A character $\chi$ of $G$ takes the form $\chi(t) = t^d$ for some integer $d \in \mathbb{Z}$. 
+\begin{enumerate}
+\item Check that $H^0(X, L_\chi)$ is isomorphic to the vector space of homogeneous polynomials of degree $d$. 
+\item Show the following 
+\[
+X_{\text{ss}}(L_\chi) = \begin{cases}
+\mathbb{C}^n \setminus 0 & d > 0 \\
+\mathbb{C}^n & d = 0 \\
+\varnothing & d < 0
+\end{cases}.
+\]
+\end{enumerate}
+\item Let $X = \mathbb{C}^3$. Let $G = \{(t,t^{-1},u) \in (\mathbb{C}^*)^3 : t \in \mathbb{C}^*, u = \pm 1\} \simeq \mathbb{C}^* \times \mu_2$. Let $G$ act on $X$ in the obvious way. Let $\chi : G \to \mathbb{C}^*$ denote the character 
+\[
+\chi(t,t^{-1}, u) = tu. 
+\]
+\begin{enumerate}
+\item The regular functions on $X$ can be identified with the polynomials in the variables $x,y,z$. Show that a monomial $x^ay^bz^c$ is $\chi$-equivariant if and only if 
+\[
+a = b + 1, c \equiv 1 \; \text{mod}\; 2.
+\]
+\item Show that $H^0(X, L_\chi) \simeq xz\mathbb{C}[xy,z^2]$. 
+\item Show that $X_{\text{ss}}(L_\chi) = \mathbb{C}^* \times \mathbb{C}^2$.
+\end{enumerate}
+\item For two positive integers $r \leqslant n$, let $X = \text{Hom}(\mathbb{C}^n, \mathbb{C}^r) = M_{r \times n}$ be the set of $r$-by-$n$ matrices. Let $G = GL_r = \text{Aut}(\mathbb{C}^r)$ be the general linear group acting by post-composition:
+\[
+g \cdot A = gA.
+\]
+Let $\chi : GL_r \to \mathbb{C}^*$ be the determinant. 
+\begin{enumerate}
+\item Let $s : X \to \mathbb{C}$ be a regular function determined by a minor of maximal rank, that is, by an $r$-by-$r$ minor. Show that $s$ is $\chi$-equivariant. 
+\item Show that $X_{\text{ss}}(L_\chi)$ contains the subset of full rank matrices. 
+\end{enumerate}
+\end{enumerate}
+
+\medskip
+
+A one-parameter subgroup of $G$ is a morphism $\lambda : \mathbb{C}^* \to G$ of algebraic groups. 
+
+
+
+
+\end{document}

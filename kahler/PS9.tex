@@ -1,0 +1,148 @@
+\documentclass[12pt]{article}
+
+\usepackage{amsmath, amssymb, amsthm, setspace, hyperref, xypic, mathrsfs}
+\usepackage[margin=1.25in]{geometry}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\newcommand{\ddb}{\partial\bar{\partial}}
+
+
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+\newtheorem{exercise}[definition]{Exercise}
+\newtheorem{example}[definition]{Example}
+\newtheorem{remark}[definition]{Remark}
+\newtheorem{note}[definition]{Note}
+\newtheorem{notation}[definition]{Notation}
+
+\theoremstyle{theorem}
+\newtheorem{proposition}[definition]{Proposition}
+\newtheorem{theorem}[definition]{Theorem}
+\newtheorem{corollary}[definition]{Corollary}
+\newtheorem{lemma}[definition]{Lemma}
+\newtheorem{problem}[definition]{Problem}
+\newtheorem{conjecture}[definition]{Conjecture}
+\newtheorem{task}[definition]{Task}
+
+\begin{document}
+\noindent Problem Set 9 \\
+\noindent More GIT \\
+\noindent Spring 2021
+
+\begin{enumerate}
+\item[\textbf{1.}] The group $SL(n+1, \mathbb{C})$ acts on $\mathbb{C}^{n+1}$ in the usual way via the fundamental representation. Suppose that a group $G$ acts on $\mathbb{C}^{n+1}$ through a group morphism 
+\[
+G \to SL(n+1, \mathbb{C}). 
+\]
+\begin{enumerate}
+\item Show that $G$ also acts on $\mathbb{C}^{n+1} \setminus 0$. 
+\item Show that the action of $G$ ``descends'' to one on $\mathbb{P}^n$, when viewed as the quotient of $\mathbb{C}^{n+1} \setminus 0$ in the usual way. 
+\item Because we have started with an action ``upstairs,'' that is, a linearization of the action, we already have an action on sections of $\mathcal{O}(1)$ because we know how $G$ acts on the variables $z_0, \ldots, z_n.$ Indeed, if $f(z_0, \ldots, z_n)$ denotes a homogeneous polynomial of degree $1$, then define 
+\[
+(g \cdot f)(z_0, \ldots, z_n) := f(g^{-1} \cdot (z_0, \ldots, z_n)).
+\]
+Show that this is indeed a (left) action of $G$ on the set of homogeneous polynomials of degree $1$. 
+\end{enumerate}
+\item[\textbf{2.}] Suppose that $G = \mathbb{C}^*$ acts on $\mathbb{C}^3$ via 
+\[
+\lambda \cdot (z_0, z_1, z_2) = (\lambda z_0, \lambda^{-1} z_1, z_2). 
+\]
+\begin{enumerate}
+\item Show that this action factors through a group morphism 
+\[
+G \to SL(3, \mathbb{C})
+\]
+and deduce that the action of $G$ descends to one on $\mathbb{P}^2$. 
+\item Show that $z_2$ is an invariant section of $\mathcal{O}(1)$ and $z_0z_1$ is an invariant section of $\mathcal{O}(2)$. 
+\item As a result, show that the GIT quotient is  
+\[
+\mathbb{P}^2/G \simeq \text{Proj} \: \mathbb{C}[z_0z_1, z_2].
+\]
+\item Show that the GIT quotient may be identified with weighted projective space $\mathbb{P}[2,1]$.
+\end{enumerate}
+\item[\textbf{3.}] More generally, let $X$ be a projective variety. The selection of an embedding of $X$ into $\mathbb{P}^n$ is equivalent to the selection of a cone $\tilde{X} \subset \mathbb{C}^{n+1}$ over $X$, which is in turn equivalent to the selection of a line bundle $\mathcal{O}_X(1)$ over $X$ (namely, the pullback of $\mathcal{O}_{\mathbb{P}^n}(1)$ via the inclusion map $X \hookrightarrow \mathbb{P}^n$). Suppose a group $G$ acts on $\mathbb{C}^{n+1}$ through a group morphism 
+\[
+G \to SL(n+1, \mathbb{C}).
+\] 
+Suppose further that the action of $G$ restricts to one on the cone $\tilde{X}$. 
+\begin{enumerate}
+\item Show that $G$ also acts on $\tilde{X} \setminus 0$. 
+\item Show that the action of $G$ ``descends'' to one on $X$, when $X$ is viewed as the quotient of $\tilde{X} \setminus 0$ in the usual way. 
+\item Because we have started with an action ``upstairs,'' that is, a linearization of the action on $\tilde{X}$, we already have an action on sections of $\mathcal{O}_X(1)$ because we know how $G$ acts on the variables $z_0, \ldots, z_n$. More precisely, suppose that $\tilde{X}$ is cut out by homogeneous polynomials $p_1, \ldots, p_k$ in the variables $z_0, \ldots, z_n$. Then any homogeneous polynomial $f \in \mathbb{C}[z_0, \ldots, z_n]$ determines an element of the quotient ring 
+\[
+i^*f \in \frac{\mathbb{C}[z_0, \ldots, z_n]}{(p_1, \ldots, p_k)}
+\]
+and, conversely, any homogeneous polynomial in the quotient ring comes from a homogeneous polynomial in $\mathbb{C}[z_0, \ldots, z_n]$. Then $G$ acts on the images of such homogeneous polynomials by 
+\[
+(g \cdot i^*f) = i^* (g \cdot f)
+\]
+where the action on the right-hand side is the one from a previous problem. Because the action of $G$ restricts to one on $\tilde{X}$, this should be well-defined. I'm not sure if you want to check this...
+\end{enumerate}
+\item[\textbf{4.}] Here is another viewpoint that might be useful. Recall that $\mathbb{P}^n$ can be regarded as the quotient of $\mathbb{C}^{n+1}\setminus 0$ by the diagonal action of $\mathbb{C}^*$. 
+\begin{enumerate}
+\item Let $\mathbb{C}^*$ act on the product $(\mathbb{C}^{n+1}\setminus 0) \times \mathbb{C}$ by the rule 
+\[
+\lambda \cdot (z, w) = (\lambda \cdot z, \lambda w) \hspace{10mm} \lambda \in \mathbb{C}^*, (z,w) \in(\mathbb{C}^{n+1}\setminus 0) \times \mathbb{C}. 
+\]
+Show that the quotient 
+\[
+[(\mathbb{C}^{n+1}\setminus 0) \times \mathbb{C}/\mathbb{C}^*]
+\]
+may be identified with the total space of the line bundle $\mathcal{O}(1)$. 
+\item Here is one way of thinking about the previous part. Let $s$ denote a map 
+\[
+s : \mathbb{C}^{n+1} \setminus 0 \to (\mathbb{C}^{n+1} \setminus 0) \times \mathbb{C}.
+\]
+Say that $s$ is $\mathbb{C}^*$-equivariant if 
+\[
+s(\lambda \cdot z) = \lambda \cdot f(z) \hspace{10mm} \lambda \in \mathbb{C}^*, z \in \mathbb{C}^{n+1} \setminus 0.
+\]
+If $s$ is $\mathbb{C}^*$ equivariant, show that $s$ defines a map from $\mathbb{P}^n$ to the total space of $\mathcal{O}(1)$. 
+\item Now suppose that the map $s$ is a section of the projection onto the factor of $\mathbb{C}^{n+1} \setminus 0$. This means we can write 
+\[
+s(z) = (z, f(z))
+\]
+for a function $f : \mathbb{C}^{n+1}\setminus 0 \to \mathbb{C}$. If $s$ is $\mathbb{C}^*$-equivariant, show that $f$ is a homogeneous polynomial of degree $1$.  
+\item  Now suppose that $\mathbb{C}^*$ acts on the product $(\mathbb{C}^{n+1}\setminus 0) \times \mathbb{C}$ by the rule 
+\[
+\lambda \cdot (z, w) = (\lambda \cdot z, \lambda^k w) \hspace{10mm} \lambda \in \mathbb{C}^*, (z,w) \in(\mathbb{C}^{n+1}\setminus 0) \times \mathbb{C}
+\]
+for a positive integer $k$. In the circumstances of the previous part, show that $f$ is now a homogeneous polynomial of degree $k$. 
+\end{enumerate}
+\item[\textbf{5.}] Suppose that $G$ acts on $\mathbb{C}^{n+1}$ via a group morphism $G \to SL(n+1, \mathbb{C})$ as in Problem 1. Then $G$ determines an action on $\mathbb{C}^{n+1}\setminus 0 \times \mathbb{C}$ defined by 
+\[
+g \cdot (z, w) = (g \cdot z, w) \hspace{10mm} z \in \mathbb{C}^{n+1}\setminus 0, w \in \mathbb{C}.
+\]
+\begin{enumerate}
+\item Using the previous problem, show that this action determines one on the total space of $\mathcal{O}(1)$ over $\mathbb{P}^n$. 
+\item Let $s$ denote a map 
+\[
+s : \mathbb{C}^{n+1} \setminus 0 \to \mathbb{C}^{n+1} \setminus 0 \times \mathbb{C}
+\]
+which is $\mathbb{C}^*$-equivariant (with respect to the actions ) and which is a section of the projection map onto the first factor. By the previous problem, $s$ determines a section of $\mathcal{O}(1)$ and $s$ can be written in the form 
+\[
+s(z) = (z,f(z))
+\]
+where $f$ is a homogeneous polynomial of degree $1$. The group $G$ acts on such sections by the rule 
+\[
+(g \cdot s)(z) = g \cdot s(g^{-1} \cdot z).
+\]
+Show that 
+\[
+(g \cdot s)(z) = (z, f(g^{-1} \cdot z)),
+\]
+and hence we recover the action described in Problem 1. 
+\end{enumerate}
+\item[\textbf{6.}] The linearization of the action from the previous problem is not unique. Indeed, for any group morphism $\chi : G \to \mathbb{C}^*$, that is, for any character of $G$, we have an associated action of $G$ on the product space $\mathbb{C}^{n+1} \setminus 0 \times \mathbb{C}$ defined by 
+\[
+g \cdot (z, w) = (g \cdot z, \chi(g) w) \hspace{10mm} z \in \mathbb{C}^{n+1} \setminus 0, w \in \mathbb{C}. 
+\]
+\begin{enumerate}
+\item Using a previous problem, show that this action determines one on the total space of $\mathcal{O}(1)$ over $\mathbb{P}^n$. 
+\item In the notation of part (b) from the previous problem, show that now 
+\[
+(g \cdot s)(z) = (z, \chi(g) f(g^{-1} \cdot z)).
+\]
+\end{enumerate}
+\end{enumerate}
+\end{document}

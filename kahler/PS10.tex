@@ -1,0 +1,89 @@
+\documentclass[12pt]{article}
+
+\usepackage{amsmath, amssymb, amsthm, setspace, hyperref, xypic, mathrsfs,enumitem}
+\usepackage[margin=1.25in]{geometry}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\newcommand{\ddb}{\partial\bar{\partial}}
+
+\DeclareMathOperator{\Spec}{Spec}
+
+
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+\newtheorem{exercise}[definition]{Exercise}
+\newtheorem{example}[definition]{Example}
+\newtheorem{remark}[definition]{Remark}
+\newtheorem{note}[definition]{Note}
+\newtheorem{notation}[definition]{Notation}
+
+\theoremstyle{theorem}
+\newtheorem{proposition}[definition]{Proposition}
+\newtheorem{theorem}[definition]{Theorem}
+\newtheorem{corollary}[definition]{Corollary}
+\newtheorem{lemma}[definition]{Lemma}
+\newtheorem{problem}[definition]{Problem}
+\newtheorem{conjecture}[definition]{Conjecture}
+\newtheorem{task}[definition]{Task}
+
+\begin{document}
+\noindent Problem Set 10 \\
+\noindent Group schemes \\
+\noindent Summer 2021 \\
+
+\noindent \emph{Remark.} If you need hints, you can consult ``Examples of group schemes'' from the Stacks Project. 
+
+\begin{enumerate}[label=\textbf{\arabic*.}]
+\item Let $\mathbb{G}_m$ denote the affine scheme 
+\[
+\mathbb{G}_m = \Spec \mathbb{Z}[x,x^{-1}],
+\]
+often called the ``multiplicative group.''
+Write down the morphism of rings 
+\[
+\mathbb{Z}[x,x^{-1}] \to \mathbb{Z}[x,x^{-1}] \otimes \mathbb{Z}[x,x^{-1}]
+\]
+determining the group structure 
+\[
+\mathbb{G}_m \times \mathbb{G}_m \to \mathbb{G}_m.
+\]
+\item For a positive integer $n$, let $\mu_n$ denote the affine scheme 
+\[
+\mu_n = \Spec (\mathbb{Z}[x]/(x^n - 1)).
+\] 
+Write down the morphism of rings that determines the group structure. 
+\item Let $\mathbb{G}_a$ denote the ``additive'' group scheme
+\[
+\mathbb{G}_a = \Spec \mathbb{Z}[x].
+\] 
+Write down the morphism of rings determining the group structure. 
+\item For a positive integer $n$, let $GL_n$ denote the affine scheme 
+\[
+GL_n = \Spec( \mathbb{Z}[x_{ij}][1/d])
+\]
+where $d$ is the determinant of the $n^2$ variables $x_{ij}$. Write down the morphism of rings that determines the group structure. 
+\item Let $\mathbb{A}^n$ denote the affine space 
+\[
+\mathbb{A}^n = \Spec \mathbb{Z}[x_1, \ldots, x_n]. 
+\]
+Describe the natural action of $GL_n$ on $\mathbb{A}^n$ as a morphism of rings. 
+\item For any $n$, the group scheme $\mathbb{G}_m = GL_1$ embeds into $GL_n$ via the ``diagonal.'' Write down the ring map corresponding to this inclusion. 
+\item In light of the previous two exercises, there is a natural action of $\mathbb{G}_m$ on $\mathbb{A}^n$ through the diagonal. Describe it.
+\item A $\mathbb{Z}$-grading of a ring $R$ is a direct sum decomposition $R = \bigoplus_{i \in \mathbb{Z}} R_i$ such that $R_i \cdot R_j \subset R_{i+j}$. Show that an action of $\mathbb{G}_m$ on $\Spec R$ is the same data as a $\mathbb{Z}$-grading of $R$. 
+\item Determine the $\mathbb{Z}$-grading on $\mathbb{Z}[x,x^{-1}]$ coming from the action of $\mathbb{G}_m$ on itself (i.e. from the group structure). 
+\item Determine the $\mathbb{Z}$-grading on $\mathbb{Z}[x_1, \ldots, x_n]$ coming from the diagonal action of $\mathbb{G}_m$ on $\mathbb{A}^n$. 
+\item Determine the $\mathbb{Z}$-grading on $\mathbb{Z}[x_{ij}][1/d]$ coming from the action of $\mathbb{G}_m$ on $GL_n$ through the diagonal. 
+\item By a \emph{graded ring} is typically meant an $\mathbb{N}$-graded ring $S = \bigoplus_{i \geqslant 0} S_i$. Show that in fact the $\mathbb{Z}$-grading on $\mathbb{Z}[x_0, \ldots, x_n]$ coming from the diagonal action of $\mathbb{G}_m$ on $\mathbb{A}^{n+1}$ makes the ring $\mathbb{Z}[x_0, \ldots, x_n]$ into a graded ring. 
+\end{enumerate}
+
+\noindent Final comment: Projective $n$-space, denoted $\mathbb{P}^n$, usually means the locally ringed space associated to the graded ring $S = \mathbb{Z}[x_0, \ldots, x_n]$ by taking the projective homogeneous spectrum (i.e. by applying \text{Proj}). There is a natural action of $GL_{n+1}$ on the ring $S$, but the action may not preserve the grading. To remedy this, the standard approach, as far as I can tell, is to consider an associated scheme preserving the grading. From what I have seen, this scheme, denoted $PGL_n$, is the affine scheme associated to the degree zero piece
+\[
+R_0 = \mathbb{Z}[\{x_{ij}\}_{0 \leqslant i,j \leqslant n}][1/d]_{\text{deg} = 0},
+\] 
+where the grading comes from the diagonal action of $\mathbb{G}_m$ on $GL_{n+1}$.  The inclusion of this degree zero piece corresponds to a surjective morphism of affine schemes 
+\[
+GL_{n+1} \to PGL_n.
+\]
+Moreover, there is a natural action of $PGL_n$ on $\mathbb{P}^n$ coming from the natural action of $GL_{n+1}$ on $\mathbb{A}^{n+1}$.
+
+\end{document}
