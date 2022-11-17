@@ -1,0 +1,108 @@
+\documentclass{article}
+
+\usepackage{amsmath, amssymb, xypic, color}
+\usepackage[margin=1in]{geometry}
+
+\begin{document}
+\begin{center}
+MATH S1202: Calculus IV \\ 
+Quiz 4 \\
+June 16, 2016
+\end{center}
+
+\noindent Define curves in the following way. 
+\begin{itemize}
+\item Let $D$ be the region \emph{in the upper half $xy$-plane} between the circles $x^2 + y^2 = 1$ and $x^2 + y^2 = 4$. 
+\item Let $C$ denote the boundary of $D$ with the positive orientation. (Note that $C$ consists of 4 arcs.)
+\item Let $C_1$ denote the piece of $C$ lying along the circle $x^2 + y^2 = 4$. 
+\end{itemize}
+
+
+
+\noindent \textbf{1.} Determine whether the vector field is conservative \emph{and} if it is conservative, find a potential function. 
+\begin{enumerate}
+\item[(a)] $\vec{F}(x,y) = (x^3, y^3)$
+\item[(b)] $\vec{G}(x,y) = (-y^3, x^3)$
+\end{enumerate}
+
+\medskip
+
+{\color{blue}
+\noindent \emph{Solution.} (a) The vector field $\vec{F}$ is conservative and a potential for $\vec{F}$ is given by $f(x,y) = \frac{1}{4}(x^4 + y^4)$. 
+
+(b) If we denote the components of $\vec{G}$ by $P = -y^3$ and $Q = x^3$, then we compute that $Q_x = 3x^2 \ne -3y^2 = P_y$. Since the domain of $\vec{G}$ is all of $\mathbb{R}^3$, which is simply connected, we conclude that $\vec{G}$ is not conservative. 
+}
+
+\vspace{3mm}
+
+\noindent \textbf{2.} Compute the line integral of the vector field over the curve $C_1$. 
+\begin{enumerate}
+\item[(a)] $\vec{F}(x,y) = (x^3, y^3)$
+\item[(b)] $\vec{G}(x,y) = (-y^3, x^3)$
+\end{enumerate}
+Hint: For (b), you may use the trig identity 
+\[
+\sin^4 t + \cos^4t = \frac{1}{4}\left(\cos(4t) + 3\right)
+\]
+
+
+
+\medskip
+
+{\color{blue}
+\noindent \emph{Solution.} (a) The fundamental theorem of line integrals implies that 
+\[
+\int_{C_1} \vec{F} \cdot d\vec{r} =  f(-2,0) - f(2,0) = 0,
+\]
+where $f(x,y) = \frac{1}{4}(x^4 + y^4)$ from 1(a). 
+
+(b) We parametrize $C_1$ by $\vec{r}(t) = (2\cos(t), 2\sin(t))$ for $0 \leqslant t \leqslant \pi$. The derivative is given by $\vec{r}'(t) = (-2\sin(t), 2\cos(t))$. We compute that 
+\begin{align*}
+\int_C \vec{G} \cdot d\vec{r} &= \int_0^{\pi} \vec{G}(\vec{r}(t)) \cdot \vec{r}'(t) \:dt \\
+&= \int_0^\pi \langle -(2\sin(t))^3, (2\cos(t))^3 \rangle \cdot \langle -2\sin(t), 2 \cos(t) \rangle dt \\
+&= \int_0^\pi 16 \int_0^\pi (\sin^4(t) + \cos^4(t)) \: dt \\
+&= 4 \int_0^\pi (\cos(4t) + 3) dt \\
+&= 12 \pi. 
+\end{align*}
+}
+
+\vspace{3mm}
+
+\noindent \textbf{3.} Compute the line integral of the vector field over the closed curve $C$. 
+\begin{enumerate}
+\item[(a)] $\vec{F}(x,y) = (x^3, y^3)$
+\item[(b)] $\vec{G}(x,y) = (-y^3, x^3)$
+\end{enumerate}
+
+
+\medskip
+
+{\color{blue}
+\noindent \emph{Solution.} (a) Since $C$ is closed and $\vec{F}$ is conservative, we conclude that $\int_C \vec{F} \cdot d\vec{r} = 0$. 
+
+(b) The curve $C$ is the boundary of the region $D$ described in polar coordinates 
+\begin{align*}
+x &= r \cos(\theta) \\
+y &= r \sin(\theta)
+\end{align*}
+by 
+\[
+D = \begin{cases}
+0 \leqslant \theta \leqslant \pi \\
+1 \leqslant r \leqslant 2
+\end{cases}.
+\]
+We may apply Green's theorem to find that 
+\begin{align*}
+\int_C \vec{G} \cdot d\vec{r} &= \iint_D (3x^2 + 3y^2) dA \\
+&= \int_0^\pi \int_1^2 3r^2 r \: dr \: d\theta \\
+&= \frac{3\pi}{4} \cdot \left.r^4\right|_{r=1}^{r=2} \\
+&= \frac{3\pi}{4} \cdot (16-1) \\
+&= \frac{45\pi}{4}.
+\end{align*}
+}
+
+
+
+
+\end{document}

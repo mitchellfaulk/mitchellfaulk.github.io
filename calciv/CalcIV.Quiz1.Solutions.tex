@@ -1,0 +1,109 @@
+\documentclass{article}
+
+\usepackage{amsmath, amssymb, amsthm, xypic, color}
+\usepackage[margin=1in]{geometry}
+
+\theoremstyle{remark}
+\newtheorem*{solution}{Solution}
+
+\begin{document}
+\begin{center}
+MATH S1202: Calculus IV \\ 
+Quiz 1 \\
+May 24, 2018
+\end{center}
+
+\noindent \textbf{1.} Compute the integral of the constant function $f(x,y) = \pi$ over the rectangle $R = [-1,1] \times [0,1]$. 
+
+{\color{blue}
+\begin{solution}
+By properties of the integral, we know that 
+\begin{align*}
+\iint_{R} \pi \: dA &= \pi \cdot \iint_{R} 1 \: dA \\
+&= \pi \cdot \text{Area}(R) \\
+&= \pi \cdot 2 \\
+&= 2\pi.
+\end{align*}
+\end{solution}}
+
+\medskip 
+
+\noindent \textbf{2.} Compute the integral of the function $f(x,y) = \sqrt{1-y^2}$ over the rectangle $R = [-1,1] \times [0,1]$. 
+
+{\color{blue}
+\begin{solution}
+The graph of $f(x,y)$ is the portion of the surface $z = \sqrt{1-y^2}$ lying over $R$, which is a portion of a cylinder along the $x$-axis with radius $1$ and height $2$. The integral of $f(x,y)$ over $R$ is by definition the volume of this portion of the cylinder over $R$, which is, one-quarter of the volume of the total cylinder (it is helpful to draw a picture). We therefore have 
+\begin{align*}
+\iint_R \sqrt{1-y^2} \: dA &= \frac{1}{4} \text{Volume}(\text{Cylinder}) \\
+&= \frac{1}{4} \cdot  \pi \cdot 1^2 \cdot 2 \\
+&= \frac{\pi}{2}. 
+\end{align*}
+\end{solution}}
+
+\medskip
+
+\noindent \textbf{3.} Compute the integral of $f(x,y) = \sin(y^2)$ over the triangle bounded by the lines $y = x, y=\sqrt{\pi}$, and $x = 0$. 
+
+{\color{blue}
+\begin{solution}
+The region $D$ of integration admits a description as a type I region as 
+\[
+D = \begin{cases}
+0 \leqslant x \leqslant \sqrt{\pi} \\
+x \leqslant y \leqslant \sqrt{\pi}
+\end{cases}
+\]
+and a type II region as 
+\[
+D = \begin{cases}
+0 \leqslant y \leqslant \sqrt{\pi} \\
+0 \leqslant x \leqslant y
+\end{cases}.
+\]
+Using the description of $D$ as a type I region gives the iterated integral 
+\[
+\int_D \sin(y)^2 \: dA = \int_{0}^{\sqrt{\pi}}\int_{x}^{\sqrt{\pi}} \sin(y^2) \: dy \: dx,
+\]
+but this is difficult, because we don't know an (easy) anti-derivative for $\sin(y^2)$. On the other hand, if we use the description of $D$ as a type II region, then we obtain the iterated integral 
+\begin{align*}
+\int_D \sin(y)^2 \: dA &= \int_{0}^{\sqrt{\pi}} \int_{0}^{y} \sin(y^2) \: dx \: dy \\
+&= \int_{0}^{\sqrt{\pi}} y \sin(y^2) \: dy \\
+&= \left.-\frac{1}{2} \cos(y^2)\right|_{y=0}^{y= \sqrt{\pi}} \\
+&= -\frac{1}{2}(\cos(\pi) - \cos(0)) \\
+&= -\frac{1}{2}(-1 - 1) \\
+&= 1. 
+\end{align*}
+\end{solution}}
+
+\medskip 
+
+\noindent \textbf{4.} Find the volume of the solid below the surface $z = (x^2 + y^2)^2$, inside the cylinder $x^2 + y^2 = 1$, and above the $xy$-plane.  
+
+{\color{blue}
+\begin{solution}
+If we use the polar coordinates 
+\begin{align*}
+x &= r\cos(\theta)\\
+y &= r\sin(\theta),
+\end{align*}
+then the solid lies above the disc $D$ in the $xy$-plane with description 
+\[
+D = \begin{cases}
+0 \leqslant \theta \leqslant 2\pi  \\
+0 \leqslant r \leqslant 1
+\end{cases}.
+\] 
+The volume is therefore 
+\begin{align*}
+\text{Volume} &= \iint_D (x^2 + y^2)^2 \: dA \\
+&= \iint_D (r^2)^2 \: dA \\
+&= \int_{0}^{2\pi}\int_0^1 r^4 \cdot r \: dr \: d\theta \\
+&= 2\pi \cdot \int_0^1 r^5 \:dr \\
+&= 2\pi \cdot \left.\frac{r^6}{6}\right|_{r=0}^{r=1} \\
+&= 2\pi \cdot \left(\frac{1}{6} -0 \right)\\
+&= \frac{\pi}{3}. 
+\end{align*}
+\end{solution}}
+
+
+\end{document}

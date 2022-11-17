@@ -1,0 +1,88 @@
+\documentclass{article}
+
+\usepackage{amsmath, amssymb, xypic, color}
+\usepackage[margin=1in]{geometry}
+
+\begin{document}
+\begin{center}
+MATH S1202: Calculus IV \\ 
+Quiz 3 \\
+June 7, 2018
+\end{center}
+
+
+\noindent \textbf{1.} Compute the gradient $\nabla f(3,4)$ where 
+\[
+f(x,y) = \sqrt{x^2 + y^2}.
+\]
+
+\medskip
+
+{\color{blue}
+\noindent \emph{Solution.} We compute that 
+\[
+\nabla f(x,y) = \frac{1}{f} \langle x,y\rangle.
+\]
+We have $f(3,4) = 5$ and hence 
+\[
+\nabla f(3,4) = \langle \tfrac{3}{5}, \tfrac{4}{5} \rangle.
+\]
+}
+
+\vspace{3mm}
+
+\noindent \textbf{2.} Compute the area enclosed by the ellipse 
+\[
+\frac{x^2}{4} + \frac{y^2}{25} = 1
+\]
+using ideas from Chapter 15. (Hint: There are several ways of doing this problem, but perhaps the easiest is to use the change of variables $x = 2 r \cos(\theta)$ and $y = 5 r \sin(\theta)$.)
+
+
+\medskip
+
+{\color{blue}
+\noindent \emph{Solution.} Using the coordinates 
+\begin{align*}
+x &= 2r \cos\theta \\
+y &= 5r \sin\theta,
+\end{align*}
+the region $R$ in the $xy$-plane enclosed by the ellipse is mapped to by the region $S$ in the $(r,\theta)$-plane given by 
+\[
+S = \begin{cases}
+0 \leqslant \theta \leqslant 2\pi \\
+0 \leqslant r \leqslant 1.
+\end{cases}
+\]
+The Jacobian is given by 
+\[
+\frac{\partial(x,y)}{\partial(r, \theta)} = 10r.
+\]
+It follows that the area of $R$ is given by 
+\begin{align*}
+\text{Area}(R) &= \iint_R dA \\
+&= \int_0^{2\pi}\int_0^1 10r \: dr \: d\theta \\
+&= 10 \pi.
+\end{align*}
+}
+
+\vspace{3mm}
+
+\noindent \textbf{3.} Let $C$ be the line segment from $(0,0)$ to $(1,1)$ in the $xy$-plane. Compute the line integral $\int_C xy \: ds$. 
+
+
+\medskip
+
+{\color{blue}
+\noindent \emph{Solution.} A parametrization of $C$ is given by $\mathbf{r}(t) = (t,t)$ for $0 \leqslant t \leqslant 1$. We compute that 
+\[
+|\mathbf{r}'(t)| = \sqrt{2}.
+\]
+It follows that 
+\begin{align*}
+\int_C xy \: ds &= \int_0^1 t \cdot t \cdot \sqrt{2} \: dt \\
+&= \sqrt{2}\int_0^1 t^2 \: dt \\
+&= \frac{\sqrt{2}}{3}.
+\end{align*}
+}
+
+\end{document}

@@ -1,0 +1,577 @@
+\documentclass{article}
+
+\usepackage{amsmath, amsthm, amssymb, xypic, setspace}
+\usepackage{hyperref}
+\usepackage[usenames, dvipsnames]{color}
+
+\hypersetup{
+    colorlinks = true,
+    linkcolor = RoyalBlue,
+    citecolor = Cerulean
+}
+
+\numberwithin{equation}{section}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+\newtheorem{exercise}[definition]{Exercise}
+\newtheorem{example}[definition]{Example}
+\newtheorem{remark}[definition]{Remark}
+\newtheorem{note}[definition]{Note}
+\newtheorem{notation}[definition]{Notation}
+
+\theoremstyle{theorem}
+\newtheorem{proposition}[definition]{Proposition}
+\newtheorem{theorem}[definition]{Theorem}
+\newtheorem{corollary}[definition]{Corollary}
+\newtheorem{lemma}[definition]{Lemma}
+
+\newcommand{\Exterior}{\mathchoice{{\textstyle\bigwedge}}%
+    {{\bigwedge}}%
+    {{\textstyle\wedge}}%
+    {{\scriptstyle\wedge}}}
+
+
+
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\newcommand{\ddb}{\partial\bar{\partial}}
+\newcommand{\goodwidetilde}[1]{\smash{\widetilde{#1}}}
+
+\begin{document}
+These are companion notes to Calabi's paper in which he constructs K\"ahler metrics on holomorphic vector bundles over K\"ahler manifolds. 
+
+\section{K\"ahler metrics on holomorphic vector bundles}
+
+
+
+A complex manifold $M$ enjoys a \textbf{complex structure} $J$, that is, an endomorphism of the (real) tangent bundle $TM$ satisfying $J^2 = -\text{id}_{TM}$. The complex structure can be described in local coordinates $(z^k = x^k + \sqrt{-1}y^k)$ by the assignment 
+\begin{align*}
+J\left(\frac{\partial}{\partial x^k}\right) &= \frac{\partial}{\partial y^k}\\
+J\left(\frac{\partial}{\partial y^k}\right) &= - \frac{\partial}{\partial x^k}.
+\end{align*}
+
+\begin{definition}
+Let $M$ be a complex manifold with complex structure $J$. 
+\begin{itemize}
+\item By a \textbf{hermitian metric} on $M$ we mean a Riemannian metric $g$ on $M$ such that $J$ is an orthogonal transformation with respect to $g$ in the sense that $g(JU, JV) = g(U,V)$ for each pair of tangent vectors $U,V$. A hermitian metric $g$ on $M$ determines a real $(1,1)$-form $\omega$ on $M$ by the rule $\omega(U,V) = g(JU,V)$. 
+\item By a \textbf{K\"ahler metric} on $M$ we mean a hermitian metric $g$ on $M$ whose associated real $(1,1)$-form $\omega$ is closed. By the $\ddb$-lemma, if $g$ is a K\"ahler metric, then locally we may write $\omega = \sqrt{-1} \ddb \Phi$, where $\Phi$ is a local real-valued smooth function on $M$ called a \textbf{K\"ahler potential}. 
+\item By a \textbf{K\"ahler form} on $M$ we mean a real $(1,1)$-form $\omega$ on $M$ that is closed. Note that a K\"ahler form determines a symmetric $2$-tensor $g$ by the assignment $g(U,V) = \omega(U, JV)$, which may or may not be positive definite. Note also that this terminology is not consistent with the modern literature (which requires a K\"ahler form to determine a positive definite symmetric tensor), but it is the terminology found in Calabi's original paper. 
+\end{itemize}
+\end{definition}
+
+
+\begin{definition}
+Let $\pi : L \to M$ be a holomorphic vector bundle over $M$. 
+\begin{itemize}
+\item By a \textbf{hermitian metric} $h$ on $L$ we mean a collection $\{h_x\}_{x \in M}$ of hermitian metrics on the fibers $L_x = \pi^{-1}(x)$ such that the collection $h_x$ varies smoothly in the parameter $x$. A hermitian metric $h$ on $L$ determines a nonnegative smooth function $t$ defined on the total space of $L$ by the following rule: If $\xi$ is a vector in the fiber $L_x = \pi^{-1}(x)$, then the function $t$ assigns to $\xi$ the value $h_x(\xi, \xi)$. 
+\item By a \textbf{section} of $L$ we mean a smooth map $s : M \to L$ such that $\pi \circ s = \text{id}_M$. We let $\Omega^0(L)$ denote the vector space of sections of $L$. We let $\Omega^k(L)$ denote the vector space $\Omega^k(M) \otimes \Omega^0(L) $, where $\Omega^k(M)$ is the space of $k$-forms on $M$. 
+\item We say that a section is \textbf{holomorphic} if $s$ is a holomorphic map of complex manifolds. 
+\item By a \textbf{connection} $\nabla$ on $L$ we mean a $\mathbb{C}$-linear map $\nabla : \Omega^0(L) \to \Omega^1(L)$ satisfying $\nabla (fs) = df \otimes s + f \cdot \nabla s$ for a smooth function $f$ on $M$ and section $s$ of $L$. A connection may be extended to a map $\nabla : \Omega^k(L) \to \Omega^{k+1}(L)$ by forcing the rule $\nabla(\psi \wedge \theta) = \nabla \psi \wedge \theta + (-1)^{|\psi|} \psi \wedge \nabla \theta$ for a pair of forms $\psi$ and $\theta$. 
+\item A connection $\nabla$ determines a map $\nabla^2 : \Omega^0(L) \to \Omega^2(L)$ which is linear over smooth functions on $M$ and hence corresponds to a section of the bundle $\Omega^2(\text{End}(L))$, which is called the \textbf{curvature} $F_\nabla$ of the connection. 
+\item A hermitian metric $h$ on $L$ determines a unique connection $\nabla$ called the \textbf{Chern connection} associated with $h$ satisfying the following two properties
+\begin{enumerate}
+\item[(i)] The connection is compatible with the metric $h$ in the sense that $\nabla h = 0$, meaning that if $s,s'$ are two sections of $L$, then $d(h(s,s')) = h(\nabla s, s') + h(s, \nabla s')$. 
+\item[(ii)] If $s$ is a holomorphic section of $L$, then $\nabla s$ has type $(1,0)$. 
+\end{enumerate}
+\item A connection $\nabla$ determines a decomposition of the tangent bundle of $L$ into \textbf{horizontal} and vertical subbundles in the following manner. If $y$ is a point of $L$, then the vertical subspace $V_y$ is the kernel of the linear map $d\pi_y : T_yL \to T_{\pi(y)}M$. If $s$ is a section of $L$, then say that $s$ is \textbf{horizontal} if $\nabla s = 0$. If $s$ is a horizontal section passing through a point $y = s(x)$ in $L$, define the \textbf{horizontal subspace} $T_yL$ to be the subspace $T_ys(M)$, where $s(M)$ denotes the image of $s$ in $L$. One can show that this subspace is independent of choice of particular horizontal section $s$. 
+\end{itemize}
+\end{definition}
+
+
+\begin{lemma}\label{lem:form}
+Let $(L,h)$ be a hermitian vector bundle over a K\"ahler manifold $(M,g)$. Then there is a unique K\"ahler form $\omega_L$ on the total space of $L$ satisfying the following three properties.
+\begin{enumerate}
+\item[(i)] The restriction of the form $\omega_L$ to the zero section of $L$ corresponds to the K\"ahler form $\omega$ on $M$ under the canonical identification of the zero section of $L$ with $M$. 
+\item[(ii)] For each point $x \in M$, the restriction of $\omega_L$ to the fiber $\pi^{-1}(x)$ coincides with the K\"ahler form induced by the K\"ahler potential $t|_{\pi^{-1}(x)}$. 
+\item[(iii)] For each point $y$ in the total space of $L$ and each tangent vector $X$ in $M$ to $x = \pi(y)$, the horizontal lift $\tilde{X}_y$ of $X$ to $y$ determined by the Chern connection of $L$ is orthogonal to the fiber $\pi^{-1}(x)$ passing through $y$. 
+\end{enumerate}
+Moreover, the form $\omega_L$ is given by 
+\[
+\omega_L = \pi^* \omega + \sqrt{-1} \ddb t. 
+\]
+In other words, a local potential for $\omega_L$ is given by 
+\[
+\Psi = \Phi \circ \pi + t
+\]
+where $\Phi$ is a local potential for the K\"ahler metric $g$ on $M$. 
+\end{lemma}
+
+
+\begin{definition}
+Let $(L,h)$ be a hermitian vector bundle of rank $m$ over a K\"ahler manifold $(M,g)$ of complex dimension $n$, and let $\nabla$ denote the corresponding Chern connection. Let $\{s_\lambda\}$ be a local holomorphic frame for $L$. 
+\begin{itemize}
+\item Define local smooth functions $L^\lambda{}_{\mu j}$ on $M$ by the rule 
+\[
+\nabla s_\mu = L^\lambda{}_{\mu j} dz^j \otimes s_\lambda. 
+\]
+It can be shown that 
+\[
+L^\lambda{}_{\mu j} = (\partial_j h_{\mu \nu}) h^{\nu \lambda}.
+\]
+\item Define local smooth functions $F^\lambda{}_{\mu j \bar{k}}$ on $M$ by the rule 
+\[
+\nabla^2 s_\mu = (F^\lambda{}_{\mu j \bar{k}} dz^j \wedge d\bar{z}^k) \otimes s_\lambda.
+\]
+It can be shown that 
+\[
+F^\lambda{}_{\mu j\bar{k}} = \partial_{\bar{k}} L^\lambda{}_{\mu j}. 
+\]
+\item Use coordinates $(z,\zeta) = (z^1, \ldots, z^n, \zeta^1, \ldots, \zeta^m)$ for the total space of $L$ by the assignment 
+\[
+(z, \zeta) \mapsto \zeta^\lambda s_\lambda(z).
+\]
+\item With such coordinates, introduce local vector fields $\nabla_j$ on the total space of $L$ by the rule 
+\[
+\nabla_j = \frac{\partial}{\partial z^j} - L^\lambda{}_{\mu j} \zeta^\mu \frac{\partial}{\partial \zeta^\lambda}.
+\]
+Then the list $(\nabla_1, \ldots, \nabla_n, \partial/\partial \zeta^1, \ldots, \partial/\partial \zeta^m)$ is a frame for the tangent bundle $TL$ which is compatible with the decomposition of the tangent bundle into horizontal and vertical subbundles respectively. 
+\item Denote by $(dz^1, \ldots, dz^n, \nabla \zeta^1, \ldots, \nabla \zeta^m)$ the dual $1$-forms so that 
+\[
+\nabla \zeta^\lambda = d\zeta^\lambda + L^{\lambda}{}_{\mu j} \zeta^\mu dz^j
+\]
+and the list is a frame for the cotangent bundle compatible with the decomposition into horizontal and vertical subbundles. 
+\end{itemize} 
+\end{definition}
+
+\begin{lemma}
+The nonnegative function $t$ admits a description in local coordinates $(z, \zeta)$ given by 
+\[
+t = h_{\mu \nu} \zeta^\mu \bar{\zeta}^\nu.
+\]
+Moreover, the $(1,1)$-form $\ddb t$ is given by 
+\[
+\ddb t = h_{\mu \nu}F^\mu{}_{\lambda j\bar{k}} \zeta^\lambda \bar{\zeta}^\nu dz^j \wedge d\bar{z}^k + h_{\mu \nu} \nabla \zeta^\mu \wedge \overline{\nabla \zeta^\nu}.
+\]
+It follows that if $\Psi$ is the local potential for $\omega_L$ given by 
+\[
+\Psi = \Phi \circ \pi + t,
+\]
+then a local expression for the $(1,1)$-form $\ddb \Psi$ is given by 
+\[
+\ddb \Psi = (g_{j \bar{k}} + h_{\mu \nu}F^\mu{}_{\lambda j\bar{k}} \zeta^\lambda \bar{\zeta}^\nu) dz^j \wedge d\bar{z}^k + h_{\mu \nu} \nabla \zeta^\mu \wedge \overline{\nabla \zeta^\nu}.
+\]
+\end{lemma}
+
+
+
+\begin{definition}\label{def:poscurv}
+We say that $h$ is \textbf{nonnegative} if the inequality 
+\[
+h_{\mu \nu} F^{\mu}{}_{\lambda j \bar{k}} Z^j \bar{Z}^k\zeta^\lambda \bar{\zeta}^\nu \geqslant 0
+\]
+holds for all nonzero vectors $Z$ in $\mathbb{C}^n$ and all nonzero vectors $\zeta$ in $\mathbb{C}^m$.
+
+\end{definition}
+
+
+\begin{proposition}\label{prop:exis}
+Let $(L,h)$ be a hermitian vector bundle over a K\"ahler manifold $(M,g)$, and let $\omega_L$ be the K\"ahler form from Lemma \ref{lem:form}. 
+\begin{enumerate}
+\item[(i)] The form $\omega_L$ is positive definite in a neighborhood of the zero section. 
+\item[(ii)] If the curvature of $h$ is nonnegative in the sense of Definition \ref{def:poscurv}, then the form $\omega_L$ is positive definite globally on $L$ and hence defines a K\"ahler form on $L$. 
+\end{enumerate}
+\end{proposition}
+
+
+\begin{proposition}\label{prop:u}
+Let $u(x)$ be a smooth real-valued function of a single variable and let $E$ denote the subset of the total space of $L$ such that $u \circ t$ is defined. Define a form $\omega_u$ on the subset $E$ by the rule
+\[
+\omega_u = \pi^* \omega + \sqrt{-1}\ddb (u \circ t).
+\]
+Then $\omega_u$ is a K\"ahler form on $E$. Moreover, the associated symmetric $2$-tensor is positive definite along the vertical directions if and only if  $u$ satisfies the conditions 
+\[
+\begin{cases}
+u'(x) > 0 \\
+u'(x) + x u''(x) > 0
+\end{cases}.
+\]
+The condition $u'(x) > 0$ ceases to be necessary if $L$ is a line bundle and the zero section does not belong to $E$. 
+\end{proposition}
+
+\begin{proof}
+One computes analogously to the above for $\omega_L$ that a local expression for $\omega_u$ is given by 
+\begin{align*}
+\omega_u &= \sqrt{-1}(g_{j \bar{k}} + (u' \circ t) h_{\mu \nu}F^\mu{}_{\lambda j\bar{k}} \zeta^\lambda \bar{\zeta}^\nu) dz^j \wedge d\bar{z}^k  \\
+&\;\;\; + \sqrt{-1}((u' \circ t)h_{\mu \nu} + (u'' \circ t) h_{\mu \beta} h_{\alpha \nu} \zeta^\alpha \bar{\zeta}^\beta) \nabla \zeta^\mu \wedge \overline{\nabla \zeta^\nu}.
+\end{align*}
+
+We first show that the conditions on $u$ are sufficient for the tensor associated to $\omega_u$ to be positive definite along the vertical directions. It suffices to show that for each $\zeta, \eta \in \mathbb{C}^m$ we have 
+\[
+A(\zeta, \eta) := ((u' \circ t)h_{\mu \nu} + (u'' \circ t) h_{\mu \beta} h_{\alpha \nu} \zeta^\alpha \bar{\zeta}^\beta) \eta^\mu \bar{\eta}^\nu \geqslant 0
+\]
+with equality if and only if $\eta = 0$. Indeed, we find that
+\begin{align*}
+A(\zeta, \eta) &= (u' \circ t)  \norm{\eta}^2 + (u'' \circ t) \langle \eta, \zeta \rangle \langle \zeta, \eta \rangle  \\
+&= (u' \circ t) \norm{\eta}^2 + (u'' \circ t) |\langle \eta, \zeta \rangle |^2.
+\end{align*}
+When $\zeta = 0$, the inequality $u'(x) > 0$ ensures that $A(0, \eta) \geqslant 0$ with equality if and only if $\eta = 0$. Otherwise, the condition $u'(x) + x u''(x) > 0$ and the relation $t = \norm{\zeta}^2$ ensures that 
+\[
+A(\zeta, \eta) \geqslant (u' \circ t) (\norm{\eta}^2 - |\langle \eta, \zeta \rangle|^2 \norm{\zeta}^{-2}).
+\]
+The term $(u' \circ t)$ is positive from our assumption on $u$, and the second term is nonnegative by the Cauchy-Schwarz inequality. 
+
+Now suppose that $A(\zeta, \eta) \geqslant 0$ with equality if and only if $\eta = 0$. We show that $u$ satisfies the two required conditions.  If we take $\eta = \zeta$, then we find that 
+\[
+A(\zeta, \zeta) = (u' \circ t) t + (u'' \circ t) t^2 \geqslant 0,
+\]
+and since $t \geqslant 0$, the second condition on $u$ follows.  For the first condition, we may choose $\eta \ne 0$ such that $\langle \eta, \zeta \rangle = 0$. 
+
+Finally suppose that $L$ is a line bundle and the zero section does not belong to $E$. Then in this case, the condition $u'(x) > 0$ ceases to be necessary because 
+\[
+A(\zeta, \eta) = |\eta|^2 \{ (u' \circ t) +t (u'' \circ t) \}
+\]
+so that the second condition is sufficient. 
+\end{proof}
+
+\begin{definition}
+A lower bound on the curvature of $(L,h)$ is a real number $c$ such that 
+\[
+h_{\mu \nu} F^\mu{}_{\lambda j \bar{k}} Z^j \bar{Z}^k \zeta^\lambda \bar{\zeta}^\nu \geqslant c h_{\mu \nu} g_{j\bar{k}} Z^j \bar{Z}^k \zeta^\mu \bar{\zeta}^\nu.
+\]
+\end{definition}
+
+\begin{theorem}
+Let $(L,h)$ be a hermitian vector bundle over a K\"ahler manifold $(M,g)$. If the curvature of $(L,h)$ is bounded from below, then there is a K\"ahler metric $g_L$ on the total space of $L$. Moreover, if the metric $g$ on $M$ is complete, then so is the metric $g_L$ on $L$. 
+\end{theorem}
+
+\begin{proof}
+If the bound $c$ on the curvature satisfies $c \geqslant 0$, then we may appeal to Proposition \ref{prop:exis}. So we may suppose that $c$ is strictly negative and equal to $c = -b$ for some $b > 0$. The idea is to choose a function $u$ such that the form $\omega_u$ from Proposition \ref{prop:u} defines a K\"ahler form whose associated symmetric $2$-tensor is positive definite. In particular, we may choose the function  
+\[
+u(x) = \frac{2}{3b} \log(a + x) - \frac{1}{3}\log(\log(a + x))
+\]
+where $a = e^b$. 
+
+One checks by direct computation that 
+\begin{align*}
+u'(x) = \frac{1}{3(a + x)} \left(\frac{2}{b} - \frac{1}{\log(a + x)}\right) \geqslant \frac{1}{3b(a + x)}
+\end{align*}
+and also that 
+\begin{align*}
+xu''(x) + u'(x) &= \frac{1}{3} (a + x)^{-2} \left(\frac{2a}{b} - \frac{a}{\log(a + x)} + \frac{x}{(\log(a + x))^2}\right) \\
+&\geqslant \frac{a}{2b(a + x)^2} + \frac{x}{3(a + x)^2 (\log(a + x))^2}.
+\end{align*}
+Hence the associated two-tensor is positive definite along the vertical directions by the previous lemma. 
+
+To check for positivity along the horizontal directions, we use the fact that the curvature is bounded from below by $-b$ to find that 
+\[
+(g_{j\bar{k}} + (u' \circ t) h_{\mu \nu} F^{\nu}{}_{\lambda j \bar{k}} \zeta^\lambda \bar{\zeta}^\mu) dz^j \otimes d\bar{z}^k \geqslant (1 - b t (u' \circ t)) g_{j \bar{k}}dz^j \otimes d\bar{z}^k 
+\]
+and the direct computation that
+\[
+1 - b x u'(x) = \frac{1}{3} + \frac{1}{3(a + x)} \left(2a + \frac{bx}{\log(a + x)}\right) \geqslant \frac{1}{3}
+\]
+to conclude that the metric $g_u$ associated to $\omega_u$ is bounded from below by the metric with local expression  
+\[
+g_u \geqslant \frac{1}{3} g_{j \bar{k}} dz^j \otimes d\bar{z}^k +((u' \circ t)h_{\mu \nu} + (u'' \circ t) h_{\mu \beta} h_{\alpha \nu} \zeta^\alpha \bar{\zeta}^\beta) \nabla \zeta^\mu \otimes \overline{\nabla \zeta^\nu},
+\]
+which is positive definite along the horizontal directions. 
+
+Along each fiber the metric associated to $\ddb u \circ t$ is complete because the integral 
+\[
+\int_0^\infty (x u''(x) + u'(x))^{1/2} \: dx
+\] 
+diverges. 
+\end{proof}
+
+\begin{corollary}
+There is a complete K\"ahler metric on the complement of a point in projective space $\mathbb{CP}^n$. 
+\end{corollary}
+
+\begin{proof}
+The complement of a point in projective space $\mathbb{CP}^n$ is biholomorphic to the total space of a line bundle over $\mathbb{CP}^{n-1}$. 
+\end{proof}
+
+
+\section{K\"ahler-Einstein metrics on holomorphic vector bundles}
+
+\begin{definition}
+Let $(M,g)$ be a K\"ahler manifold of complex dimension $n$. 
+\begin{itemize}
+\item The \textbf{Ricci form} of $g$ is the $2$-form with local expression 
+\[
+\text{Ric}(g) = - \sqrt{-1} \ddb \log \det (g_{j\bar{k}}).
+\]
+\item We say that $g$ is \textbf{K\"ahler-Einstein} if there is a constant $k_0$ such that 
+\[
+\text{Ric}(g) = k_0 \omega.
+\]
+If $g$ is K\"ahler-Einstein, then we have 
+\[
+\det g_{j \bar{k}} = |\text{hol}|^2 e^{-k_0 \Phi}
+\] 
+for some unspecified holomorphic function, where $\Phi$ is a local K\"ahler potential for $g$. 
+\end{itemize}
+\end{definition}
+
+\begin{definition}
+Let $(L,h)$ be a hermitian vector bundle over a K\"ahler manifold $(M,g)$. We say that $(L,h)$ is \textbf{Hermitian-Einstein} if there is a constant $\ell$ such that 
+\[
+F_\nabla = -\sqrt{-1} \ell \omega \otimes \text{Id}_L. 
+\]
+In local coordinates, this condition is stated as 
+\[
+F^{\mu}{}_{\nu j\bar{k}} = \ell g_{j \bar{k}}\cdot \delta^\mu{}_{\nu}.
+\]
+\end{definition}
+
+\begin{lemma}
+If $(L,h)$ is a Hermitian-Einstein line bundle with constant $\ell$, then there is a nonzero holomorphic function $\textnormal{hol}$ on the base $M$ such that 
+\[
+t = |\textnormal{hol}|^2 e^{\ell \Phi} |\zeta|^2
+\]
+where $\Phi$ is a K\"ahler potential for $g$. 
+\end{lemma}
+
+\begin{proof}
+Choose a local holomorphic nonvanishing section $s$ of $L$. Then in this case, the curvature reduces to 
+\[
+F = \ddb \log h
+\] 
+where $h$ is the function $\norm{s}_{h}^2$. 
+The Hermitian-Einstein equation asserts that 
+\[
+\ddb (\log h - \ell \Phi ) = 0.
+\]
+It follows that there is a holomorphic function $\text{hol}$ on the base such that 
+\[
+h = |\text{hol}|^2 e^{\ell \Phi} \delta_{\mu \nu}. 
+\]
+The claim follows. 
+\end{proof}
+
+\begin{lemma}
+Let $(M,g)$ be an $(n - 1)$-dimensional K\"ahler-Einstein manifold with Ricci constant equal to $k_0$, and let $(L,h)$ be a rank $m$ Hermitian-Einstein vector bundle with constant equal to $\ell$. For a nonnegative number $x_0$, let $H_{x_0}$ denote the hypersurface in $L$ given by $H_{x_0} = \{ q \in L : t(q) = x_0\}$. Let $u(x)$ be a function defined on an interval $I \subset \mathbb{R}_{\geqslant 0}$ containing $x_0$. Then the form $\omega_u$ determined by $u$ on the neighborhood $t^{-1}(I)$ of $H_{x_0}$ in $L$ is positive definite if and only if $u$ satisfies the conditions 
+\begin{align*}
+\begin{cases}
+1 + \ell x u'(x) > 0 \\
+u'(x) + x u''(x) > 0.
+\end{cases}
+\end{align*}
+If these conditions are satisfied in $I$ and if $\ell \ne 0$, then the metric defined by the form $\omega_u$ is K\"ahler-Einstein with Ricci constant equal to $k$ if and only if $u$ satisfies the differential equation 
+\[
+(1 + \ell x u'(x))^{n-1} (x u''(x) + u'(x)) = c x^{\ell^{-1}(k_0 - k - \ell)}e^{-k u(x)}
+\]
+where $c$ is a fixed positive constant; if $\ell = 0$, then this forces $k = k_0$ and the differential equation becomes 
+\[
+\begin{cases}
+u(x) = 2k^{-1} \log(1 + c_0^2 k x^c) + c_1 \log x + c_2 & \ell = 0, k = k_0 \ne 0 \\
+u(x) = c_0^2 x^c + c_1 \log x + c_2 & k = k_0 = \ell = 0
+\end{cases}
+\]
+where $c, c_0, c_1, c_2$ are real constants with $c_0 \ne 0$. 
+\end{lemma}
+
+\begin{proof}
+With the given hypotheses, the form $\omega_u$ is given locally by 
+\[
+\ddb \Psi = (1 + \ell xu'(x)) g_{j \bar{k}} dz^j \wedge d\bar{z}^k + c_0 e^{\ell \Phi}(x u''(x) + u'(x))  \nabla \zeta \wedge \overline{\nabla \zeta}.
+\]
+Taking the determinant, we find that 
+\[
+\det g_L = c_0^m (1 + \ell x u'(x))^{n-1} e^{-k_0 \Phi} e^{ \ell \Phi} (x u''(x) + u'(x))^.
+\]
+The K\"ahler-Einstein condition $\det g_L = |\text{hol}|^2 e^{-k \Psi}$ becomes 
+\[
+|\text{hol}|^2 e^{-k(\Phi + u(x))} = c_0 (1 + \ell x u'(x))^{n-1} e^{( \ell - k_0) \Phi} (x u''(x) + u'(x))^,
+\]
+or equivalently 
+\[
+(1 + \ell x u'(x))^{n-1}(x u''(x) + u'(x)) = |\text{hol}|^2  e^{(k_o - k -  \ell )\Phi -k u(x)}.
+\]
+If $\ell \ne 0$, the previous lemma implies that this equation is equivalent to 
+\[
+(1 + \ell x u'(x))^{n-1} (x u''(x) + u'(x)) = |\text{hol}|^2 x^{\ell^{-1}(k_0 - k - \ell)}e^{-k u(x)}.
+\]
+By an appropriate choice of coordinates, Calabi shows that $|\text{hol}|^2$ may be reduced to a constant. 
+
+Indeed, suppose that $\varphi$ represents the holomorphic function in question. 
+\end{proof}
+
+\begin{lemma}
+Suppose we are given a hermitian vector bundle $(L,h)$ of rank $m$ over a K\"ahler-Einstein manifold $(M,g)$ with the same hypotheses of the previous lemma. A K\"ahler-Einstein metric on $L$ with Ricci constant equal to $k$ determined by a function $u(x)$ (defined for $0 \leqslant x < x_0$) extends smoothly across the zero section of $L$ if and only if $k = k_0 - m \ell$ and $u'(0) > 0$ for the case $\ell \ne 0$; for the case $\ell = 0$, the function $u(x)$ is determined to be 
+\[
+\begin{cases}
+u(x) = 2 k^{-1} \log(1 + c_0^2 k x) + c_2 & k = k_0 \ne 0 , c_0 \ne 0, \ell = 0 \\
+u(x) = c_0^2x + c_2 & k = k_0 = \ell = 0, c_0 \ne 0.
+\end{cases}
+\]
+\end{lemma}
+
+
+\begin{theorem}
+Suppose we are given a hermitian vector bundle $(L,h)$ of rank $m$ over a K\"ahler-Einstein manifold $(M,g)$ and a function $u$ defined in a neighborhood of $0$ determining a K\"ahler-Einstein metric $\omega_u$ on a maximal neighborhood $E \subset L$ of the zero section of $L$. Then the metric determined by $\omega_u$ is a complete K\"ahler-Einstein metric if and only if 
+\begin{enumerate}
+\item[(i)] $M$ is complete with respect to $g$
+\item[(ii)] $k = k_0 - m \ell$
+\item[(iii)] $\ell \geqslant 0$ and $k \leqslant 0$. 
+\end{enumerate}
+
+\end{theorem}
+
+
+\section{Extra}
+
+
+Let $M$ be a complex manifold of dimension $n$ with complex structure $J$. By a hermitian metric on $M$ we mean a Riemannian metric $g$ on $M$ such that $J$ is an orthogonal transformation with respect to $g$ in the sense that $g(JU, JV) = g(U,V)$ for vector fields $U,V$ on $M$. The hermitian metric $g$ determines a $(1,1)$-form $\omega$ by the rule $\omega(U,V) = g(JU,V)$. We say that a hermitian metric $g$ is K\"ahler if the $(1,1)$-form $\omega$ is closed.  
+
+Let $\pi : L \to M$ be a holomorphic vector bundle of rank $m$ over $M$. By a hermitian metric $h$ on $L$ we mean a collection $h_x$ of hermitian metrics on the fibers $L_x = \pi^{-1}(x)$ of $L$ in such a way that the collection $h_x$ varies smoothly in the parameter $x \in M$.
+
+A smooth section of $L$ is a map $s : M \to L$ such that $\pi \circ s = \text{id}_M$. We let $\Omega^0(L)$ denote the vector space of smooth sections. We let $\Omega^k(L)$ denote the vector space $\Omega^k(L) = \Omega^0(L) \otimes \Omega^k(M)$, where $\Omega^k(M)$ is the space of $k$-forms on $M$. 
+
+A smooth section $s : M \to L$ is called holomorphic if $s$ is a holomorphic map of complex manifolds.  
+
+A hermitian metric $h$ on $L$ (together with the holomorphic structure) determines a unique connection $\nabla : \Omega^0(L) \to \Omega^1(L)$ called the Chern connection which satisfies the following two properties
+\begin{enumerate}
+\item[(i)] $\nabla h = 0$
+\item[(ii)] If $s$ is a holomorphic section of $L$, then $\nabla s$ has type $(1,0)$. 
+\end{enumerate}
+For a smooth section $s$ of $L$, we use the notation $\nabla_j s$ for the local section given by the contraction of $\nabla s$ with the local vector field $\partial/\partial z^j$. 
+
+\begin{notation}
+For a smooth frame $\{s_\lambda\}$ of $L$, define local functions $L^{\lambda}_{\mu j}$ by the rule 
+\[
+\nabla_j s_\mu = L^{\lambda}_{\mu j} s_\lambda .
+\]
+\end{notation}
+
+\begin{lemma}
+If $\{s_\lambda\}$ is a holomorphic frame for $L$, then the functions $L^{\lambda}_{\mu j}$ are given by 
+\[
+L^{\lambda}_{\mu j} =  h^{\nu \lambda}\partial_j h_{\mu \nu}. 
+\]
+\end{lemma}
+
+\begin{proof}
+Because $\{s_\lambda\}$ is a holomorphic frame, each $\nabla s_\lambda$ has type $(1,0)$ and is given by 
+\[
+\nabla s_\lambda = (\nabla_j s_\lambda)dz^j.
+\]  The fact that the connection $\nabla$ is compatible with $h$ means that 
+\begin{align*}
+d h_{\mu \nu} &= d(h(s_\mu, s_\nu)) \\
+&= h(\nabla s_\mu, s_\nu) + h( s_\mu, \nabla s_\nu) \\
+&= L^\lambda_{\mu j} h_{\lambda \nu} dz^j + \overline{L}^{\lambda}_{\nu j} h_{\mu \lambda} d\bar{z}^j.
+\end{align*}
+Taking the $(1,0)$-part of the above equation gives that 
+\[
+\partial_j h_{\mu \nu} =  L^\lambda_{\mu j} h_{\lambda \nu}. 
+\]
+Solving for $L^{\lambda}_{\mu j}$, we find that 
+\[
+L^{\lambda}_{\mu j} = h^{\nu \lambda}\partial_j h_{\mu \nu},
+\]
+as desired. 
+\end{proof}
+
+
+\begin{definition}
+A section $s$ of $L$ is called horizontal if $\nabla s$ vanishes. 
+\end{definition}
+
+\begin{lemma}
+Locally we may always find a horizontal section $s$. 
+\end{lemma}
+
+\begin{proof}
+Let $\{s_\lambda\}$ be a smooth frame for $L$. Any section can be written as 
+\[
+s = a^\lambda s_\lambda
+\]
+for some local smooth functions $a^\lambda$ on $M$. The section $\nabla_j s$ is given by 
+\[
+\nabla_j s = (\partial_j a^\lambda  + a^\mu L^\lambda_{\mu j})s_\lambda .
+\]
+It suffices therefore to solve the system of differential equations
+\[
+\partial_j a^\lambda  + a^\mu L^\lambda_{\mu j} = 0
+\]
+for each $j,\lambda$. 
+\end{proof}
+
+
+
+\begin{lemma}
+If $s$ and $t$ are two horizontal sections of $L$ passing through a point $y = s(x) = t(x)$ in the total space of $L$, then $T_ys(M) = T_y t(M)$. 
+\end{lemma}
+
+\begin{proof}
+Let $\{s_\lambda\}$ be a smooth frame for $L$ near $y$. We may write 
+\begin{align*}
+s &= a^\lambda s_\lambda \\
+t &= b^\lambda s_\lambda
+\end{align*} 
+for some local smooth functions $a^\lambda, b^\lambda$ near $x$ on $M$. 
+The tangent space $T_ys(M)$ is spanned by the collection of tangent vectors 
+\[
+\frac{\partial}{\partial z^j} + (\partial_j a^\lambda) \frac{\partial}{\partial \zeta^\lambda} \hspace{5mm} 1 \leqslant j \leqslant n.
+\]
+Since $s$ is horizontal, we have $\partial_j a^\lambda = -a^\mu L^\lambda_{\mu j}$, and it follows that $T_ys(M)$ is spanned by 
+\[
+\frac{\partial}{\partial z^j} - a^\mu L^\lambda_{\mu j} \frac{\partial}{\partial \zeta^\lambda} \hspace{5mm} 1 \leqslant j \leqslant n.
+\]
+Similarly the space $T_yt(M)$ is spanned by 
+\[
+\frac{\partial}{\partial z^j} - b^\mu L^\lambda_{\mu j} \frac{\partial}{\partial \zeta^\lambda} \hspace{5mm} 1 \leqslant j \leqslant n.
+\]
+At the point $x$, the quantities $a^\mu L^\lambda_{\mu j}$ and $b^\mu L^\lambda_{\mu j}$ are equal, so the claim is proved. 
+\end{proof}
+
+For a point $y$ in the total space of $L$, define the horizontal subspace at $y$ to be the subspace of $T_yL$ given by the tangent space at $y$ to a horizontal section $s$ of $L$ passing through $y$. This is well-defined by the previous lemma. In this way, we obtain a collection of horizontal subspaces $H_y \subset T_yL$. Moreover, if we define the vertical subspace $V_y = \ker d\pi_y$, then we find that the tangent space $T_yL$ enjoys the decomposition $T_yL = H_y \oplus V_y$. Moreover, this decomposition varies smoothly in the parameter $y$ so that the tangent bundle $TL$ decomposes into the sum of horizontal and vertical bundles.  
+
+\begin{notation}
+Let $\{s_\lambda\}$ be a local holomorphic frame for $L$. Let $(z, \zeta) = (z^1, \ldots, z^n, \zeta^1, \ldots, \zeta^m)$ be local coordinates for the total space of $L$ with respect to this frame in the sense that the assignment 
+\[
+(z, \zeta) \mapsto \zeta^\lambda s_\lambda(z)
+\]
+describes a coordinate chart on $L$. 
+Define local vector fields $\nabla_j$ on the total space of $L$ by the rule 
+\[
+\nabla_j = \frac{\partial}{\partial z^j} - L^{\lambda}_{\mu j} \zeta^\mu \frac{\partial}{\partial \zeta^\lambda}
+\]
+so that $(\nabla_1, \ldots, \nabla_n, \frac{\partial}{\partial \zeta^1}, \ldots, \frac{\partial}{\partial \zeta^m})$ is a local frame for the tangent bundle to $L$. Moreover, this local frame is compatible with the decomposition of the bundle $TL$ into horizontal and vertical subbundles by the above discussion. 
+Denote $1$-forms by the notation 
+\[
+\nabla \zeta^\lambda = d\zeta^\lambda + L^{\lambda}_{\mu j} \zeta^\mu dz^j 
+\]
+so that $(dz^1, \ldots, dz^n, \nabla \zeta^1, \ldots, \nabla \zeta^m)$ is a local frame of the cotangent bundle of $L$, which is in fact dual to $(\nabla_1, \ldots, \nabla_n, \frac{\partial}{\partial \zeta^1}, \ldots, \frac{\partial}{\partial \zeta^m})$. 
+\end{notation}
+
+
+
+For the Chern connection, its curvature $F_\nabla = \nabla^2$ has type $(1,1)$. It follows that for a smooth section $s$ we have  
+\begin{align*}
+\nabla^2 s &= \nabla (\nabla_j s dz^j + \nabla_{\bar{k}}s d\bar{z}^k) \\
+&= (\nabla_{\bar{k}} \nabla_j s )dz^j \wedge d\bar{z}^k + (\nabla_j \nabla_{\bar{k}} s) d\bar{z}^k \wedge dz^j \\
+&= (\nabla_{\bar{k}}\nabla_j - \nabla_{j}\nabla_{\bar{k}})s \: dz^j \wedge d\bar{z}^k. 
+\end{align*}
+
+\begin{notation}
+For a smooth frame $\{s_\lambda\}$ for $L$, define local functions $F^{\lambda}_{\mu j \bar{k}}$ by the rule 
+\[
+F_{\nabla} s_{\mu} = F^{\lambda}_{\mu j \bar{k}} s_\lambda dz^j \wedge d\bar{z}^k.
+\]
+It follows from the above expression that the functions $F^{\lambda}_{\mu j\bar{k}}$ satisfy 
+\[
+ (\nabla_{\bar{k}}\nabla_j - \nabla_{j}\nabla_{\bar{k}})s_\mu = F^{\lambda}_{\mu j\bar{k}} s_{\lambda} 
+\]
+\end{notation}
+
+\begin{lemma}
+For a holomorphic frame $\{s_\lambda\}$ for $L$, the functions $F^{\lambda}_{\mu j \bar{k}}$ are given by 
+\[
+F^{\lambda}_{\mu j \bar{k}} = \partial_{\bar{k}} L^{\lambda}_{\mu j}.
+\]
+\end{lemma}
+
+\begin{proof}
+For a holomorphic frame $\{s_\lambda\}$, we have $\nabla_{\bar{k}} s_\lambda =0$ so that   
+\begin{align*}
+ (\nabla_{\bar{k}}\nabla_j - \nabla_{j}\nabla_{\bar{k}}) s_\mu &= \nabla_{\bar{k}} \nabla_j s_\mu \\
+ &= \nabla_{\bar{k}} (L^{\lambda}_{\mu j} s_\lambda) \\
+&= \partial_{\bar{k}} L^{\lambda}_{\mu j} s_\lambda.
+\end{align*}
+This completes the proof. 
+\end{proof}
+
+
+
+\end{document}

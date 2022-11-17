@@ -1,0 +1,106 @@
+\documentclass{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath, amssymb, fancyhdr, setspace, mathtools}
+
+%Commands
+\newcommand{\class}{MATH S1202: Calculus IV}
+\newcommand{\term}{Summer 2018}
+\newcommand{\examnum}{Final Exam}
+\newcommand{\examdate}{June 28, 2018}
+\newcommand{\timelimit}{95 minutes}
+
+%Formatting
+\parindent 0ex
+ 
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{\examdate}
+\lhead{\class}
+\chead{\examnum}
+\rfoot{Page \thepage}
+
+
+\begin{document}
+\begin{spacing}{2}
+\thispagestyle{empty}
+\begin{flushleft}
+\begin{tabular}{p{2.8in} r l}
+\textbf{\class} & \textbf{Name:} & \makebox[2.8in]{\hrulefill}\\
+\textbf{\term} &&\\
+\textbf{\examnum} &&\\
+\textbf{\examdate} &&\\
+\textbf{Time Limit: \timelimit} & 
+\end{tabular}\\
+\end{flushleft}
+\rule[1ex]{\textwidth}{.1pt}
+
+\vspace{5mm}
+
+\begin{center}
+\begin{tabular}{|l|l|l|} \hline
+Question & Points & Score \\  \hline
+1 & 10  & \\ \hline
+2 & 20  & \\ \hline 
+3 & 30 & \\ \hline 
+4 & 40  & \\ \hline 
+Total & 100 &  \\ \hline
+\end{tabular}
+\end{center}
+
+\newpage
+
+\noindent \textbf{1. [10 points]} Let $C$ be a circle of radius $R$ centered about the point $(a,b)$ in the $xy$-plane. If $f$ is the function $f(x,y) = x+y+1$, compute the line integral $\int_C f \: ds$. 
+ 
+\newpage 
+
+\noindent \textbf{2. [20 points]} Let $\mathbf{G}$ denote the vector field $\mathbf{G}(x,y,z) = (2(x+y), 2(x + y) + e^z, y e^z)$ defined on $\mathbb{R}^3$. 
+
+\noindent \textbf{(a) [10 points]} If $\mathbf{G}$ is conservative, find a function $g$ such that $\nabla g = \mathbf{G}$. If $\mathbf{G}$ is not conservative, explain why not.  
+
+\newpage 
+
+
+\noindent \textbf{(b) [10 points]} Compute the work done by $\mathbf{G}$ on a particle moving along $\mathbf{r}(t) = (\sin(t), \cos(t), t)$ for $0 \leqslant t \leqslant 2\pi$. 
+
+\newpage 
+
+
+
+
+\noindent \textbf{3. [30 points]} Let $E$ be the solid region under the paraboloid $z = 1 - x^2 - y^2$ lying in the first octant.  Let $S$ denote the boundary of $E$ with the induced orientation. 
+
+\medskip
+
+\noindent \textbf{(a) [10 points]} Compute the flux of the vector field $\mathbf{H}(x,y,z) = (x,y,z -x^2 - y^2)$ over $S$. 
+
+\newpage 
+
+
+
+\noindent \textbf{(b) [10 points]} Let $S_1$ denote the portion of the boundary of $E$ lying along the paraboloid $z = 1 - x^2 - y^2$ with induced orientation. Compute the flux of $\mathbf{H}(x,y,z) = (x,y,z - x^2 - y^2)$ over $S_1$. 
+
+\newpage 
+
+\noindent \textbf{(c) [10 points]} Let $C_1$ denote the boundary of $S_1$ with the corresponding induced orientation. (Note that $C_1$ consists of 3 arcs.) If $\bf{H}$ is the vector field $\mathbf{H}(x,y,z) = (x,y,z - x^2 - y^2)$, compute the work done by $\mathbf{H}$ on a particle moving along $C_1$. 
+
+
+\newpage
+
+\noindent \textbf{4. [40 points]} Let $S_2$ denote the portion of the cylinder $x^2 + y^2 - 4y = 0$ lying between the planes $z = 0$ and $z = y$. 
+
+\noindent \textbf{(a) [10 points]} Compute the area of $S_2$. 
+
+\newpage 
+
+\noindent \textbf{(b) [10 points]} If a thin sheet occupies the surface $S_2$ with constant density $\rho(x,y,z) = c$, then compute the $x$-coordinate $\bar{x}$ of the center of mass. 
+
+\newpage 
+
+\noindent \textbf{(c) [10 points]} Find an equation of the tangent plane to $S_2$ at the point $(0,4,1)$. 
+
+\newpage
+
+\noindent \textbf{(d) [10 points]} If $\mathbf{F}$ is the vector field $\mathbf{F}(x,y,z) = (2yz - 2z, 0 , xy)$, then compute the flux  $\iint_{S_2} \text{curl} \: \mathbf{F} \cdot d\mathbf{S}$, where $S_2$ is oriented so that the unit normal vector points \emph{away} from the inside of the cylinder $x^2 + y^2 - 4y = 0$. 
+\end{spacing}
+\end{document}

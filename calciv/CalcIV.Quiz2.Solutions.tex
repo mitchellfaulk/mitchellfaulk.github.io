@@ -1,0 +1,96 @@
+\documentclass{article}
+
+\usepackage{amsmath, amssymb, xypic, color}
+\usepackage[margin=1in]{geometry}
+
+\begin{document}
+\begin{center}
+MATH S1202: Calculus IV \\ 
+Quiz 2 Solutions \\
+May 31, 2018
+\end{center}
+
+
+\noindent \textbf{1.} 
+\begin{enumerate}
+\item[(a)] Write the standard Cartesian coordinates $(x,y,z)$ in terms of cylindrical coordinates $(r, \theta, z)$ about the $z$-axis.
+\item[(b)] In terms of cylindrical coordinates $(r, \theta, z)$, give a description of the solid region $E$ lying below the plane $z = 4$ and above the cone $z^2 = x^2 + y^2$. 
+\item[(c)] Let $f(x,y,z) = \sqrt{x^2 + y^2 + z^2}$. Write an expression for the triple integral $\iiint_E f(x,y,z) dV$ in terms of iterated integrals in cylindrical coordinates $(r, \theta, z)$. You only need to write an expression; you don't need to compute an exact value. \end{enumerate}
+
+\vspace{3mm}
+
+{\color{blue}
+\noindent \emph{Solution.} (a) We have 
+\begin{align*}
+x &= r \cos(\theta) \\
+y &= r \sin(\theta) \\
+z &= z.
+\end{align*}
+(b) The solid region $E$ is given by 
+\begin{align*}
+E = \begin{cases}
+0 \leqslant \theta \leqslant 2\pi \\
+0 \leqslant r \leqslant 4 \\
+r \leqslant z \leqslant 4
+\end{cases}.
+\end{align*}
+(c) We have 
+\[
+\iiint_E f(x,y,z) \: dV = \int_0^{2\pi} \int_{0}^4 \int_{r}^4 r \sqrt{r^2 + z^2} \: dz \: dr \: d\theta.
+\]
+}
+
+
+\noindent \textbf{2.} 
+\begin{enumerate}
+\item[(a)] Write the standard Cartesian coordinates $(x,y,z)$ in terms of spherical coordinates $(\rho, \theta, \varphi)$.  
+\item[(b)] In terms of spherical coordinates $(\rho, \theta, \varphi)$, give a description of the ball $B$ of radius $1$ centered about the origin. 
+\item[(c)] Compute the triple integral of $f(x,y,z) = \sqrt{x^2 + y^2 + z^2}$ over the ball $B$. This time I want you to compute. 
+\end{enumerate}
+
+{\color{blue}
+\noindent \emph{Solution.} (a) We have 
+\begin{align*}
+x &= \rho \cos\theta \sin\varphi \\
+y &= \rho \sin\theta \sin \varphi\\
+z &= \rho \cos\varphi
+\end{align*}
+(b) The solid region $B$ is given by 
+\begin{align*}
+B = \begin{cases}
+0 \leqslant \theta \leqslant 2\pi \\
+0 \leqslant \varphi \leqslant \pi \\
+0 \leqslant \rho \leqslant 1
+\end{cases}.
+\end{align*}
+(c) We have 
+\begin{align*}
+\iiint_B f(x,y,z) \: dV &= \int_0^{2\pi} \int_{0}^\pi \int_{0}^1 \rho \cdot \rho^2 \sin\varphi \: d\rho \: d\varphi \: d\theta \\
+&= \int_0^{2\pi} d\theta \int_0^\pi \sin\varphi d\varphi \int_0^1 \rho^3 d\rho \\
+&= 2\pi \cdot 2 \cdot \frac{1}{4} \\
+&= \pi.
+\end{align*}
+}
+
+
+\vspace{3mm}
+
+\noindent \textbf{3.} Find the \emph{surface area} of the part of the plane $4x + 2y + z = 8$ that lies in the first octant. 
+
+\medskip 
+
+{\color{blue}
+\noindent \emph{Solution.} The surface lies above the region $D$ in the $xy$-plane in the first quadrant below the line $4x + 2y = 8$. Above $D$, the surface is the graph of $f(x,y) = 8 - 4x + 2y$. The surface area is given by the formula 
+\begin{align*}
+\text{Area} &= \iint_D \sqrt{1 + f_x^2 + f_y^2} \: dA \\
+&= \iint_D \sqrt{1 + (-4)^2 + (-2)^2} \: dA \\
+&=\sqrt{21}  \iint_D dA \\
+&= \sqrt{21} \cdot \text{Area}(D).
+\end{align*}
+The intercepts of the line $4x + 2y = 8$ are $(2,0)$ and $(4,0)$, and hence $D$ is right triangle with legs of length $2$ and $4$. It follows that the surface area is 
+\[
+\text{Area} = 4\sqrt{21} 
+\]
+}
+
+\end{document}
