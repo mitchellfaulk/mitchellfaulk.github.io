@@ -4,64 +4,93 @@ body {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	background-color: #5A5A5A;
+	margin: 0;
+	font-family: sans-serif;
+}
+
+p {
+	margin: 0;
+	padding: 0 .5vh;
 }
 
 .table {
 	display: grid;
-	grid-template-rows: 22vh 22vh 22vh 22vh;
-	grid-template-columns: 15vh 15vh 15vh;
+	grid-template-columns: 1fr 1fr 1fr;
 	background-color: #d3d3d3;
 	height: 90%;
 	width: 100%;
+	border-radius: 1vh;
 }
 
 .menu {
 	background-color: #5A5A5A;
-	display: flex;
-	height: 8vh;
+	display: grid;
+	grid-template-columns: 1fr 3fr;
+	height: 5vh;
 	width: 100%;
 	align-items: center;
 	justify-content: center;
+	border-radius: 1vh;
 }
+
+.menu-button {
+	background-color: #fff;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	border-radius: 1vh;
+	font-size: 0.65rem;
+	user-select: none;
+	margin: 0 0.5vh 0 0.5vh;
+	height: 100%;
+}
+
+#add-cards {
+	cursor: pointer;
+	text-align: center;
+	text-transform: uppercase;
+}
+
+#add-cards:hover {
+	filter: brightness(.9);
+}
+
 
 .card {
-	background-color: #ADD8E6;
+	background-color: #d3d3d3;
 	margin: 1vh;
-	user-select: none;
 	border-radius: 1vh;
 	justify-content: center;
-}
-
-.card:hover {
-	filter: brightness(90%);
+	overflow: hidden;
 }
 
 .card img {
 	max-height: 112%;
+	width: 120%;
 	margin: -1vh -1vh;
 }
 
-input[type="checkbox"] {
-  position: absolute;
-  visibility: hidden;
-  width: 100%;
-  height: 100%;
+input {
+	position: absolute;
+  	max-height: 0;
+  	overflow: hidden;
+  	visibility: hidden;
 }
 
 label {
-  position: relative;
-  display: inline-block;
-  width: 100%;
-  height: 100%;
-  cursor: pointer;
-  transition: all 0.1s ease-out;
-  overflow: hidden;
-  border-radius:1vh;
+	display: block;
+  	margin: 0;
+  	width: 100%;
+  	height: 100%;
+  	cursor: pointer;
 }
 
-input[type="checkbox"]:checked + label {
-  border: .5vh solid #43A6C6;
-  margin: -0.5vh -0.5vh;
-  animation: confirm 0.15s linear;
+
+
+.card:has(> label input:checked) {
+	filter: brightness(.9);
+	outline: 0.5vh solid #43A6C6;
 }
+
 

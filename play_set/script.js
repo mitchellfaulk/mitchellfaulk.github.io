@@ -1,22 +1,76 @@
 import Deck from './deck.js'
 
-const inputs = document.getElementsByTagName("input")
-const deck = new Deck()
-const discard = []
+const deckSlot = document.getElementById("deck")
+const foundSlot = document.getElementById("found")
+const addButton = document.getElementById("add-cards")
+const Table = document.getElementById("table")
+
+var inputs = document.getElementsByTagName("input")
+
+var deck = new Deck()
+var discard = []
 var table = []
 
 // shuffle the deck
 deck.shuffle()
 
 
+function addCards() {
+	// add slots
+	let newSlot1 = document.createElement('div')
+	let newSlot2 = document.createElement('div')
+	let newSlot3 = document.createElement('div')
+	newSlot1.className = "card"
+	newSlot2.className = "card"
+	newSlot3.className = "card"
+	newSlot1.innerHTML = "<label><input type='checkbox'></label>"
+	newSlot2.innerHTML = "<label><input type='checkbox'></label>"
+	newSlot3.innerHTML = "<label><input type='checkbox'></label>"
+	Table.appendChild(newSlot1)
+	Table.appendChild(newSlot2)
+	Table.appendChild(newSlot3)
+
+	// place cards
+	if (deck.numberOfCards > 0) {
+
+				// draw cards from deck and put cards in place
+				let newCard1 = deck.pop();
+				let newCard2 = deck.pop();
+				let newCard3 = deck.pop();
+				
+				newSlot1.lastChild.appendChild(newCard1.getHTML());
+				newSlot2.lastChild.appendChild(newCard2.getHTML());
+				newSlot3.lastChild.appendChild(newCard3.getHTML());
+
+				// add cards to the table list
+				table.push(newCard1);
+				table.push(newCard2);
+				table.push(newCard3);
+
+				inputs = document.getElementsByTagName("input")
+
+				for (var i=0; i < inputs.length; i++) {
+				inputs[i].addEventListener('change', checkForSET)
+
+				deckSlot.innerHTML = deck.numberOfCards;
+				}
+	}
+}
+
+// add cards button
+addButton.addEventListener('click', addCards)
+
+
+
+
 for (var i=0; i<12; i++) {
 	var topCard = deck.pop()
 	table.push(topCard)
-	inputs[i].parentNode.lastChild.appendChild(topCard.getHTML())
+	inputs[i].parentNode.appendChild(topCard.getHTML())
 }
 
-console.log(deck.cards)
-console.log(table)
+deckSlot.innerHTML = deck.numberOfCards;
+foundSlot.innerHTML = discard.length;
 
 function checkForSET() {
 	var checkedCardsIndices = getCheckedBoxesIndices();
@@ -25,38 +79,52 @@ function checkForSET() {
 	var k = checkedCardsIndices[2];
 	if (checkedCardsIndices.length === 3) {
 		// print to the console
-		console.log(checkedCardsIndices.length);
 		let x = isSet(table[i], table[j], table[k]);
-		console.log(x)
-		// if isSet is true, remove the old cards and append the new ones
-		if (x) {
-			let newCard1 = deck.pop();
-			let newCard2 = deck.pop();
-			let newCard3 = deck.pop();
-			let Slot1 = inputs[i].parentNode.lastChild;
-			let Slot2 = inputs[j].parentNode.lastChild;
-			let Slot3 = inputs[k].parentNode.lastChild;
-			console.log(inputs[i])
-			console.log(Slot1)
-			let oldCard1Image = Slot1.removeChild(Slot1.firstChild);
-			let oldCard2Image = Slot2.removeChild(Slot2.firstChild);
-			let oldCard3Image = Slot3.removeChild(Slot3.firstChild);
-			Slot1.appendChild(newCard1.getHTML());
-			Slot2.appendChild(newCard2.getHTML());
-			Slot3.appendChild(newCard3.getHTML());
-			table[i] = newCard1
-			table[j] = newCard2
-			table[k] = newCard3
-			discard.push(oldCard1Image)
-			discard.push(oldCard2Image)
-			discard.push(oldCard3Image)
-			console.log(discard)
-		}
 		// remove checked boxes
 		inputs[i].checked = false;
 		inputs[j].checked = false;
 		inputs[k].checked = false;
+		// if isSet is true, remove the old cards and append the new ones
+		if (x) {
+			// remove cards
+			let Slot1 = inputs[i].parentNode;
+			let Slot2 = inputs[j].parentNode;
+			let Slot3 = inputs[k].parentNode;
+			let oldCard1Image = Slot1.removeChild(Slot1.lastChild);
+			let oldCard2Image = Slot2.removeChild(Slot2.lastChild);
+			let oldCard3Image = Slot3.removeChild(Slot3.lastChild);
+			discard.push([oldCard1Image, oldCard2Image, oldCard3Image]);
+			console.log(discard);
+
+			if (table.length > 12) {
+				Table.removeChild(Slot1.parentNode);
+				Table.removeChild(Slot2.parentNode);
+				Table.removeChild(Slot3.parentNode);
+				table.splice(k,1);
+				table.splice(j,1);
+				table.splice(i,1);
+			} else if (deck.numberOfCards > 0) {
+
+				// draw cards from deck and put cards in place
+				let newCard1 = deck.pop();
+				let newCard2 = deck.pop();
+				let newCard3 = deck.pop();
+				table[i] = newCard1;
+				table[j] = newCard2;
+				table[k] = newCard3;
+				Slot1.appendChild(newCard1.getHTML());
+				Slot2.appendChild(newCard2.getHTML());
+				Slot3.appendChild(newCard3.getHTML());
+			}
+		}
+		
+
+		// update the menu data
+		deckSlot.innerHTML = deck.numberOfCards;
+		foundSlot.innerHTML = discard.length;
+		console.log(table);
 	}
+
 }
 
 function getCheckedBoxesIndices() {
