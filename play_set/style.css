@@ -5,7 +5,7 @@
 body {
 	display: flex;
 	flex-direction: row-reverse;
-	height: 85vh; /* fallback for Js load */
+	height: 80vh; /* fallback for Js load */
 	width: 95%;
 	background-color: #d3d3d3;
 	font-family: sans-serif;
@@ -118,7 +118,7 @@ label {
 
 .card:has(> label input:checked) {
 	filter: brightness(.9);
-	outline: 0.7rem solid #43A6C6;
+	box-shadow: 0 0 0.7rem 0.4rem #43A6C6;
 }
 
 .card.hint {
