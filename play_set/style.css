@@ -5,7 +5,7 @@
 body {
 	display: flex;
 	flex-direction: row-reverse;
-	height: 100vh; /* fallback for Js load */
+	height: 85vh; /* fallback for Js load */
 	width: 95%;
 	background-color: #d3d3d3;
 	font-family: sans-serif;
@@ -45,6 +45,7 @@ p {
 	text-transform: uppercase;
 	padding-top: 4rem;
 	padding-bottom: 4rem;
+	margin-left: 0.5rem;
 	color: #ffffff;
 	background-color:  #808080;
 	border: #525252 solid;
@@ -62,6 +63,7 @@ p {
 	text-transform: uppercase;
 	padding-top: 6.05rem;
 	padding-bottom: 6.05rem;
+	margin-left: 0.5rem;
 	color: #ffffff;
 	border: #525252 solid;
 	background-color: #808080;
@@ -76,7 +78,7 @@ p {
 	display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     background-color: #d3d3d3;
-    height: 90%;
+    height: 100%;
     width: 15rem;
     border-radius: 1vw;
     grid-gap: 1vw;
@@ -114,7 +116,6 @@ label {
   	margin-top: -5%;
   	cursor: pointer;
   	overflow: hidden;
-  	left: 0.5vw;
 }
 
 .card:has(> label input:checked) {
