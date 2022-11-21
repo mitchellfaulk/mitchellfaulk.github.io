@@ -1,5 +1,11 @@
 import Deck from './deck.js'
 
+
+
+
+
+// declare some variables 
+
 const deckSlot = document.getElementById("deck")
 const foundSlot = document.getElementById("found")
 const addButton = document.getElementById("add-cards")

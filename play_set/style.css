@@ -1,49 +1,53 @@
+:root {
+ --doc-height: 100%;
+}
+
 body {
-	height: 100vh;
-	width: 45vh;
 	display: flex;
-	flex-flow: column;
-	align-items: center;
+	flex-direction: row-reverse;
+	height: 100vh; /* fallback for Js load */
+	width: 95%;
 	background-color: #d3d3d3;
 	font-family: sans-serif;
-	margin: 1vh;
+	margin: 1vw;
 }
 
 p {
 	margin: 0;
-	padding: 0 .5vh;
+	padding: 0 .5vw;
 }
 
 .menu {
-	flex: 0 0 1.7rem;
+	flex: 1 0 auto;
 	background-color: #d3d3d3;
-	display: grid;
-	grid-template-columns: 1fr 1fr 2fr;
-	height: 1.7rem;
-	width: 100%;
+	display: flex;
+	flex-direction: column;
+	height: 100%;
 	align-items: center;
-	justify-content: center;
-	border-radius: 1vh;
-	grid-gap: 1vh;
-	margin-bottom: 1vh;
+	border-radius: 1vw;
+	grid-gap: 1vw;
 }
 
 .menu-button {
-	background-color: #fff;
-	display: flex;
-	flex-direction: column;
+	display: block;
+	left: 1rem;
 	justify-content: center;
-	border-radius: 1vh;
-	font-size: 0.5rem;
+	border-radius: 1vw;
 	user-select: none;
-	height: 100%;
+	width: 100%;
+	padding-top: 1vw;
+	padding-bottom: 1vw;
 }
 
 #hint {
 	cursor: pointer;
 	text-align: center;
 	text-transform: uppercase;
-	font-size: 0.8rem;
+	padding-top: 4rem;
+	padding-bottom: 4rem;
+	color: #ffffff;
+	background-color:  #808080;
+	border: #525252 solid;
 }
 
 #hint:hover {
@@ -51,10 +55,16 @@ p {
 }
 
 #add-cards {
+	display: inline;
+	word-break: break-all;
 	cursor: pointer;
 	text-align: center;
 	text-transform: uppercase;
-	font-size: 0.8rem;
+	padding-top: 6.05rem;
+	padding-bottom: 6.05rem;
+	color: #ffffff;
+	border: #525252 solid;
+	background-color: #808080;
 }
 
 #add-cards:hover {
@@ -67,24 +77,23 @@ p {
     grid-template-columns: 1fr 1fr 1fr;
     background-color: #d3d3d3;
     height: 90%;
-    width: 100%;
-    border-radius: 1vh;
-    grid-gap: 1vh;
+    width: 15rem;
+    border-radius: 1vw;
+    grid-gap: 1vw;
+    margin-right: 1vw;
 }
 
 
 .card {
 	background-color: #d3d3d3;
-    border-radius: 1vh;
+    border-radius: 1vw;
     justify-content: center;
     overflow: hidden;
 }
 
-.card img {
-	width: 5rem;
-	height: 112%;
-	left: 1vh;
-	top: 4%;
+label img {
+	width: 5.3rem;
+	height: 100%;
 }
 
 input {
@@ -100,15 +109,17 @@ label {
   	justify-content: center;
   	align-items: center;
   	width: 100%;
-  	height: 100%;
-  	border-radius: 1vh;
+  	height: 110%;
+  	border-radius: 1vw;
+  	margin-top: -5%;
   	cursor: pointer;
   	overflow: hidden;
+  	left: 0.5vw;
 }
 
 .card:has(> label input:checked) {
 	filter: brightness(.9);
-	outline: 0.5vh solid #43A6C6;
+	outline: 0.5vw solid #43A6C6;
 }
 
 .card.hint {
