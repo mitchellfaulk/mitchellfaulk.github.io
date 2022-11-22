@@ -7,7 +7,7 @@ body {
 	flex-direction: row-reverse;
 	align-items: flex-start;
 	height: 85vh; /* fallback for Js load */
-	width: 97%;
+	width: 95vw;
 	background-color: #d3d3d3;
 	font-family: sans-serif;
 	margin: 0.3rem;
@@ -26,6 +26,7 @@ p {
 	align-items: center;
 	border-radius: .3rem;
 	grid-gap: .3rem;
+	margin-right: 1.5vw;
 }
 
 .menu-button {
