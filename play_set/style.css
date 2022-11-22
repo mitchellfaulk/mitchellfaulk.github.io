@@ -76,7 +76,6 @@ p {
     justify-content: center;
     overflow: hidden;
     width: 100%;
-    aspect-ratio: 1/1.42;
     transition: box-shadow 0.5s;
     user-select: none;
 }
