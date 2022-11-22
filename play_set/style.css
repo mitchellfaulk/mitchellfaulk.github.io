@@ -2,11 +2,11 @@ body {
 	display: flex;
 	flex-direction: row-reverse;
 	align-items: flex-start;
-	height: 85vh; /* fallback for Js load */
+	height: 85vh; 
 	width: 97vw;
 	background-color: #d3d3d3;
 	font-family: sans-serif;
-	margin: 0.3rem;
+	margin: 1vh;
 	font-size: 2vh;
 }
 
@@ -19,22 +19,18 @@ p {
 	flex-direction: column;
 	flex: 1 0 auto;
 	background-color: #d3d3d3;
-	border-radius: .3rem;
 	grid-gap: 1vh;
 	height: 66%;
 }
 
 .menu-text {
-	border-radius: .3rem;
+	border-radius: 1vh;
 	user-select: none;
 	margin-left: 1vw;
 }
 
 .menu-button {
-	padding-top: 1vh;
-	padding-bottom: 1vh;
-	padding-left: 1vh;
-	padding-right: 1vh;
+	padding: 0.5vw;
 	text-align: center;
 	cursor: pointer;
 	text-transform: uppercase;
