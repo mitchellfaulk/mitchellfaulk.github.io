@@ -30,7 +30,7 @@ p {
 }
 
 .menu-button {
-	padding: 0.5vw;
+	padding-top: 1vh;
 	text-align: center;
 	cursor: pointer;
 	text-transform: uppercase;
@@ -60,6 +60,7 @@ p {
 
 
 .table {
+	width: 85vw;
 	max-height: 85vh;
 	display: grid;
     grid-template-columns: 1fr 1fr 1fr;
