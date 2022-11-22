@@ -60,14 +60,13 @@ p {
 
 
 .table {
-	width: 85vw;
-	max-height: 85vh;
+	height: 85vh;
 	display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     background-color: #d3d3d3;
     border-radius: .3rem;
     grid-gap: 1vh;
-    margin-right: .5rem;
+    margin-right: 1vh;
 }
 
 
@@ -76,8 +75,8 @@ p {
     border-radius: .3rem;
     justify-content: center;
     overflow: hidden;
-    aspect-ratio: 1/1.42; 
     width: 100%;
+    aspect-ratio: 1/1.42;
     transition: box-shadow 0.5s;
     user-select: none;
 }
