@@ -6,7 +6,7 @@ body {
 	display: flex;
 	flex-direction: row-reverse;
 	align-items: flex-start;
-	height: 90vh; /* fallback for Js load */
+	height: 85vh; /* fallback for Js load */
 	width: 97%;
 	background-color: #d3d3d3;
 	font-family: sans-serif;
