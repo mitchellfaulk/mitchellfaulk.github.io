@@ -34,8 +34,7 @@ p {
 	border-radius: .3rem;
 	user-select: none;
 	width: 100%;
-	padding-top: 0;
-	padding-bottom: .3rem;
+	margin-left: 2vh;
 }
 
 #hint {
@@ -74,12 +73,12 @@ p {
 
 
 .table {
-	width: 75vw;
+	height: 100%;
 	display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     background-color: #d3d3d3;
     border-radius: .3rem;
-    grid-gap: .3rem;
+    grid-gap: 1vh;
     margin-right: .3rem;
 }
 
@@ -91,7 +90,6 @@ p {
     overflow: hidden;
     aspect-ratio: 3 / 5;
     width: 100%;
-    margin-bottom: .3rem;
 }
 
 label img {
