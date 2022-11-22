@@ -89,7 +89,7 @@ p {
     border-radius: .3rem;
     justify-content: center;
     overflow: hidden;
-    aspect-ratio: 3 / 5;
+    /* aspect-ratio: 3 / 5; */ 
     width: 100%;
 }
 
