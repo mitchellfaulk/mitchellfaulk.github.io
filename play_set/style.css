@@ -30,23 +30,26 @@ p {
 }
 
 .menu-button {
-	padding-top: 1vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 	text-align: center;
 	cursor: pointer;
 	text-transform: uppercase;
-	color: #ffffff;
-	background-color:  #808080;
-	border: #525252 solid;
+	border: 0.1vh #525252 solid;
 	border-radius: 1vh;
+	box-shadow: 0.5vh 0.5vh 1vh #808080;
 	transition: filter 0.3s;
 }
 
 #hint {
 	flex-grow: 1;
+	background-color: #ffe5bf;
 }
 
 #add-cards {
 	flex-grow: 3;
+	background-color: #bfd9ff;
 }
 
 .menu-button-text {
@@ -65,7 +68,7 @@ p {
     grid-template-columns: 1fr 1fr 1fr;
     background-color: #d3d3d3;
     border-radius: .3rem;
-    grid-gap: 1vh;
+    grid-gap: 2vh;
     margin-right: 1vh;
 }
 
@@ -78,6 +81,8 @@ p {
     width: 100%;
     transition: box-shadow 0.3s;
     user-select: none;
+    outline: 0.1vh #AEAEAE solid;
+    box-shadow: 0.5vh 0.5vh 1vh #808080;
 }
 
 label img {
@@ -107,16 +112,17 @@ label {
 }
 
 .card:has(> label input:checked) {
-	filter: brightness(.9);
-	box-shadow: 0 0 0.7rem 0.4rem #43A6C6;
+	box-shadow: 0 0 1vh .5vh blue;
 }
 
+
+
 .card.hint {
-	box-shadow: 0 0 0.7rem 0.3rem green; 
+	box-shadow: 0 0 1vh 1vh #ff9d0e; 
 }
 
 .menu-button.hint {
-	box-shadow: 0 0 0.7rem 0.3rem green;
+	box-shadow: 0 0 1vh 1vh #ff9d0e;
 }
 
 
@@ -142,6 +148,7 @@ label {
 	}
 
 	.menu-button {
+		display: inline;
 		width: auto;
 		padding: 1vh 1vh;
 	}
