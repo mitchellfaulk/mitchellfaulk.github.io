@@ -76,7 +76,7 @@ p {
     justify-content: center;
     overflow: hidden;
     width: 100%;
-    transition: box-shadow 0.5s;
+    transition: box-shadow 0.3s;
     user-select: none;
 }
 
@@ -143,6 +143,7 @@ label {
 
 	.menu-button {
 		width: auto;
+		padding: 1vh 1vh;
 	}
 
 	.menu-button-text {
