@@ -7,17 +7,14 @@
   <style>
     :root {
       --bg: #050505;
-      --fg: #f2f2f2;
-      --muted: #b8b8b8;
-      --dim: #8a8a8a;
-      --border: #2a2a2a;
+      --fg: #f5f5f5;
+      --muted: #bdbdbd;
+      --dim: #8b8b8b;
     }
 
-    * { box-sizing: border-box; }
-
+    html, body { height: 100%; }
     body {
       margin: 0;
-      min-height: 100vh;
       background: var(--bg);
       color: var(--fg);
       font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
@@ -25,79 +22,70 @@
       line-height: 1.45;
     }
 
-    .term {
-      max-width: 900px;
+    /* Terminal buffer */
+    .terminal {
+      max-width: 920px;
       margin: 0 auto;
-      padding: 32px 18px 80px;
-    }
-
-    .banner {
-      color: var(--muted);
-      margin-bottom: 18px;
-    }
-
-    .banner .path {
-      color: var(--fg);
-    }
-
-    .rule {
-      height: 1px;
-      background: var(--border);
-      margin: 14px 0 18px;
-    }
-
-    .log {
+      padding: 24px 18px 60px;
       white-space: pre-wrap;
-      margin: 0 0 18px 0;
     }
 
-    .label {
-      color: var(--muted);
+    .muted { color: var(--muted); }
+    .dim { color: var(--dim); }
+
+    /* Prompt line */
+    .prompt-line {
+      display: inline-flex;
+      align-items: baseline;
+      gap: 6px;
     }
 
-    .dim {
-      color: var(--dim);
+    .prompt { color: var(--muted); }
+
+    /* Input that looks like terminal text */
+    .cmd-input {
+      background: transparent;
+      border: none;
+      color: var(--fg);
+      font: inherit;
+      outline: none;
+      padding: 0;
+      margin: 0;
+      min-width: 10ch;
+      caret-color: transparent; /* hide native caret */
     }
 
-    .payload-title {
-      color: var(--muted);
-      margin: 0 0 6px 0;
+    /* Blinking block cursor */
+    .cursor {
+      display: inline-block;
+      width: 0.6ch;
+      height: 1.15em;
+      background: var(--fg);
+      vertical-align: -0.18em;
+      margin-left: 2px;
+      animation: blink 1.1s steps(1) infinite;
+    }
+    @keyframes blink {
+      0%, 49% { opacity: 1; }
+      50%, 100% { opacity: 0; }
     }
 
-    .payload {
-      white-space: pre;
-      overflow-x: auto;
-      padding: 10px 12px;
-      border: 1px solid var(--border);
-      background: #080808;
-    }
-
-    .footer {
-      margin-top: 22px;
-      color: var(--dim);
-    }
+    /* History lines appended by JS */
+    .history-line { white-space: pre-wrap; }
   </style>
 </head>
 <body>
-  <main class="term">
-    <div class="banner">
-      <span class="label">node:</span> <span class="path">/start</span>
-      <span class="dim"> // holiday protocol // address chain</span>
-    </div>
+  <main class="terminal" id="terminal">
+<span class="muted">node:</span> /start <span class="dim">// address chain</span>
 
-    <div class="rule"></div>
-
-    <pre class="log">[init] terminal online
+[init] terminal online
 [net ] route table sync: degraded
 [err ] payload integrity failure
-[dbg ] dumping fragments...</pre>
+[dbg ] dumping fragments...
 
-    <div class="rule"></div>
+[payload] index:value
 
-    <div class="payload-title">[payload] index:value</div>
-
-    <!-- Replace the block below with your real binary pairs and separators. -->
-    <pre class="payload">00001 : 01001
+00001 : 01001
 00010 : 01110
 00011 : 00100
 00100 : 00101
@@ -120,9 +108,97 @@
 00010 : 10100
 00011 : 00001
 00100 : 10010
-00101 : 10100</pre>
+00101 : 10100
 
-    <div class="footer">[eof] no further output</div>
+<span class="dim">type the next endpoint</span>
+
+<div id="history"></div>
+
+<div class="prompt-line">
+  <span class="prompt">guest@nocturne:~$</span>
+  <input
+    id="cmd"
+    class="cmd-input"
+    type="text"
+    spellcheck="false"
+    autocomplete="off"
+    autocapitalize="off"
+  />
+  <span class="cursor" aria-hidden="true"></span>
+</div>
   </main>
+
+  <script>
+    // === CONFIG ===
+    // Set this to the correct next endpoint (no leading slash).
+    const EXPECTED_ENDPOINT = "cache";
+
+    // Add optional aliases if you want to accept multiple spellings.
+    const ACCEPT_ALIASES = new Set([EXPECTED_ENDPOINT]);
+
+    const historyEl = document.getElementById("history");
+    const inputEl = document.getElementById("cmd");
+
+    function addHistory(text) {
+      const div = document.createElement("div");
+      div.className = "history-line";
+      div.textContent = text;
+      historyEl.appendChild(div);
+      window.scrollTo(0, document.body.scrollHeight);
+    }
+
+    function normalizeEndpoint(raw) {
+      if (!raw) return "";
+      let s = raw.trim().toLowerCase();
+
+      // If they paste a full URL, strip protocol + domain.
+      s = s.replace(/^https?:\/\//, "");
+      const slashIdx = s.indexOf("/");
+      if (slashIdx >= 0 && s.includes(".")) {
+        s = s.slice(slashIdx + 1);
+      }
+
+      s = s.replace(/^\//, "");
+      s = s.replace(/\s+/g, "");
+      s = s.replace(/\/+$/, "");
+      return s;
+    }
+
+    function isCorrect(endpoint) {
+      return ACCEPT_ALIASES.has(endpoint);
+    }
+
+    function handleLine(line) {
+      const promptText = "guest@nocturne:~$ ";
+      addHistory(promptText + line);
+
+      const endpoint = normalizeEndpoint(line);
+
+      if (!endpoint) {
+        addHistory("[err ] empty input");
+        return;
+      }
+
+      if (isCorrect(endpoint)) {
+        addHistory("[ok  ] route accepted");
+        // GitHub Pages-friendly relative navigation:
+        window.location.href = "./" + endpoint + "/";
+      } else {
+        addHistory("[err ] route rejected");
+      }
+    }
+
+    function focusInput() { inputEl.focus(); }
+    window.addEventListener("load", focusInput);
+    window.addEventListener("click", focusInput);
+
+    inputEl.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") {
+        const line = inputEl.value;
+        inputEl.value = "";
+        handleLine(line);
+      }
+    });
+  </script>
 </body>
 </html>
