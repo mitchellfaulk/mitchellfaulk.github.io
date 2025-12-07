@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>start // recovered node</title>
+
+  <!-- Optional: cyberpunk-ish mono + display fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600;800&family=Rajdhani:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-0: #05060b;
+      --bg-1: #070a12;
+      --bg-2: #0b1020;
+
+      --neon-cyan: #38f8ff;
+      --neon-magenta: #ff3df0;
+      --neon-lime: #8bff5a;
+      --neon-amber: #ffb84d;
+
+      --text-0: #e8f2ff;
+      --text-1: #b6c7e6;
+      --muted: #7b8aa8;
+
+      --glow-soft: 0 0 10px rgba(56,248,255,0.25), 0 0 30px rgba(255,61,240,0.18);
+      --glow-hard: 0 0 8px rgba(139,255,90,0.45), 0 0 22px rgba(139,255,90,0.25);
+
+      --radius-lg: 18px;
+      --radius-md: 12px;
+
+      --border-faint: rgba(120,150,220,0.18);
+      --border-bright: rgba(56,248,255,0.45);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--text-0);
+      background:
+        radial-gradient(1200px 600px at 12% 10%, rgba(56,248,255,0.08), transparent 60%),
+        radial-gradient(1000px 700px at 88% 20%, rgba(255,61,240,0.08), transparent 60%),
+        radial-gradient(1200px 900px at 50% 90%, rgba(139,255,90,0.06), transparent 60%),
+        linear-gradient(180deg, var(--bg-0), var(--bg-2));
+      font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+      overflow-x: hidden;
+    }
+
+    /* Subtle scanlines */
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background: repeating-linear-gradient(
+        to bottom,
+        rgba(255,255,255,0.015) 0px,
+        rgba(255,255,255,0.015) 1px,
+        transparent 2px,
+        transparent 4px
+      );
+      mix-blend-mode: overlay;
+      opacity: 0.35;
+    }
+
+    .wrap {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 48px 20px 80px;
+      position: relative;
+    }
+
+    /* Top "node" header */
+    .node-header {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 14px;
+      align-items: center;
+      padding: 22px 24px;
+      border-radius: var(--radius-lg);
+      background:
+        linear-gradient(135deg, rgba(56,248,255,0.08), rgba(255,61,240,0.06), rgba(139,255,90,0.05));
+      border: 1px solid var(--border-faint);
+      box-shadow: var(--glow-soft);
+      backdrop-filter: blur(6px);
+    }
+
+    .node-title {
+      font-family: "Rajdhani", system-ui, sans-serif;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      font-size: clamp(22px, 3vw, 30px);
+      font-weight: 700;
+      margin: 0 0 2px 0;
+    }
+
+    .node-sub {
+      margin: 0;
+      color: var(--muted);
+      font-size: 12px;
+      letter-spacing: 0.08em;
+    }
+
+    .status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(139,255,90,0.35);
+      background: rgba(139,255,90,0.08);
+      color: var(--neon-lime);
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--neon-lime);
+      box-shadow: var(--glow-hard);
+    }
+
+    /* Main grid */
+    .grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 18px;
+      margin-top: 22px;
+    }
+
+    @media (max-width: 860px) {
+      .grid { grid-template-columns: 1fr; }
+    }
+
+    .panel {
+      border-radius: var(--radius-lg);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.0)),
+        linear-gradient(135deg, rgba(56,248,255,0.04), rgba(255,61,240,0.04), rgba(139,255,90,0.03));
+      border: 1px solid var(--border-faint);
+      padding: 20px 20px 16px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .panel::before {
+      content: "";
+      position: absolute;
+      top: -40%;
+      right: -30%;
+      width: 360px;
+      height: 360px;
+      background: radial-gradient(circle at center, rgba(56,248,255,0.12), transparent 60%);
+      filter: blur(10px);
+      opacity: 0.7;
+      pointer-events: none;
+    }
+
+    .panel-title {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      margin: 0 0 12px 0;
+    }
+
+    .panel-title h2 {
+      margin: 0;
+      font-family: "Rajdhani", system-ui, sans-serif;
+      font-size: 18px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    .panel-title .tag {
+      font-size: 10px;
+      color: var(--muted);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    /* Terminal block */
+    .term {
+      border-radius: var(--radius-md);
+      background: linear-gradient(180deg, rgba(5,10,22,0.9), rgba(5,10,22,0.6));
+      border: 1px solid rgba(56,248,255,0.18);
+      padding: 14px 14px 10px;
+    }
+
+    .term-line {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 10px;
+      align-items: start;
+      padding: 2px 0;
+      font-size: 12px;
+      line-height: 1.35;
+    }
+
+    .term-label {
+      color: var(--neon-cyan);
+      opacity: 0.85;
+      letter-spacing: 0.06em;
+      min-width: 58px;
+    }
+
+    .term-msg {
+      color: var(--text-1);
+    }
+
+    .term-em {
+      color: var(--neon-magenta);
+    }
+
+    /* Puzzle body */
+    .puzzle-desc {
+      color: var(--muted);
+      font-size: 11.5px;
+      line-height: 1.45;
+      margin: 0 0 12px 0;
+    }
+
+    .data-block {
+      border-radius: var(--radius-md);
+      border: 1px solid rgba(120,150,220,0.22);
+      background: rgba(7,10,18,0.55);
+      padding: 14px 14px 10px;
+      font-size: 12px;
+      line-height: 1.45;
+      white-space: pre;
+      overflow-x: auto;
+    }
+
+    .data-hint {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 10px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-size: 10px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--neon-amber);
+      border: 1px solid rgba(255,184,77,0.28);
+      background: rgba(255,184,77,0.08);
+    }
+
+    /* Right-side "node info" */
+    .kv {
+      display: grid;
+      grid-template-columns: 96px 1fr;
+      gap: 8px 12px;
+      font-size: 11.5px;
+      line-height: 1.35;
+      margin: 6px 0 0 0;
+    }
+
+    .kv dt {
+      color: var(--muted);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .kv dd {
+      margin: 0;
+      color: var(--text-1);
+    }
+
+    .divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(56,248,255,0.3), rgba(255,61,240,0.25), transparent);
+      margin: 14px 0 12px;
+    }
+
+    /* Footer */
+    .footer {
+      margin-top: 28px;
+      color: rgba(182,199,230,0.55);
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-align: center;
+    }
+
+    /* Tiny glitch accent */
+    .glitch {
+      position: relative;
+      display: inline-block;
+      text-shadow: 0 0 10px rgba(56,248,255,0.25);
+    }
+    .glitch::before,
+    .glitch::after {
+      content: attr(data-text);
+      position: absolute;
+      left: 0;
+      top: 0;
+      opacity: 0.55;
+      pointer-events: none;
+      mix-blend-mode: screen;
+    }
+    .glitch::before {
+      transform: translate(1px, 0);
+      color: var(--neon-cyan);
+    }
+    .glitch::after {
+      transform: translate(-1px, 0);
+      color: var(--neon-magenta);
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+
+    <section class="node-header">
+      <div>
+        <h1 class="node-title"><span class="glitch" data-text="Start">Start</span> // recovered node</h1>
+        <p class="node-sub">address chain // holiday protocol // v0.1</p>
+      </div>
+      <div class="status-pill"><span class="status-dot"></span> online</div>
+    </section>
+
+    <section class="grid">
+
+      <!-- LEFT: terminal + puzzle body -->
+      <article class="panel">
+        <div class="panel-title">
+          <h2>Terminal Output</h2>
+          <span class="tag">cold boot</span>
+        </div>
+
+        <div class="term" role="region" aria-label="Terminal output">
+          <div class="term-line"><span class="term-label">[init]</span><span class="term-msg">terminal online</span></div>
+          <div class="term-line"><span class="term-label">[net]</span><span class="term-msg">route table sync: <span class="term-em">degraded</span></span></div>
+          <div class="term-line"><span class="term-label">[err ]</span><span class="term-msg">address payload corrupted</span></div>
+          <div class="term-line"><span class="term-label">[dbg ]</span><span class="term-msg">fragment dump follows</span></div>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="panel-title">
+          <h2>Payload</h2>
+          <span class="tag">index:value</span>
+        </div>
+
+        <!-- Minimal description. You can remove this entirely if you want zero instruction. -->
+        <p class="puzzle-desc">
+          A small shard of ordered data survived the breach.
+        </p>
+
+        <!-- Replace this block with your real binary pairs. -->
+        <pre class="data-block">00001 : 01001
+00010 : 01110
+00011 : 00100
+00100 : 00101
+00101 : 11000
+
+00011 : 10010
+00001 : 00111
+00010 : 01001
+
+.
+
+00001 : 00111
+00010 : 01001
+00011 : 10100
+000100 : 01000
+000101 : 10101
+
+.
+
+00001 : 01001
+00010 : 01111
+
+/
+
+00001 : 10011
+00010 : 10100
+00011 : 00001
+00100 : 10010
+00101 : 10100</pre>
+
+        <span class="data-hint">placeholder data</span>
+      </article>
+
+      <!-- RIGHT: node info / diegetic UI -->
+      <aside class="panel">
+        <div class="panel-title">
+          <h2>Node Diagnostics</h2>
+          <span class="tag">read-only</span>
+        </div>
+
+        <dl class="kv">
+          <dt>Endpoint</dt>
+          <dd>/start</dd>
+
+          <dt>Layer</dt>
+          <dd>address bootstrap</dd>
+
+          <dt>Signal</dt>
+          <dd>fragmented</dd>
+
+          <dt>Mode</dt>
+          <dd>offline decode</dd>
+
+          <dt>Hint level</dt>
+          <dd>minimal</dd>
+        </dl>
+
+        <div class="divider"></div>
+
+        <div class="panel-title">
+          <h2>Artifact Log</h2>
+          <span class="tag">optional meta</span>
+        </div>
+
+        <!-- This is a safe place to later add a tiny meta seed without changing the main puzzle. -->
+        <div class="term">
+          <div class="term-line"><span class="term-label">[meta]</span><span class="term-msg">artifact registered: 01</span></div>
+          <div class="term-line"><span class="term-label">[meta]</span><span class="term-msg">memory blocks: null</span></div>
+          <div class="term-line"><span class="term-label">[meta]</span><span class="term-msg">endpoint class: bootstrap</span></div>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="panel-title">
+          <h2>UI Notes</h2>
+          <span class="tag">for you</span>
+        </div>
+        <p class="puzzle-desc">
+          This page is designed as a reusable template. Duplicate it and swap:
+          endpoint name, terminal lines, puzzle block, and any meta seeds.
+        </p>
+      </aside>
+
+    </section>
+
+    <div class="footer">mitchellfaulk.github.io // node chain // holiday protocol</div>
+
+  </main>
+</body>
+</html>
