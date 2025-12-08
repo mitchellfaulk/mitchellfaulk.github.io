@@ -1,11 +1,12 @@
 (function () {
-  const historyEl = document.getElementById("history");
-  const promptWrapper = document.getElementById("promptWrapper");
-  const inputEl = document.getElementById("cmd");
+    const historyEl = document.getElementById("history");
+    const liveInputLine = document.getElementById("liveInputLine");
+    const liveTypedEl = document.getElementById("liveTyped");
+    const inputEl = document.getElementById("hiddenCmd");
 
-  if (!historyEl || !promptWrapper || !inputEl) {
-    console.error("terminal-core: missing required DOM elements");
-    return;
+    if (!historyEl || !liveInputLine || !liveTypedEl || !inputEl) {
+        console.error("terminal-core: missing required DOM elements");
+        return;
   }
 
   const sleep = (ms) => new Promise((res) => setTimeout(res, ms));
@@ -90,21 +91,25 @@
     return s;
   }
 
-  function lockInput() {
+    function lockInput() {
     inputEl.disabled = true;
     inputEl.blur();
-  }
+    liveInputLine.classList.add("hidden");
+    liveTypedEl.textContent = "";
+    }
 
-  function unlockInput() {
+    function unlockInput() {
     inputEl.disabled = false;
-    promptWrapper.classList.remove("hidden");
+    liveInputLine.classList.remove("hidden");
     inputEl.value = "";
+    liveTypedEl.textContent = "";
     inputEl.focus();
-  }
+    window.scrollTo(0, document.body.scrollHeight);
+    }
 
-  function focusInput() {
+    function focusInput() {
     if (!inputEl.disabled) inputEl.focus();
-  }
+    }
 
   function getConfigPath() {
     const script = document.querySelector("script[data-config]");
@@ -229,12 +234,19 @@
 
     window.addEventListener("click", focusInput);
 
+    inputEl.addEventListener("input", () => {
+        liveTypedEl.textContent = inputEl.value;
+    });
+
+
     inputEl.addEventListener("keydown", (e) => {
-      if (e.key === "Enter") {
+    if (e.key === "Enter") {
+        e.preventDefault();
         const line = inputEl.value;
         inputEl.value = "";
+        liveTypedEl.textContent = "";
         handleLine(cfg, line);
-      }
+    }
     });
 
     focusInput();

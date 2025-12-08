@@ -72,3 +72,10 @@ body {
 
 /* Hide prompt until boot completes */
 .prompt-wrapper.hidden { display: none; }
+
+#hiddenCmd {
+  position: fixed;
+  left: -10000px;
+  top: -10000px;
+  opacity: 0;
+}

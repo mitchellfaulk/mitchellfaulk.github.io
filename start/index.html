@@ -7,25 +7,24 @@
   <link rel="stylesheet" href="../assets/css/terminal.css" />
 </head>
 <body>
-  <main class="terminal" id="terminal">
+    <main class="terminal" id="terminal">
     <div id="history"></div>
 
-    <div id="promptWrapper" class="prompt-wrapper hidden">
-      <div class="prompt-line">
-        <span class="prompt muted">input:</span>
-        <input
-          id="cmd"
-          class="cmd-input"
-          type="text"
-          spellcheck="false"
-          autocomplete="off"
-          autocapitalize="off"
-          aria-label="Terminal command input"
-        />
-        <span class="cursor" aria-hidden="true"></span>
-      </div>
+    <div id="liveInputLine" class="history-line hidden">
+        <span class="muted">awaiting input</span>
+        <span> </span>
+        <span id="liveTyped"></span><span class="cursor" aria-hidden="true"></span>
     </div>
-  </main>
+
+    <input
+        id="hiddenCmd"
+        type="text"
+        spellcheck="false"
+        autocomplete="off"
+        autocapitalize="off"
+        aria-label="Hidden program input"
+    />
+    </main>
 
   <script src="../assets/js/terminal-core.js" data-config="../data/start.json"></script>
 </body>
