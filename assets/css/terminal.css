@@ -5,6 +5,7 @@
   --dim: #8b8b8b;
 }
 
+/* Base reset */
 html, body { height: 100%; }
 * { box-sizing: border-box; }
 
@@ -17,20 +18,24 @@ body {
   line-height: 1.45;
 }
 
+/* Terminal buffer - flush to edges */
 .terminal {
   width: 100%;
   margin: 0;
-  padding: 0 0 56px 0;
+  padding: 0 0 56px 0; /* bottom breathing room only */
   white-space: pre-wrap;
 }
 
+/* Lines */
 .history-line {
   white-space: pre-wrap;
 }
 
+/* Utility tones */
 .muted { color: var(--muted); }
 .dim { color: var(--dim); }
 
+/* Cursor */
 .cursor {
   display: inline-block;
   width: 0.6ch;
@@ -46,6 +51,7 @@ body {
   50%, 100% { opacity: 0; }
 }
 
+/* Hidden real input for capturing keystrokes */
 #hiddenCmd {
   position: fixed;
   left: -10000px;
@@ -56,3 +62,15 @@ body {
   border: 0;
   padding: 0;
 }
+
+/* --- Color coding (subtle terminal-like) --- */
+/* You can tweak these later to taste */
+.line-err  { color: #ff5c5c; }
+.line-ok   { color: #7cff9b; }
+.line-note { color: #8fd3ff; }
+.line-sys  { color: #c9c9c9; }
+.line-dbg  { color: var(--dim); }
+.line-init { color: var(--muted); }
+.line-net  { color: #cbb7ff; }
+.line-payload { color: var(--fg); }
+.line-in   { color: var(--fg); }

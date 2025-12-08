@@ -2,13 +2,47 @@
   const historyEl = document.getElementById("history");
   const inputEl = document.getElementById("hiddenCmd");
 
+  if (!historyEl || !inputEl) {
+    console.error("terminal-core: missing #history or #hiddenCmd");
+    return;
+  }
+
   const sleep = (ms) => new Promise((res) => setTimeout(res, ms));
+
+  /* -----------------------------
+     Line creation + classification
+  ------------------------------ */
+
+  function classifyLine(div) {
+    const t = div.textContent || "";
+
+    if (t.startsWith("[err")) div.classList.add("line-err");
+    else if (t.startsWith("[ok")) div.classList.add("line-ok");
+    else if (t.startsWith("[note")) div.classList.add("line-note");
+    else if (t.startsWith("[sys")) div.classList.add("line-sys");
+    else if (t.startsWith("[dbg")) div.classList.add("line-dbg");
+    else if (t.startsWith("[init")) div.classList.add("line-init");
+    else if (t.startsWith("[net")) div.classList.add("line-net");
+    else if (t.startsWith("[payload")) div.classList.add("line-payload");
+    else if (t.startsWith("[in")) div.classList.add("line-in");
+
+    /* Extra semantic nudges */
+    if (t.includes("route rejected")) {
+      div.classList.remove("line-dbg");
+      div.classList.add("line-err");
+    }
+    if (t.includes("route accepted")) {
+      div.classList.remove("line-dbg");
+      div.classList.add("line-ok");
+    }
+  }
 
   function addLine(text) {
     const div = document.createElement("div");
     div.className = "history-line";
     div.textContent = text;
     historyEl.appendChild(div);
+    classifyLine(div);
     window.scrollTo(0, document.body.scrollHeight);
     return div;
   }
@@ -25,6 +59,9 @@
       if (i % 8 === 0) window.scrollTo(0, document.body.scrollHeight);
       await sleep(speed);
     }
+
+    classifyLine(div);
+    window.scrollTo(0, document.body.scrollHeight);
     return div;
   }
 
@@ -39,6 +76,10 @@
     }
   }
 
+  /* -----------------------------
+     Config loading
+  ------------------------------ */
+
   function getConfigPath() {
     const script = document.querySelector("script[data-config]");
     return script ? script.getAttribute("data-config") : null;
@@ -46,11 +87,15 @@
 
   async function loadConfig() {
     const path = getConfigPath();
-    if (!path) throw new Error("missing data-config");
+    if (!path) throw new Error("missing data-config attribute");
     const res = await fetch(path, { cache: "no-store" });
     if (!res.ok) throw new Error("failed to load config: " + path);
     return await res.json();
   }
+
+  /* -----------------------------
+     Live input line (appended late)
+  ------------------------------ */
 
   let liveLineEl = null;
   let liveTypedEl = null;
@@ -111,6 +156,10 @@
   function focusInput() {
     if (!inputEl.disabled) inputEl.focus();
   }
+
+  /* -----------------------------
+     Endpoint parsing + routing
+  ------------------------------ */
 
   function normalizeEndpoint(raw) {
     if (!raw) return "";
@@ -189,18 +238,23 @@
     }
   }
 
+  /* -----------------------------
+     Boot sequence
+  ------------------------------ */
+
   async function runBoot(cfg) {
     const current = cfg.current ?? "node";
     const speed = cfg.typeSpeedMs ?? 18;
     const pause = cfg.linePauseMs ?? 120;
     const bootPauseMs = cfg.bootPauseMs ?? 220;
 
-    const bootLines = cfg.bootLines && cfg.bootLines.length
+    const bootLines = (cfg.bootLines && cfg.bootLines.length)
       ? cfg.bootLines
       : [
           "node: /" + current + " // address chain",
           "",
-          "[init] program online",
+          "[init] terminal online",
+          "[net ] route table sync: degraded",
           "[dbg ] computing payload...",
           "",
           "[payload] index:value",
@@ -214,6 +268,7 @@
 
     const payloadText = String(cfg.payloadText || "");
     const payloadLines = payloadText.split("\n");
+
     for (const pl of payloadLines) {
       if (pl === "") addLine("");
       else await typeLine(pl, speed);
@@ -224,9 +279,11 @@
     await typeLine("[dbg ] input unlocked", speed);
   }
 
-  async function init() {
-    if (!historyEl || !inputEl) return;
+  /* -----------------------------
+     Init
+  ------------------------------ */
 
+  async function init() {
     lockInput();
 
     let cfg;
@@ -235,7 +292,6 @@
     } catch (e) {
       addLine("[err ] config load failure");
       addLine("[hint] check data-config path");
-      addLine("[hint] confirm /data/start.json loads in browser");
       return;
     }
 
@@ -262,13 +318,10 @@
   }
 
   window.addEventListener("DOMContentLoaded", () => {
-    try {
-      init();
-    } catch (e) {
-      if (historyEl) {
-        addLine("[err ] terminal boot failure");
-      }
-      console.error(e);
-    }
+    init().catch(err => {
+      console.error(err);
+      addLine("[err ] terminal boot failure");
+      addLine("[hint] check JSON validity");
+    });
   });
 })();
