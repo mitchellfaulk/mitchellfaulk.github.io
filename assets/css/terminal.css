@@ -17,42 +17,23 @@ body {
   line-height: 1.45;
 }
 
-/* Full-width terminal buffer */
+.hidden { display: none; }
+
 .terminal {
   width: 100%;
   margin: 0;
-  padding: 12px 10px 56px; /* small terminal-like breathing room */
+  padding: 12px 10px 56px;
   white-space: pre-wrap;
 }
 
 .muted { color: var(--muted); }
 .dim { color: var(--dim); }
 
-/* Prompt line: keep cursor flush */
-.prompt-line {
-  display: inline-flex;
-  align-items: baseline;
-  flex-wrap: wrap;
-  gap: 0;
+.history-line {
+  white-space: pre-wrap;
 }
 
-.prompt {
-  color: var(--muted);
-  margin-right: 8px;
-}
-
-.cmd-input {
-  background: transparent;
-  border: none;
-  color: var(--fg);
-  font: inherit;
-  outline: none;
-  padding: 0;
-  margin: 0;
-  min-width: 10ch;
-  caret-color: transparent; /* hide native caret */
-}
-
+/* Inline blinking cursor */
 .cursor {
   display: inline-block;
   width: 0.6ch;
@@ -68,14 +49,14 @@ body {
   50%, 100% { opacity: 0; }
 }
 
-.history-line { white-space: pre-wrap; }
-
-/* Hide prompt until boot completes */
-.prompt-wrapper.hidden { display: none; }
-
+/* Hidden real input to capture typing */
 #hiddenCmd {
   position: fixed;
   left: -10000px;
   top: -10000px;
   opacity: 0;
+  width: 1px;
+  height: 1px;
+  border: 0;
+  padding: 0;
 }

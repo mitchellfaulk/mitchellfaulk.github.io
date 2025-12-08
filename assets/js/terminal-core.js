@@ -1,12 +1,22 @@
 (function () {
-    const historyEl = document.getElementById("history");
-    const liveInputLine = document.getElementById("liveInputLine");
-    const liveTypedEl = document.getElementById("liveTyped");
-    const inputEl = document.getElementById("hiddenCmd");
+  const historyEl = document.getElementById("history");
+  const liveInputLine = document.getElementById("liveInputLine");
+  const liveTypedEl = document.getElementById("liveTyped");
+  const inputEl = document.getElementById("hiddenCmd");
 
-    if (!historyEl || !liveInputLine || !liveTypedEl || !inputEl) {
-        console.error("terminal-core: missing required DOM elements");
-        return;
+  function safeAppend(text) {
+    if (!historyEl) return;
+    const div = document.createElement("div");
+    div.className = "history-line";
+    div.textContent = text;
+    historyEl.appendChild(div);
+    window.scrollTo(0, document.body.scrollHeight);
+  }
+
+  if (!historyEl || !liveInputLine || !liveTypedEl || !inputEl) {
+    console.error("terminal-core: missing required DOM elements");
+    safeAppend("[err ] terminal layout mismatch");
+    return;
   }
 
   const sleep = (ms) => new Promise((res) => setTimeout(res, ms));
@@ -31,8 +41,9 @@
 
   async function addHistoryTyped(text, typeSpeedMs) {
     const div = appendLineElement();
-    for (let i = 0; i < text.length; i++) {
-      div.textContent += text[i];
+    const s = String(text ?? "");
+    for (let i = 0; i < s.length; i++) {
+      div.textContent += s[i];
       if (i % 8 === 0) window.scrollTo(0, document.body.scrollHeight);
       await sleep(typeSpeedMs);
     }
@@ -91,25 +102,26 @@
     return s;
   }
 
-    function lockInput() {
+  function lockInput() {
     inputEl.disabled = true;
     inputEl.blur();
     liveInputLine.classList.add("hidden");
     liveTypedEl.textContent = "";
-    }
+    inputEl.value = "";
+  }
 
-    function unlockInput() {
+  function unlockInput() {
     inputEl.disabled = false;
     liveInputLine.classList.remove("hidden");
-    inputEl.value = "";
     liveTypedEl.textContent = "";
+    inputEl.value = "";
     inputEl.focus();
     window.scrollTo(0, document.body.scrollHeight);
-    }
+  }
 
-    function focusInput() {
+  function focusInput() {
     if (!inputEl.disabled) inputEl.focus();
-    }
+  }
 
   function getConfigPath() {
     const script = document.querySelector("script[data-config]");
@@ -137,8 +149,7 @@
     const defaultBoot = [
       () => `<span class="muted">node:</span> /${current} <span class="dim">// address chain</span>`,
       "",
-      "[init] terminal online",
-      "[net ] route table sync: degraded",
+      "[init] program online",
       "[dbg ] computing payload...",
       "",
       "[payload] index:value",
@@ -159,8 +170,6 @@
 
     addHistoryInstant("");
     await addHistoryTyped("[dbg ] input unlocked", typeSpeedMs);
-    addHistoryInstant("");
-    await addHistoryTyped("awaiting input", typeSpeedMs);
     addHistoryInstant("");
   }
 
@@ -221,34 +230,33 @@
       await navigateWithCountdown(cfg, endpoint);
     } else {
       await addHistoryTyped("[err ] route rejected", typeSpeedMs);
+      unlockInput();
     }
   }
 
   async function init() {
-    inputEl.disabled = true;
+    lockInput();
 
     const cfg = await loadConfig();
 
     await runBoot(cfg);
     unlockInput();
 
-    window.addEventListener("click", focusInput);
-
     inputEl.addEventListener("input", () => {
-        liveTypedEl.textContent = inputEl.value;
+      liveTypedEl.textContent = inputEl.value;
     });
 
-
     inputEl.addEventListener("keydown", (e) => {
-    if (e.key === "Enter") {
+      if (e.key === "Enter") {
         e.preventDefault();
         const line = inputEl.value;
         inputEl.value = "";
         liveTypedEl.textContent = "";
         handleLine(cfg, line);
-    }
+      }
     });
 
+    window.addEventListener("click", focusInput);
     focusInput();
   }
 
@@ -256,6 +264,7 @@
     init().catch(err => {
       console.error(err);
       addHistoryInstant("[err ] terminal boot failure");
+      addHistoryInstant("[hint] check data-config path and JSON validity");
     });
   });
 })();

@@ -3,28 +3,28 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>/TITLE_HERE</title>
+  <title>/start</title>
   <link rel="stylesheet" href="../assets/css/terminal.css" />
 </head>
 <body>
-    <main class="terminal" id="terminal">
+  <main class="terminal" id="terminal">
     <div id="history"></div>
 
     <div id="liveInputLine" class="history-line hidden">
-        <span class="muted">awaiting input</span>
-        <span> </span>
-        <span id="liveTyped"></span><span class="cursor" aria-hidden="true"></span>
+      <span class="muted">awaiting input</span>
+      <span> </span>
+      <span id="liveTyped"></span><span class="cursor" aria-hidden="true"></span>
     </div>
 
     <input
-        id="hiddenCmd"
-        type="text"
-        spellcheck="false"
-        autocomplete="off"
-        autocapitalize="off"
-        aria-label="Hidden program input"
+      id="hiddenCmd"
+      type="text"
+      spellcheck="false"
+      autocomplete="off"
+      autocapitalize="off"
+      aria-label="Hidden program input"
     />
-    </main>
+  </main>
 
   <script src="../assets/js/terminal-core.js" data-config="../data/start.json"></script>
 </body>
