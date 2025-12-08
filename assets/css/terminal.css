@@ -24,14 +24,13 @@ body {
   white-space: pre-wrap;
 }
 
-.muted { color: var(--muted); }
-.dim { color: var(--dim); }
-
 .history-line {
   white-space: pre-wrap;
 }
 
-/* Inline blinking cursor */
+.muted { color: var(--muted); }
+.dim { color: var(--dim); }
+
 .cursor {
   display: inline-block;
   width: 0.6ch;
@@ -47,7 +46,6 @@ body {
   50%, 100% { opacity: 0; }
 }
 
-/* Hidden real input to capture typing */
 #hiddenCmd {
   position: fixed;
   left: -10000px;
