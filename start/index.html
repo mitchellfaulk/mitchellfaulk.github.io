@@ -20,18 +20,6 @@
     />
   </main>
 
-  <!-- Inline smoke test: you should ALWAYS see this line -->
-  <script>
-    (function () {
-      const h = document.getElementById("history");
-      if (!h) return;
-      const d = document.createElement("div");
-      d.className = "history-line";
-      d.textContent = "[init] inline loader engaged";
-      h.appendChild(d);
-    })();
-  </script>
-
   <!-- Your real engine -->
   <script src="../assets/js/terminal-core.js" data-config="../data/start.json"></script>
 </body>
