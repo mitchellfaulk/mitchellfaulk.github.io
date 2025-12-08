@@ -38,7 +38,7 @@ body {
 
 .prompt {
   color: var(--muted);
-  margin-right: 6px;
+  margin-right: 8px;
 }
 
 .cmd-input {

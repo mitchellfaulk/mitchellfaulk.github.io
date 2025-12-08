@@ -155,7 +155,7 @@
     addHistoryInstant("");
     await addHistoryTyped("[dbg ] input unlocked", typeSpeedMs);
     addHistoryInstant("");
-    await addHistoryTyped("type the next endpoint", typeSpeedMs);
+    await addHistoryTyped("awaiting input", typeSpeedMs);
     addHistoryInstant("");
   }
 
@@ -195,7 +195,7 @@
       bootPauseMs = 220
     } = cfg;
 
-    addHistoryInstant("guest@nocturne:~$ " + line);
+    addHistoryInstant("[in  ] " + line);
 
     const endpoint = normalizeEndpoint(line);
     if (!endpoint) {
