@@ -1,0 +1,21 @@
+{
+  "current": "start",
+  "expected": "cache",
+  "navDelaySec": 10,
+  "typeSpeedMs": 18,
+  "linePauseMs": 120,
+  "bootPauseMs": 220,
+  "bootLines": [
+    "node: /start // address chain",
+    "",
+    "[init] terminal online",
+    "[net ] route table sync: degraded",
+    "[err ] payload integrity failure",
+    "[dbg ] computing payload...",
+    "",
+    "[payload] index:value",
+    ""
+  ],
+  "payloadText": "00001 : 01001\n00010 : 01110\n00011 : 00100\n00100 : 00101\n00101 : 11000\n\n.\n\n00001 : 00111\n00010 : 01001\n00011 : 10100\n\n.\n\n00001 : 01001\n00010 : 01111\n\n/\n\n00001 : 10011\n00010 : 10100\n00011 : 00001\n00100 : 10010\n00101 : 10100",
+  "acceptAliases": []
+}
