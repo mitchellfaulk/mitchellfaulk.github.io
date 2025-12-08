@@ -248,18 +248,28 @@
     const pause = cfg.linePauseMs ?? 120;
     const bootPauseMs = cfg.bootPauseMs ?? 220;
 
-    const bootLines = (cfg.bootLines && cfg.bootLines.length)
-      ? cfg.bootLines
-      : [
-          "node: /" + current + " // address chain",
-          "",
-          "[init] terminal online",
-          "[net ] route table sync: degraded",
-          "[dbg ] computing payload...",
-          "",
-          "[payload] index:value",
-          ""
-        ];
+    const defaultBoot = [
+    "node: /" + current + " // address chain",
+    "",
+    "[init] terminal online",
+    "[net ] route table sync: degraded",
+    "[dbg ] computing payload...",
+    "",
+    "[payload] index:value",
+    ""
+    ];
+
+    const bootLinesRaw = (Array.isArray(cfg.bootLines) && cfg.bootLines.length)
+    ? cfg.bootLines
+    : defaultBoot;
+
+    // Normalize to strings and defensively trim leading blanks
+    const bootLines = bootLinesRaw.map(x => String(x ?? ""));
+
+    // Remove any leading empty/whitespace-only lines
+    while (bootLines.length && bootLines[0].trim() === "") {
+    bootLines.shift();
+    }
 
     await sleep(bootPauseMs);
     await typeLines(bootLines, speed, pause);
