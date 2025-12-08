@@ -17,12 +17,10 @@ body {
   line-height: 1.45;
 }
 
-.hidden { display: none; }
-
 .terminal {
   width: 100%;
   margin: 0;
-  padding: 12px 10px 56px;
+  padding: 0 0 56px 0;
   white-space: pre-wrap;
 }
 

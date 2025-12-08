@@ -1,7 +1,5 @@
 (function () {
   const historyEl = document.getElementById("history");
-  const liveInputLine = document.getElementById("liveInputLine");
-  const liveTypedEl = document.getElementById("liveTyped");
   const inputEl = document.getElementById("hiddenCmd");
 
   function safeAppend(text) {
@@ -13,13 +11,16 @@
     window.scrollTo(0, document.body.scrollHeight);
   }
 
-  if (!historyEl || !liveInputLine || !liveTypedEl || !inputEl) {
+  if (!historyEl || !inputEl) {
     console.error("terminal-core: missing required DOM elements");
     safeAppend("[err ] terminal layout mismatch");
     return;
   }
 
   const sleep = (ms) => new Promise((res) => setTimeout(res, ms));
+
+  let liveLineEl = null;
+  let liveTypedEl = null;
 
   function appendLineElement() {
     const div = document.createElement("div");
@@ -102,21 +103,57 @@
     return s;
   }
 
+  function removeLiveLine() {
+    if (liveLineEl && liveLineEl.parentNode) {
+      liveLineEl.parentNode.removeChild(liveLineEl);
+    }
+    liveLineEl = null;
+    liveTypedEl = null;
+  }
+
+  function createLiveLine() {
+    removeLiveLine();
+
+    const line = document.createElement("div");
+    line.className = "history-line";
+
+    const awaiting = document.createElement("span");
+    awaiting.className = "muted";
+    awaiting.textContent = "awaiting input";
+
+    const space = document.createElement("span");
+    space.textContent = " ";
+
+    const typed = document.createElement("span");
+
+    const cursor = document.createElement("span");
+    cursor.className = "cursor";
+    cursor.setAttribute("aria-hidden", "true");
+
+    line.appendChild(awaiting);
+    line.appendChild(space);
+    line.appendChild(typed);
+    line.appendChild(cursor);
+
+    historyEl.appendChild(line);
+    window.scrollTo(0, document.body.scrollHeight);
+
+    liveLineEl = line;
+    liveTypedEl = typed;
+  }
+
   function lockInput() {
     inputEl.disabled = true;
     inputEl.blur();
-    liveInputLine.classList.add("hidden");
-    liveTypedEl.textContent = "";
     inputEl.value = "";
+    removeLiveLine();
   }
 
   function unlockInput() {
     inputEl.disabled = false;
-    liveInputLine.classList.remove("hidden");
-    liveTypedEl.textContent = "";
     inputEl.value = "";
+    createLiveLine();
     inputEl.focus();
-    window.scrollTo(0, document.body.scrollHeight);
   }
 
   function focusInput() {
@@ -170,7 +207,6 @@
 
     addHistoryInstant("");
     await addHistoryTyped("[dbg ] input unlocked", typeSpeedMs);
-    addHistoryInstant("");
   }
 
   async function navigateWithCountdown(cfg, endpoint) {
@@ -209,11 +245,13 @@
       bootPauseMs = 220
     } = cfg;
 
+    removeLiveLine();
     addHistoryInstant("[in  ] " + line);
 
     const endpoint = normalizeEndpoint(line);
     if (!endpoint) {
       await addHistoryTyped("[err ] empty input", typeSpeedMs);
+      unlockInput();
       return;
     }
 
@@ -240,10 +278,11 @@
     const cfg = await loadConfig();
 
     await runBoot(cfg);
+
     unlockInput();
 
     inputEl.addEventListener("input", () => {
-      liveTypedEl.textContent = inputEl.value;
+      if (liveTypedEl) liveTypedEl.textContent = inputEl.value;
     });
 
     inputEl.addEventListener("keydown", (e) => {
@@ -251,7 +290,7 @@
         e.preventDefault();
         const line = inputEl.value;
         inputEl.value = "";
-        liveTypedEl.textContent = "";
+        if (liveTypedEl) liveTypedEl.textContent = "";
         handleLine(cfg, line);
       }
     });
