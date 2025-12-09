@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>/start</title>
+  <link rel="stylesheet" href="../assets/css/terminal.css" />
+</head>
+<body>
+  <main class="terminal" id="terminal">
+    <div id="history"></div>
+
+    <input
+      id="hiddenCmd"
+      type="text"
+      spellcheck="false"
+      autocomplete="off"
+      autocapitalize="off"
+      aria-label="Hidden program input"
+    />
+  </main>
+
+  <!-- Your real engine -->
+  <script src="../assets/js/terminal-core.js" data-config="../data/index.json"></script>
+</body>
+</html>
