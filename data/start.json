@@ -15,7 +15,6 @@
     "[err ] payload checksum mismatch",
     "[dbg ] rebuilding 5-bit routing table...",
     "",
-    "[note] left = key bits, right = payload bits (unordered)",
     "[mem ] memblk-01: 7A 13 C0",
     "",
     "[payload] mapping stream follows",
