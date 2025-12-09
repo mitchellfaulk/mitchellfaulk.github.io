@@ -10,17 +10,17 @@
     "",
     "[init] nocturne kernel v3.7",
     "[init] terminal online",
-    "[log ] 12:41 route probe pending",
-    "[net ] SILENTCACHE link: unstable",
+    "[log ] 12:41 handshake beacon lost",
+    "[net ] uplink status: jitter > threshold",
     "[err ] payload checksum mismatch",
-    "[dbg ] reconstructing 5-bit mapping table...",
+    "[dbg ] rebuilding 5-bit routing table...",
     "",
-    "[note] key bits on the left, payload bits on the right",
-    "[mem ] memblk-01: 0x41",
+    "[note] left = key bits, right = payload bits (unordered)",
+    "[mem ] memblk-01: 7A 13 C0",
     "",
     "[payload] mapping stream follows",
     ""
   ],
-  "payloadText": "00001 : 01001\n00010 : 01110\n00011 : 00100\n00100 : 00101\n00101 : 11000",
+  "payloadText": "00101 : 01110\n01010 : 11000\n00011 : 01001\n00111 : 00100\n01001 : 00101",
   "acceptAliases": []
 }
