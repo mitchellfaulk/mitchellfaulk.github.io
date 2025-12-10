@@ -20,6 +20,6 @@
     "[payload] mapping stream follows",
     ""
   ],
-  "payloadText": "00101 : 01110\n01010 : 11000\n00011 : 01001\n00111 : 00100\n01001 : 00101",
+  "payloadText": "00011 : 00101\n00000 : 01001\n00100 : 11000\n00001 : 01110\n00010 : 00100"
   "acceptAliases": []
 }
