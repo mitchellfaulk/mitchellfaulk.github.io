@@ -199,7 +199,7 @@
       if (remaining <= 0) {
         clearInterval(timer);
         countdownLine.textContent = "[sys ] transferring control -> /" + endpoint;
-        window.location.href = "./" + endpoint + "/";
+        window.location.href = "/" + endpoint + "/";
         return;
       }
       countdownLine.textContent = "[sys ] switching to /" + endpoint + " in " + remaining + "s...";
