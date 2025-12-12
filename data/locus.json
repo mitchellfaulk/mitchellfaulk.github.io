@@ -17,6 +17,6 @@
     "[payload] accumulated drift residues follow",
     ""
   ],
-  "payloadText": "-0.010899\n-0.012204\n-0.012197\n\n+1.480188\n+3.000441\n+0.988571",
+  "payloadText": "-0.010899,+1.480188\n-0.012204,+3.000441\n-0.012197,+0.988571",
   "acceptAliases": []
 }
