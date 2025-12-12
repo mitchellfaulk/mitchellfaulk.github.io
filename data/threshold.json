@@ -1,0 +1,28 @@
+{
+  "current": "threshold",
+  "expected": "conduit",
+  "navDelaySec": 10,
+  "typeSpeedMs": 18,
+  "linePauseMs": 120,
+  "bootPauseMs": 220,
+
+  "bootLines": [
+    "node: /threshold",
+    "",
+    "[init] nocturne kernel v3.7",
+    "[init] terminal unstable",
+    "[log ] 19:47 gain spike detected at control boundary",
+    "[warn] amplitude imbalance across carrier bands",
+    "[err ] threshold regulator collapsed: overdrive condition latched",
+    "[dbg ] noise floor rising: dominant tones drowning minor traces",
+    "[sys ] capture buffer flooded — reducing to character-frequency dump",
+    "[mem ] memblk-05: 32 FA 10",
+    "",
+    "[payload] collapsed signal buffer",
+    ""
+  ],
+
+  "payloadText": "NUDNCODIUTTITTDUIOUUIUTIIIITNDTDINUOUITUOITUTUCTIIDNDUTN\nIIDODTUODUUNUTTITNIUTNCTTUTUTIDITIIDDTTOUIOITTNTNDDDTCNI",
+
+  "acceptAliases": []
+}
