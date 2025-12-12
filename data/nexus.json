@@ -1,0 +1,27 @@
+{
+  "current": "nexus",
+  "expected": "threshold",
+  "navDelaySec": 10,
+  "typeSpeedMs": 18,
+  "linePauseMs": 120,
+  "bootPauseMs": 220,
+
+  "bootLines": [
+    "node: /nexus",
+    "",
+    "[init] nocturne kernel v3.7",
+    "[init] terminal online",
+    "[log ] 16:22 crosslinks converged: signal shear unresolved",
+    "[net ] nexus-core arbitration cycle desynchronized",
+    "[sys ] transit channels reopened under degraded coherency",
+    "[dbg ] lattice capture initialized: awaiting stabilization window",
+    "[mem ] memblk-04: 9D 07 B3",
+    "",
+    "[payload] signal lattice snapshot",
+    ""
+  ],
+
+  "payloadText": "000000000\n000000000\n000000000\n000000001\n000100000\n000000000\n000000000\n010001000\n000000000\n000000000\n000000000\n000000010\n000000000\n000000000\n000000100\n000000000\n000000000\n001000000\n000010000\n100000000\n000000000\n000000000\n000000000\n000000000\n000000000\n000000000",
+
+  "acceptAliases": []
+}
