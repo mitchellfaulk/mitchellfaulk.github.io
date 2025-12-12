@@ -15,7 +15,7 @@
     "[warn] amplitude imbalance across carrier bands",
     "[err ] threshold regulator collapsed: overdrive condition latched",
     "[dbg ] noise floor rising: dominant tones drowning minor traces",
-    "[sys ] capture buffer flooded — reducing to character-frequency dump",
+    "[sys ] capture buffer flooded — period: N/A",
     "[mem ] memblk-05: 32 FA 10",
     "",
     "[payload] collapsed signal buffer",
