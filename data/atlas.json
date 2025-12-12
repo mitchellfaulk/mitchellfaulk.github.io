@@ -1,0 +1,30 @@
+{
+  "current": "atlas",
+  "expected": "circuit",
+  "navDelaySec": 10,
+  "typeSpeedMs": 18,
+  "linePauseMs": 120,
+  "bootPauseMs": 220,
+
+  "bootLines": [
+    "node: /atlas",
+    "",
+    "[init] nocturne kernel v3.7",
+    "[init] terminal online",
+    "[log ] cartographic overlay loaded with degraded fidelity",
+    "[net ] projection stream resampled beyond native resolution",
+    "[sys ] legend binding resolved from active atlas reference",
+    "[dbg ] raster coherence insufficient at terminal scale",
+    "[note] fine structure may be lost in linear render",
+    "",
+    "[mem ] memblk-07: 91 D4 2E",
+    "",
+    "[payload] glyph field follows",
+    ""
+  ],
+
+  "payloadText":
+"UHWHHKZFMCBQYCXVWKMRQPBHJHNDHGFXXEYXOW\nQFUJNWZYMHWCYPJRNWDXWEWQGVHRKCUPHVOONW\nMKLTASBTLLSEALAJXASSAPLONAXTSAAYALALMC\nDPTNBKUCASKETIUSISVCMNLZJTMDSAXEKALZIX\nCJLPKPDMAAOWSLLEFTICPKTRFTWKATYGJLAGOK\nMGLNMFGQAAMBTOLBZAUMPITDYAUYLAWGHTTICY\nKOTSTAJALALFSIMACLSSSWTSTTHSSTAYULTXBK\nDCDPOQORGDQWREIFWJNQRZEVVOUMVNJIORONWI\nBWBDUHNEDJYKWZNFJYHEDCDUVXNUKXJRXNEGHI",
+
+  "acceptAliases": []
+}
