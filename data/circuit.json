@@ -1,0 +1,33 @@
+{
+  "current": "circuit",
+  "expected": "helix",
+  "navDelaySec": 10,
+  "typeSpeedMs": 16,
+  "linePauseMs": 90,
+  "bootPauseMs": 180,
+
+  "bootLines": [
+    "node: /circuit",
+    "",
+    "[init] nocturne kernel v3.7",
+    "[init] terminal online",
+    "[warn] carrier desync: phase noise rising",
+    "[err ] trace buffer torn during flush",
+    "[dbg ] salvage mode: reconstructing inline offsets",
+    "[sys ] render pipeline unstable — glyph dropout probable",
+    "",
+    "[dbg ] inline offsets resolve against local message buffer only",
+    "[err ] Heap region mismatch detected at offset <H> and <E>",
+    "[dbg ] allocator lock inversion observed near index <L> and <I> and <X>",
+    "",
+    "[warn] residual stream degraded — decode path shifted to tactile register",
+    "[mem ] memblk-08: A2 0F 7C",
+    "",
+    "[payload] cell register dump follows",
+    ""
+  ],
+
+  "payloadText": "/* braille-binary here: decodes to READ INLINE INDICES */",
+
+  "acceptAliases": []
+}
