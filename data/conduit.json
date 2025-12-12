@@ -1,0 +1,33 @@
+{
+  "current": "conduit",
+  "expected": "atlas",
+  "navDelaySec": 10,
+  "typeSpeedMs": 18,
+  "linePauseMs": 120,
+  "bootPauseMs": 220,
+
+  "bootLines": [
+    "node: /conduit",
+    "",
+    "[init] nocturne kernel v3.7",
+    "[init] terminal online",
+    "[thr ] spawned thread t-441 initiated — capturing startup output",
+    "[note] A thread-local cache fault detected at offset 0x1A",
+    "[dbg ] Last mutex acquisition attempt exceeded wait threshold (47ms)",
+    "[sys ] Book index mapping returned invalid block address 0x3F2C",
+    "[note] Of 12 active workers, only 1 responded to heartbeat ping",
+    "[err ] Maps segment verification failed: corrupted span at byte 8192",
+    "[thr ] thread t-441 terminated — releasing capture buffer",
+    "",
+    "[dbg ] recovered imprint lacks original cadence",
+    "[sys ] semantic dispersion: canonical phrase dissolved into linear stream",
+    "[mem ] memblk-06: 7E CA 00",
+    "",
+    "[payload] residual sequence extracted",
+    ""
+  ],
+
+  "payloadText": "FWARCIORYCRREPLSDATUTSCIE",
+
+  "acceptAliases": []
+}
