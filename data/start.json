@@ -14,7 +14,7 @@
     "[sys ] coldstart recovery: partial",
     "[net ] uplink status: jitter > threshold",
     "[err ] payload checksum mismatch",
-    "[warn] index register not found",
+    "[warn] register not found",
     "[dbg ] rebuilding 5-bit routing table...",
     "[dbg ] attempting mnemonic reconstruction",
     "",
