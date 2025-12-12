@@ -1,0 +1,22 @@
+{
+  "current": "locus",
+  "expected": "eindhoven",
+  "navDelaySec": 10,
+  "typeSpeedMs": 18,
+  "linePauseMs": 120,
+  "bootPauseMs": 220,
+  "bootLines": [
+    "node: /locus",
+    "",
+    "[init] spatial kernel engagement: degraded",
+    "[log ] 08:13 anchor drift exceeds permissible radius",
+    "[sys ] reference-meridian mismatch detected",
+    "[dbg ] global frame locked to obsolete prime anchor",
+    "[mem ] memblk-03: 6E 44 91",
+    "",
+    "[payload] accumulated drift residues follow",
+    ""
+  ],
+  "payloadText": "-0.010899\n-0.012204\n-0.012197\n\n+1.480188\n+3.000441\n+0.988571",
+  "acceptAliases": []
+}
