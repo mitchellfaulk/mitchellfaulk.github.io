@@ -24,6 +24,7 @@
     "",
     "[mem ] memblk-03: 4C 2A E1",
     "",
+    "[dbg ] endpoint-key synchronized",
     "[payload] encrypted advisory follows",
     ""
   ],
