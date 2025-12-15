@@ -64,13 +64,26 @@ body {
 }
 
 /* --- Color coding (subtle terminal-like) --- */
-/* You can tweak these later to taste */
-.line-err  { color: #ff5c5c; }
-.line-ok   { color: #7cff9b; }
-.line-note { color: #8fd3ff; }
-.line-sys  { color: #c9c9c9; }
-.line-dbg  { color: var(--dim); }
-.line-init { color: var(--muted); }
-.line-net  { color: #cbb7ff; }
-.line-payload { color: var(--fg); }
-.line-in   { color: var(--fg); }
+/* --- Core lifecycle / infrastructure --- */
+.line-init { color: var(--muted); }        /* boot chatter */
+.line-sys  { color: #cfcfcf; }             /* authoritative system voice */
+.line-mem  { color: #b8b8b8; }             /* memory / state */
+.line-net  { color: #bfa8ff; }             /* comms, links, projection */
+.line-thr  { color: #a6cfc9; }             /* threads, execution paths */
+
+/* --- Diagnostics --- */
+.line-dbg  { color: var(--dim); }           /* intentionally ignorable */
+.line-log  { color: #9fb2a8; }              /* historical / passive */
+
+/* --- Status / narrative glue --- */
+.line-note { color: #8fd3ff; }              /* interpretive hints */
+.line-ok   { color: #7cff9b; }              /* rare, reassuring */
+
+/* --- Severity escalation --- */
+.line-warn { color: #f2c879; }              /* amber, not panic */
+.line-err  { color: #ff6b6b; }              /* controlled red */
+.line-crit { color: #ff3b3b; font-weight: 600; } /* endgame only */
+
+/* --- Payload / interaction --- */
+.line-payload { color: var(--fg); }         /* untouched data */
+.line-in      { color: var(--fg); }         /* user input / echo */

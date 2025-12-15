@@ -13,29 +13,45 @@
      Line creation + classification
   ------------------------------ */
 
-  function classifyLine(div) {
-    const t = div.textContent || "";
+function classifyLine(div) {
+  const t = (div.textContent || "").trimStart();
 
-    if (t.startsWith("[err")) div.classList.add("line-err");
-    else if (t.startsWith("[ok")) div.classList.add("line-ok");
-    else if (t.startsWith("[note")) div.classList.add("line-note");
-    else if (t.startsWith("[sys")) div.classList.add("line-sys");
-    else if (t.startsWith("[dbg")) div.classList.add("line-dbg");
-    else if (t.startsWith("[init")) div.classList.add("line-init");
-    else if (t.startsWith("[net")) div.classList.add("line-net");
-    else if (t.startsWith("[payload")) div.classList.add("line-payload");
-    else if (t.startsWith("[in")) div.classList.add("line-in");
+  // Match "[tag]" or "[tag ]" or "[tag   ]" at line start
+  const m = t.match(/^\[([a-zA-Z]+)\s*\]/);
+  const tag = m ? m[1].toLowerCase() : null;
 
-    /* Extra semantic nudges */
-    if (t.includes("route rejected")) {
-      div.classList.remove("line-dbg");
-      div.classList.add("line-err");
-    }
-    if (t.includes("route accepted")) {
-      div.classList.remove("line-dbg");
-      div.classList.add("line-ok");
-    }
+  if (tag === "err") div.classList.add("line-err");
+  else if (tag === "warn") div.classList.add("line-warn");
+  else if (tag === "crit") div.classList.add("line-crit");
+  else if (tag === "ok") div.classList.add("line-ok");
+  else if (tag === "note") div.classList.add("line-note");
+  else if (tag === "sys") div.classList.add("line-sys");
+  else if (tag === "dbg") div.classList.add("line-dbg");
+  else if (tag === "log") div.classList.add("line-log");
+  else if (tag === "init") div.classList.add("line-init");
+  else if (tag === "net") div.classList.add("line-net");
+  else if (tag === "mem") div.classList.add("line-mem");
+  else if (tag === "thr") div.classList.add("line-thr");
+  else if (tag === "flag") div.classList.add("line-flag");
+  else if (tag === "payload") div.classList.add("line-payload");
+  else if (tag === "in") div.classList.add("line-in");
+
+  // Extra semantic nudges (keep these after tag parsing)
+  if (t.includes("route rejected")) {
+    div.classList.remove("line-dbg", "line-note", "line-sys");
+    div.classList.add("line-err");
   }
+  if (t.includes("route accepted")) {
+    div.classList.remove("line-dbg", "line-note", "line-sys");
+    div.classList.add("line-ok");
+  }
+
+  // Optional: escalate certain phrases to warn/crit without changing your text
+  if (t.includes("collapse imminent") || t.includes("non-recoverable")) {
+    div.classList.remove("line-dbg");
+    div.classList.add("line-crit");
+  }
+}
 
   function addLine(text) {
     const div = document.createElement("div");
