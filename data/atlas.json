@@ -5,26 +5,36 @@
   "typeSpeedMs": 18,
   "linePauseMs": 120,
   "bootPauseMs": 220,
-
   "bootLines": [
     "node: /atlas",
     "",
     "[init] nocturne kernel v3.7",
-    "[init] terminal online",
-    "[log ] cartographic overlay loaded with degraded fidelity",
-    "[net ] projection stream resampled beyond native resolution",
-    "[sys ] legend binding resolved from active atlas reference",
+    "[warn] terminal operating beyond validated reference envelope",
+    "",
+    "[log ] structural overlay engaged — integrity below tolerance",
+    "[warn] projection stream resampled beyond native bounds",
+    "[err ] reference frame instability detected",
+    "[err ] load distribution across grid non-uniform",
+    "",
+    "[sys ] attempting scaffold realignment",
     "[dbg ] raster coherence insufficient at terminal scale",
-    "[note] fine structure may be lost in linear render",
+    "[dbg ] anchor vectors drifting under sustained load",
+    "[warn] corrective pass deferred: dependency unresolved",
     "",
     "[mem ] memblk-07: 91 D4 2E",
+    "[err ] discard sweep incomplete",
+    "[sys ] residual framework retained to prevent total collapse",
+    "",
+    "[flag] RESIDUAL = true",
+    "",
+    "[note] symbolic content no longer authoritative",
+    "[note] orientation must be inferred from surviving structure",
+    "[warn] misinterpretation risk elevated",
     "",
     "[payload] glyph field follows",
     ""
   ],
-
   "payloadText":
 "UHWHHKZFMCBQYCXVWKMRQPBHJHNDHGFXXEYXOW\nQFUJNWZYMHWCYPJRNWDXWEWQGVHRKCUPHVOONW\nMKLTASBTLLSEALAJXASSAPLONAXTSAAYALALMC\nDPTNBKUCASKETIUSISVCMNLZJTMDSAXEKALZIX\nCJLPKPDMAAOWSLLEFTICPKTRFTWKATYGJLAGOK\nMGLNMFGQAAMBTOLBZAUMPITDYAUYLAWGHTTICY\nKOTSTAJALALFSIMACLSSSWTSTTHSSTAYULTXBK\nDCDPOQORGDQWREIFWJNQRZEVVOUMVNJIORONWI\nBWBDUHNEDJYKWZNFJYHEDCDUVXNUKXJRXNEGHI",
-
   "acceptAliases": []
 }

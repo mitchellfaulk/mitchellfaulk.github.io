@@ -5,23 +5,29 @@
   "typeSpeedMs": 18,
   "linePauseMs": 120,
   "bootPauseMs": 220,
-
   "bootLines": [
     "node: /nexus",
     "",
     "[init] nocturne kernel v3.7",
     "[init] terminal online",
+    "",
     "[log ] 16:22 crosslinks converged: signal shear unresolved",
-    "[net ] nexus-core arbitration cycle desynchronized",
+    "[warn] nexus-core arbitration cycle desynchronized",
+    "[net ] contention window exceeded nominal bounds",
+    "",
     "[sys ] transit channels reopened under degraded coherency",
-    "[dbg ] lattice capture initialized: awaiting stabilization window",
+    "[dbg ] lattice capture initialized",
+    "[dbg ] awaiting stabilization window",
+    "",
     "[mem ] memblk-04: 9D 07 B3",
+    "[sys ] snapshot taken under transient load",
+    "",
+    "[warn] topology unstable",
+    "[warn] junction state non-deterministic",
     "",
     "[payload] signal lattice snapshot",
     ""
   ],
-
   "payloadText": "000000000\n000000000\n000000000\n000000001\n000100000\n000000000\n000000000\n010001000\n000000000\n000000000\n000000000\n000000010\n000000000\n000000000\n000000100\n000000000\n000000000\n001000000\n000010000\n100000000\n000000000\n000000000\n000000000\n000000000\n000000000\n000000000",
-
   "acceptAliases": []
 }

@@ -5,24 +5,34 @@
   "typeSpeedMs": 18,
   "linePauseMs": 120,
   "bootPauseMs": 220,
-
   "bootLines": [
     "node: /threshold",
     "",
     "[init] nocturne kernel v3.7",
-    "[init] terminal unstable",
-    "[log ] 19:47 gain spike detected at control boundary",
-    "[warn] amplitude imbalance across carrier bands",
+    "[warn] terminal integrity compromised",
+    "",
+    "[log ] 19:47 gain excursion detected at control boundary",
+    "[warn] spectral imbalance across carrier bands",
     "[err ] threshold regulator collapsed: overdrive condition latched",
-    "[dbg ] noise floor rising: dominant tones drowning minor traces",
-    "[sys ] capture buffer flooded — period: N/A",
+    "",
+    "[dbg ] noise floor escalating",
+    "[dbg ] dominant components saturating acquisition window",
+    "[dbg ] subordinate traces suppressed below resolution",
+    "",
+    "[sys ] capture buffer overflow — temporal indexing invalidated",
+    "[sys ] signal collapse classified as non-linear event",
+    "",
     "[mem ] memblk-05: 32 FA 10",
+    "[sys ] sanitization aborted: residual artifacts preserved",
+    "",
+    "[flag] RESIDUAL = true",
+    "",
+    "[note] boundary crossed",
+    "[note] interpretive guarantees revoked",
     "",
     "[payload] collapsed signal buffer",
     ""
   ],
-
-  "payloadText": "NUDNCODIUTTITTDUIOUUIUTIIIITNDTDINUOUITUOITUTUCTIIDNDUTN\nIIDODTUODUUNUTTITNIUTNCTTUTUTIDITIIDDTTOUIOITTNTNDDDTCNI",
-
+  "payloadText": "CTNIMUDTTNCNUIDUDUOLITTUPLSUOIYT\nUIRIIRTPLHTEGETRCYNTEIIDSUMUMNAD\nNONATTRGEITSRGNUDYITTRETDORIUODO\nUMDTALMIIGUETDYTNTAEUADIIDISTIUH",
   "acceptAliases": []
 }
