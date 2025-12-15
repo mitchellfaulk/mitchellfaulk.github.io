@@ -25,7 +25,7 @@
     "[sys ] memory fragment requires manual alignment",
     "[sys ] residual state detected",
     "",
-    "[flag] RESIDUAL = true",
+    "[ok  ] RESIDUAL = true",
     "",
     "[note] entry vector accepted",
     "[note] origin unresolved",

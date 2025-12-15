@@ -19,7 +19,7 @@
     "[sys ] accumulated error exceeds discard threshold",
     "[sys ] residual offsets retained",
     "",
-    "[flag] RESIDUAL = true",
+    "[ok  ] RESIDUAL = true",
     "",
     "[note] absolute position indeterminate",
     "[note] relative measures preserved",

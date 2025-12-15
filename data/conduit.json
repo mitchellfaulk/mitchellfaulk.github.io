@@ -20,7 +20,7 @@
     "[thr ] thread t-441 terminated — releasing capture buffer",
     "",
     "[dbg ] recovered imprint lacks original cadence",
-    "[flag] RESIDUAL = true",
+    "[ok  ] RESIDUAL = true",
     "[sys ] semantic dispersion: canonical phrase dissolved into linear stream",
     "[mem ] memblk-06: 7E CA 00",
     "",

@@ -25,7 +25,7 @@
     "[mem ] memblk-05: 32 FA 10",
     "[sys ] sanitization aborted: residual artifacts preserved",
     "",
-    "[flag] RESIDUAL = true",
+    "[ok  ] RESIDUAL = true",
     "",
     "[note] boundary crossed",
     "[note] interpretive guarantees revoked",

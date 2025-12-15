@@ -25,7 +25,7 @@
     "[err ] discard sweep incomplete",
     "[sys ] residual framework retained to prevent total collapse",
     "",
-    "[flag] RESIDUAL = true",
+    "[ok  ] RESIDUAL = true",
     "",
     "[note] symbolic content no longer authoritative",
     "[note] orientation must be inferred from surviving structure",
