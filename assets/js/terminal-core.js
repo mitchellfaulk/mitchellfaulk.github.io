@@ -16,53 +16,28 @@
   function classifyLine(div) {
     const t = (div.textContent || "").trimStart();
 
-    // Extract all bracket tags at the start: [warn][net ] ...
-    const tags = [];
-    const prefixMatch = t.match(/^\s*(\[[a-zA-Z]+\s*\])+/);
-    if (prefixMatch) {
-      const prefix = prefixMatch[0];
-      for (const mm of prefix.matchAll(/\[([a-zA-Z]+)\s*\]/g)) {
-        tags.push(mm[1].toLowerCase());
-      }
-    }
+    if (t.startsWith("[crit")) div.classList.add("line-crit");
+    else if (t.startsWith("[err")) div.classList.add("line-err");
+    else if (t.startsWith("[warn")) div.classList.add("line-warn");
+    else if (t.startsWith("[ok")) div.classList.add("line-ok");
+    else if (t.startsWith("[flag")) div.classList.add("line-flag");
+    else if (t.startsWith("[mem")) div.classList.add("line-mem");
+    else if (t.startsWith("[dbg")) div.classList.add("line-dbg");
+    else if (t.startsWith("[init")) div.classList.add("line-init");
+    else if (t.startsWith("[info")) div.classList.add("line-info");
+    else if (t.startsWith("[payload")) div.classList.add("line-payload");
+    else if (t.startsWith("[in")) div.classList.add("line-in");
+    else if (t.startsWith("[note")) div.classList.add("line-note");
+    else div.classList.add("line-info");
 
-    // Defaults
-    let sev = "info";
-    let chan = null;
-
-    // Severity (primary)
-    if (tags.includes("crit") || tags.includes("fatal")) sev = "crit";
-    else if (tags.includes("err") || tags.includes("error")) sev = "err";
-    else if (tags.includes("warn") || tags.includes("warning")) sev = "warn";
-    else if (tags.includes("dbg") || tags.includes("debug")) sev = "dbg";
-    else if (tags.includes("trc") || tags.includes("trace")) sev = "trc";
-    else if (tags.includes("init")) sev = "init";
-    else if (tags.includes("payload")) sev = "payload";
-    else if (tags.includes("ok")) sev = "ok";
-    else if (tags.includes("info") || tags.includes("log") || tags.includes("note")) sev = "info";
-
-    // Channel (secondary)
-    const channelSet = new Set(["sys", "net", "mem", "thr", "sec", "io", "flag", "in"]);
-    chan = tags.find(x => channelSet.has(x)) || null;
-
-    // Apply classes
-    div.classList.add(`sev-${sev}`);
-    if (chan) div.classList.add(`chan-${chan}`);
-
-    // Semantic nudges (override severity)
+    // Semantic overrides
     if (t.includes("route rejected")) {
-      div.classList.remove("sev-trc","sev-dbg","sev-info","sev-ok","sev-warn","sev-err","sev-crit");
-      div.classList.add("sev-err");
+      div.classList.remove("line-dbg", "line-info");
+      div.classList.add("line-err");
     }
     if (t.includes("route accepted")) {
-      div.classList.remove("sev-trc","sev-dbg","sev-info","sev-ok","sev-warn","sev-err","sev-crit");
-      div.classList.add("sev-ok");
-    }
-
-    // Optional escalation
-    if (t.includes("collapse imminent") || t.includes("non-recoverable")) {
-      div.classList.remove("sev-trc","sev-dbg","sev-info","sev-ok","sev-warn","sev-err","sev-crit");
-      div.classList.add("sev-crit");
+      div.classList.remove("line-dbg", "line-info");
+      div.classList.add("line-ok");
     }
   }
 
