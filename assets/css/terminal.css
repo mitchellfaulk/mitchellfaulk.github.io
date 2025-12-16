@@ -104,38 +104,14 @@ body {
    Uses subtle color + border; never louder than severity
    ========================================================= */
 
-/* System authority */
-.chan-sys {
-  border-left: 2px solid rgba(255,255,255,0.10);
-}
-
-/* Networking / routes / abstraction */
-.chan-net {
-  color: #bfa8ff; /* soft purple */
-  border-left: 2px solid rgba(191,168,255,0.18);
-}
-
-/* Threads / execution / flow */
-.chan-thr {
-  color: #8fd3c7; /* green-blue */
-  border-left: 2px solid rgba(166,207,201,0.18);
-}
-
-/* Memory / evidence / dumps */
-.chan-mem {
-  color: #b9d6d3; /* calm archival teal */
-  border-left: 2px solid rgba(185,214,211,0.35);
-}
-
-/* Security / permission boundaries */
-.chan-sec {
-  border-left: 2px solid rgba(255,92,92,0.18);
-}
-
-/* IO / visualization / external interfaces */
-.chan-io {
-  border-left: 2px solid rgba(143,211,255,0.14);
-}
+/* Channel / subsystem (color only) */
+.chan-net  { color: #bfa8ff; }
+.chan-thr  { color: #8fd3c7; }
+.chan-mem  { color: #b9d6d3; }
+.chan-sec  { color: #ff9b9b; }
+.chan-io   { color: #8fd3ff; }
+.chan-flag { color: #c7b7ff; font-style: italic; letter-spacing: 0.04em; }
+.chan-sys  { /* default color via severity */ }
 
 
 /* =========================================================
