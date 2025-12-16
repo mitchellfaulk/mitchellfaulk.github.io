@@ -1,7 +1,7 @@
 {
   "current": "extraction",
   "expected": "assembly",
-  "navDelaySec": 12,
+  "navDelaySec": 10,
   "typeSpeedMs": 14,
   "linePauseMs": 90,
   "bootPauseMs": 200,
