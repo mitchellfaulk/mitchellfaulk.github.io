@@ -1,0 +1,28 @@
+{
+  "current": "assembly",
+  "expected": "silentcache",
+  "navDelaySec": 10,
+  "typeSpeedMs": 14,
+  "linePauseMs": 90,
+  "bootPauseMs": 160,
+  "bootLines": [
+    "[!!] unrecoverable state",
+    "[!!] string assembly in progress",
+    "",
+    "x = \"\"",
+    "for k in range(11):",
+    "    v = sym[k]            // <missing>",
+    "    x += v[0]             // first byte",
+    "",
+    "[warn] countdown active: 2 phases remain",
+    "",
+    "heap@0x7ffd3a10: alloc(11)",
+    "heap@0x7ffd3a18: write x[k]",
+    "",
+    "[err ] null reference: sym",
+    ""
+  ],
+  "payloadText": "",
+  "acceptAliases": [
+  ]
+}

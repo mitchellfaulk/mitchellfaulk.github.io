@@ -18,6 +18,7 @@
 
     if (t.startsWith("[crit")) div.classList.add("line-crit");
     else if (t.startsWith("[err")) div.classList.add("line-err");
+    else if (t.startsWith("[!!")) div.classList.add("line-err");
     else if (t.startsWith("[warn")) div.classList.add("line-warn");
     else if (t.startsWith("[ok")) div.classList.add("line-ok");
     else if (t.startsWith("[note")) div.classList.add("line-note");
