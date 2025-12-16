@@ -107,40 +107,34 @@ body {
 /* System authority */
 .chan-sys {
   border-left: 2px solid rgba(255,255,255,0.10);
-  padding-left: 8px;
 }
 
 /* Networking / routes / abstraction */
 .chan-net {
   color: #bfa8ff; /* soft purple */
   border-left: 2px solid rgba(191,168,255,0.18);
-  padding-left: 8px;
 }
 
 /* Threads / execution / flow */
 .chan-thr {
   color: #8fd3c7; /* green-blue */
   border-left: 2px solid rgba(166,207,201,0.18);
-  padding-left: 8px;
 }
 
 /* Memory / evidence / dumps */
 .chan-mem {
   color: #b9d6d3; /* calm archival teal */
   border-left: 2px solid rgba(185,214,211,0.35);
-  padding-left: 8px;
 }
 
 /* Security / permission boundaries */
 .chan-sec {
   border-left: 2px solid rgba(255,92,92,0.18);
-  padding-left: 8px;
 }
 
 /* IO / visualization / external interfaces */
 .chan-io {
   border-left: 2px solid rgba(143,211,255,0.14);
-  padding-left: 8px;
 }
 
 
