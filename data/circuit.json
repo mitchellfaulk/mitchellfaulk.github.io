@@ -24,6 +24,7 @@
     "[warn] decode path shifted to tactile register",
     "[dbg ] fallback encoding salvaged",
     "[mem ] memblk-08: A2 0F 7C",
+    "[crit] path terminating: 2 nodes(s) remain",
     "",
     "[payload] cell register dump follows",
     ""
