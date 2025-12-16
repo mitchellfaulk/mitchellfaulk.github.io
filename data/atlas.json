@@ -10,7 +10,6 @@
     "",
     "[init] nocturne kernel v3.7",
     "[warn] terminal operating beyond validated reference envelope",
-    "[warn] irregular artifacts expected",
     "",
     "[warn] structural overlay engaged — integrity below tolerance",
     "[warn] projection stream resampled beyond native bounds",
