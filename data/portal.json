@@ -1,0 +1,25 @@
+{
+  "current": "assembly",
+  "expected": "silentcache",
+  "navDelaySec": 10,
+  "typeSpeedMs": 14,
+  "linePauseMs": 90,
+  "bootPauseMs": 160,
+    "bootLines": [
+    "connection stable",
+    "",
+    "no remaining phases",
+    "",
+    "    M\\       /M",
+    "    MM\\     /MM",
+    "    M M\\   /M M",
+    "    M  M\\ /M  M",
+    "    M   M\/M   M",
+    "    M    MM    M",
+    "",
+    "until next year"
+    ],
+  "payloadText": "",
+  "acceptAliases": [
+  ]
+}
