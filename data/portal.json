@@ -1,6 +1,6 @@
 {
-  "current": "assembly",
-  "expected": "silentcache",
+  "current": "portal",
+  "expected": "start",
   "navDelaySec": 10,
   "typeSpeedMs": 14,
   "linePauseMs": 90,
@@ -17,7 +17,8 @@
     "    M   M\\ M   M|",
     "    M    MM    M|",
     "",
-    "until next time"
+    "until next time",
+    "enter 'start' to play again"
     ],
   "payloadText": "",
   "acceptAliases": [
