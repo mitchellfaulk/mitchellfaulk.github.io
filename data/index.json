@@ -19,7 +19,6 @@
     "[err ] IndexError: LoopCruise object has no attribute 'route'",
     "[dbg ] fallback to ordinal scan",
     "",
-    "[warn] dumping LoopCruise object signature for manual patch",
     "[mem ] memblk-02: 3F 91 0A",
     "[info] index table partially reconstructed",
     "",
