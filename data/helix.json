@@ -1,0 +1,16 @@
+{
+  "current": "helix",
+  "expected": "extraction",
+  "navDelaySec": 12,
+  "typeSpeedMs": 14,
+  "linePauseMs": 90,
+  "bootPauseMs": 200,
+  "bootLines": [
+    "node: /helix",
+    "",
+    "[init] nocturne kernel v3.7",
+    "[crit] critical malfunction of unknown origin"
+  ],
+  "payloadText": "   *       *\n\n    *       *              \n             *        ***          *        *",
+  "acceptAliases": []
+}
