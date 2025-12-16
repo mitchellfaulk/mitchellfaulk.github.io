@@ -9,7 +9,8 @@
     "node: /helix",
     "",
     "[init] nocturne kernel v3.7",
-    "[crit] critical malfunction of unknown origin"
+    "[crit] critical malfunction of unknown origin",
+    ""
   ],
   "payloadText": "   *       *\n\n    *       *              \n             *        ***          *        *",
   "acceptAliases": []
