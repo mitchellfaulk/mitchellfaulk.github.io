@@ -110,7 +110,7 @@ body {
 .chan-mem  { color: #8fd3c7; }
 .chan-sec  { color: #ff9b9b; }
 .chan-io   { color: #8fd3ff; }
-.chan-flag { color: #8fd3c7; font-style: italic; letter-spacing: 0.04em; }
+.chan-flag { color: #8fd3ff; font-style: italic; letter-spacing: 0.04em; }
 .chan-sys  { /* default color via severity */ }
 
 
