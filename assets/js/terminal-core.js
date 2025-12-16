@@ -16,40 +16,50 @@
   function classifyLine(div) {
     const t = (div.textContent || "").trimStart();
 
-    // Match "[tag]" or "[tag ]" or "[tag   ]" at line start
-    const m = t.match(/^\[([a-zA-Z]+)\s*\]/);
-    const tag = m ? m[1].toLowerCase() : null;
+    // Capture one or more bracket tags at the start: [warn][net ] ...
+    const tags = [];
+    const re = /^\[([a-zA-Z]+)\s*\]/g;
+    let m;
+    while ((m = re.exec(t)) !== null) tags.push(m[1].toLowerCase());
 
-    if (tag === "err") div.classList.add("line-err");
-    else if (tag === "warn") div.classList.add("line-warn");
-    else if (tag === "crit") div.classList.add("line-crit");
-    else if (tag === "ok") div.classList.add("line-ok");
-    else if (tag === "note") div.classList.add("line-note");
-    else if (tag === "sys") div.classList.add("line-sys");
-    else if (tag === "dbg") div.classList.add("line-dbg");
-    else if (tag === "log") div.classList.add("line-log");
-    else if (tag === "init") div.classList.add("line-init");
-    else if (tag === "net") div.classList.add("line-net");
-    else if (tag === "mem") div.classList.add("line-mem");
-    else if (tag === "thr") div.classList.add("line-thr");
-    else if (tag === "flag") div.classList.add("line-flag");
-    else if (tag === "payload") div.classList.add("line-payload");
-    else if (tag === "in") div.classList.add("line-in");
+    // Default assumptions
+    let sev = "info";
+    let chan = null;
 
-    // Extra semantic nudges (keep these after tag parsing)
+    // Severity tags (primary)
+    if (tags.includes("crit") || tags.includes("fatal")) sev = "crit";
+    else if (tags.includes("err") || tags.includes("error")) sev = "err";
+    else if (tags.includes("warn") || tags.includes("warning")) sev = "warn";
+    else if (tags.includes("dbg") || tags.includes("debug")) sev = "dbg";
+    else if (tags.includes("trc") || tags.includes("trace")) sev = "trc";
+    else if (tags.includes("init")) sev = "init";
+    else if (tags.includes("payload")) sev = "payload";
+    else if (tags.includes("ok")) sev = "info"; // keep OK as INFO unless you want separate sev-ok
+    else if (tags.includes("info") || tags.includes("log") || tags.includes("note")) sev = "info";
+
+    // Channel tags (secondary)
+    const channelSet = new Set(["sys", "net", "mem", "thr", "sec", "io", "flag", "in"]);
+    chan = tags.find(x => channelSet.has(x)) || null;
+
+    // Apply classes
+    div.classList.add(`sev-${sev}`);
+    if (chan) div.classList.add(`chan-${chan}`);
+
+    // Keep your semantic nudges as overrides on severity
     if (t.includes("route rejected")) {
-      div.classList.remove("line-dbg", "line-note", "line-sys");
-      div.classList.add("line-err");
+      div.classList.remove("sev-dbg", "sev-info");
+      div.classList.add("sev-err");
     }
     if (t.includes("route accepted")) {
-      div.classList.remove("line-dbg", "line-note", "line-sys");
-      div.classList.add("line-ok");
+      // You could add a sev-ok if you want, but INFO is fine
+      div.classList.remove("sev-dbg");
+      div.classList.add("sev-info");
     }
 
-    // Optional: escalate certain phrases to warn/crit without changing your text
+    // Optional escalation
     if (t.includes("collapse imminent") || t.includes("non-recoverable")) {
-      div.classList.remove("line-dbg");
-      div.classList.add("line-crit");
+      div.classList.remove("sev-dbg", "sev-info", "sev-warn");
+      div.classList.add("sev-crit");
     }
   }
 

@@ -63,27 +63,30 @@ body {
   padding: 0;
 }
 
-/* --- Color coding (subtle terminal-like) --- */
-/* --- Core lifecycle / infrastructure --- */
-.line-init { color: var(--muted); }        /* boot chatter */
-.line-sys  { color: #cfcfcf; }             /* authoritative system voice */
-.line-mem  { color: #b8b8b8; }             /* memory / state */
-.line-net  { color: #bfa8ff; }             /* comms, links, projection */
-.line-thr  { color: #a6cfc9; }             /* threads, execution paths */
+/* Severity (primary) */
+.sev-trc  { color: var(--dim); opacity: 0.85; }
+.sev-dbg  { color: var(--dim); }
+.sev-info { color: var(--fg); opacity: 0.92; }
+.sev-warn { color: #f2c879; }
+.sev-err  { color: #ff6b6b; }
+.sev-crit { color: #ff3b3b; font-weight: 600; }
 
-/* --- Diagnostics --- */
-.line-dbg  { color: var(--dim); }           /* intentionally ignorable */
-.line-log  { color: #9fb2a8; }              /* historical / passive */
+/* Lifecycle-ish (treat as INFO unless you want separate) */
+.sev-init { color: var(--muted); }
 
-/* --- Status / narrative glue --- */
-.line-note { color: #8fd3ff; }              /* interpretive hints */
-.line-ok   { color: #7cff9b; }              /* rare, reassuring */
+/* Payload stays neutral (you can still mark it as info) */
+.sev-payload { color: var(--fg); }
 
-/* --- Severity escalation --- */
-.line-warn { color: #f2c879; }              /* amber, not panic */
-.line-err  { color: #ff6b6b; }              /* controlled red */
-.line-crit { color: #ff3b3b; font-weight: 600; } /* endgame only */
+/* Channel/subsystem (secondary): subtle left marker via border */
+.chan-sys { border-left: 2px solid rgba(255,255,255,0.10); padding-left: 8px; }
+.chan-net { border-left: 2px solid rgba(191,168,255,0.18); padding-left: 8px; }
+.chan-mem { border-left: 2px solid rgba(255,255,255,0.14); padding-left: 8px; }
+.chan-thr { border-left: 2px solid rgba(166,207,201,0.18); padding-left: 8px; }
+.chan-sec { border-left: 2px solid rgba(255,92,92,0.18); padding-left: 8px; }
+.chan-io  { border-left: 2px solid rgba(143,211,255,0.14); padding-left: 8px; }
 
-/* --- Payload / interaction --- */
-.line-payload { color: var(--fg); }         /* untouched data */
-.line-in      { color: var(--fg); }         /* user input / echo */
+/* Flags: visually “lingering” but not loud */
+.chan-flag { font-style: italic; opacity: 0.9; }
+
+/* Input */
+.chan-in { color: var(--fg); }
