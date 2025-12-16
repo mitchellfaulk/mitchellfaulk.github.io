@@ -298,7 +298,7 @@
       await sleep(pause);
     }
 
-    addLine("");
+    addBlankLine();
     await typeLine("[dbg ] input unlocked", speed);
   }
 
