@@ -6,6 +6,9 @@
   "linePauseMs": 90,
   "bootPauseMs": 160,
     "bootLines": [
+    "resolving final state...",
+    "alignment confirmed",
+    "",
     "connection stabilized",
     "",
     "no remaining phases",
