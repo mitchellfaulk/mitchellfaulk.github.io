@@ -7,7 +7,7 @@
   "bootPauseMs": 160,
   "bootLines": [
     "[!!] residual mask required",
-    ""
+    "[crit] countdown active: 1 phases remain"
   ],
   "payloadText": "",
   "acceptAliases": [
