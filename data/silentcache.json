@@ -1,0 +1,15 @@
+{
+  "current": "silentcache",
+  "expected": "castle",
+  "navDelaySec": 10,
+  "typeSpeedMs": 14,
+  "linePauseMs": 90,
+  "bootPauseMs": 160,
+  "bootLines": [
+    "[!!] residual mask required",
+    ""
+  ],
+  "payloadText": "",
+  "acceptAliases": [
+  ]
+}

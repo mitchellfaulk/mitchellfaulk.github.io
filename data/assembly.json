@@ -14,7 +14,7 @@
     "    v = sym[k]            // <missing>",
     "    x += v[0]             // first byte",
     "",
-    "[warn] countdown active: 2 phases remain",
+    "[crit] countdown active: 2 phases remain",
     "",
     "heap@0x7ffd3a10: alloc(11)",
     "heap@0x7ffd3a18: write x[k]",
