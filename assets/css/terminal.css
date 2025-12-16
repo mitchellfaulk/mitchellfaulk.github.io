@@ -107,10 +107,10 @@ body {
 /* Channel / subsystem (color only) */
 .chan-net  { color: #bfa8ff; }
 .chan-thr  { color: #8fd3c7; }
-.chan-mem  { color: #b9d6d3; }
+.chan-mem  { color: #8fd3c7; }
 .chan-sec  { color: #ff9b9b; }
 .chan-io   { color: #8fd3ff; }
-.chan-flag { color: #c7b7ff; font-style: italic; letter-spacing: 0.04em; }
+.chan-flag { color: #8fd3c7; font-style: italic; letter-spacing: 0.04em; }
 .chan-sys  { /* default color via severity */ }
 
 
