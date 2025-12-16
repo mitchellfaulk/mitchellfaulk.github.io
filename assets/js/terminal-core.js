@@ -20,23 +20,25 @@
     else if (t.startsWith("[err")) div.classList.add("line-err");
     else if (t.startsWith("[warn")) div.classList.add("line-warn");
     else if (t.startsWith("[ok")) div.classList.add("line-ok");
+    else if (t.startsWith("[note")) div.classList.add("line-note");
     else if (t.startsWith("[flag")) div.classList.add("line-flag");
     else if (t.startsWith("[mem")) div.classList.add("line-mem");
     else if (t.startsWith("[dbg")) div.classList.add("line-dbg");
     else if (t.startsWith("[init")) div.classList.add("line-init");
-    else if (t.startsWith("[info")) div.classList.add("line-info");
     else if (t.startsWith("[payload")) div.classList.add("line-payload");
     else if (t.startsWith("[in")) div.classList.add("line-in");
-    else if (t.startsWith("[note")) div.classList.add("line-note");
+    else if (t.startsWith("[sys")) div.classList.add("line-info"); // alias
+    else if (t.startsWith("[log")) div.classList.add("line-dbg");  // optional alias
+    else if (t.startsWith("[info")) div.classList.add("line-info");
     else div.classList.add("line-info");
 
     // Semantic overrides
     if (t.includes("route rejected")) {
-      div.classList.remove("line-dbg", "line-info");
+      div.classList.remove("line-dbg", "line-info", "line-note");
       div.classList.add("line-err");
     }
     if (t.includes("route accepted")) {
-      div.classList.remove("line-dbg", "line-info");
+      div.classList.remove("line-dbg", "line-info", "line-note");
       div.classList.add("line-ok");
     }
   }
