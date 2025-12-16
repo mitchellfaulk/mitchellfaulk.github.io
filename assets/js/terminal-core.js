@@ -16,17 +16,21 @@
   function classifyLine(div) {
     const t = (div.textContent || "").trimStart();
 
-    // Capture one or more bracket tags at the start: [warn][net ] ...
+    // Extract all bracket tags at the start: [warn][net ] ...
     const tags = [];
-    const re = /^\[([a-zA-Z]+)\s*\]/g;
-    let m;
-    while ((m = re.exec(t)) !== null) tags.push(m[1].toLowerCase());
+    const prefixMatch = t.match(/^\s*(\[[a-zA-Z]+\s*\])+/);
+    if (prefixMatch) {
+      const prefix = prefixMatch[0];
+      for (const mm of prefix.matchAll(/\[([a-zA-Z]+)\s*\]/g)) {
+        tags.push(mm[1].toLowerCase());
+      }
+    }
 
-    // Default assumptions
+    // Defaults
     let sev = "info";
     let chan = null;
 
-    // Severity tags (primary)
+    // Severity (primary)
     if (tags.includes("crit") || tags.includes("fatal")) sev = "crit";
     else if (tags.includes("err") || tags.includes("error")) sev = "err";
     else if (tags.includes("warn") || tags.includes("warning")) sev = "warn";
@@ -34,10 +38,10 @@
     else if (tags.includes("trc") || tags.includes("trace")) sev = "trc";
     else if (tags.includes("init")) sev = "init";
     else if (tags.includes("payload")) sev = "payload";
-    else if (tags.includes("ok")) sev = "info"; // keep OK as INFO unless you want separate sev-ok
+    else if (tags.includes("ok")) sev = "ok";
     else if (tags.includes("info") || tags.includes("log") || tags.includes("note")) sev = "info";
 
-    // Channel tags (secondary)
+    // Channel (secondary)
     const channelSet = new Set(["sys", "net", "mem", "thr", "sec", "io", "flag", "in"]);
     chan = tags.find(x => channelSet.has(x)) || null;
 
@@ -45,20 +49,19 @@
     div.classList.add(`sev-${sev}`);
     if (chan) div.classList.add(`chan-${chan}`);
 
-    // Keep your semantic nudges as overrides on severity
+    // Semantic nudges (override severity)
     if (t.includes("route rejected")) {
-      div.classList.remove("sev-dbg", "sev-info");
+      div.classList.remove("sev-trc","sev-dbg","sev-info","sev-ok","sev-warn","sev-err","sev-crit");
       div.classList.add("sev-err");
     }
     if (t.includes("route accepted")) {
-      // You could add a sev-ok if you want, but INFO is fine
-      div.classList.remove("sev-dbg");
-      div.classList.add("sev-info");
+      div.classList.remove("sev-trc","sev-dbg","sev-info","sev-ok","sev-warn","sev-err","sev-crit");
+      div.classList.add("sev-ok");
     }
 
     // Optional escalation
     if (t.includes("collapse imminent") || t.includes("non-recoverable")) {
-      div.classList.remove("sev-dbg", "sev-info", "sev-warn");
+      div.classList.remove("sev-trc","sev-dbg","sev-info","sev-ok","sev-warn","sev-err","sev-crit");
       div.classList.add("sev-crit");
     }
   }

@@ -65,31 +65,98 @@ body {
 
 .history-line { white-space: pre; line-height: 1.25em; }
 .line-blank { opacity: 0.65; }
+/* =========================================================
+   Severity (PRIMARY — drives attention & tension)
+   ========================================================= */
 
-/* Severity (primary) */
-.sev-trc  { color: var(--dim); opacity: 0.85; }
-.sev-dbg  { color: var(--dim); }
-.sev-info { color: var(--fg); opacity: 0.92; }
+/* Extremely low salience */
+.sev-trc  { color: #666; opacity: 0.7; }
+
+/* Diagnostic, ignorable unless referenced */
+.sev-dbg  { color: #777; }
+
+/* Normal informational output */
+.sev-info { color: #e6e6e6; }
+
+/* Positive confirmation / progress */
+.sev-ok   { color: #7cff9b; font-weight: 500; }
+
+/* Attention required, but system continues */
 .sev-warn { color: #f2c879; }
+
+/* Failure state, but system continues */
 .sev-err  { color: #ff6b6b; }
+
+/* Endgame / collapse */
 .sev-crit { color: #ff3b3b; font-weight: 600; }
 
-/* Lifecycle-ish (treat as INFO unless you want separate) */
-.sev-init { color: var(--muted); }
 
-/* Payload stays neutral (you can still mark it as info) */
+/* =========================================================
+   Lifecycle / structural (treated as INFO-level)
+   ========================================================= */
+
+.sev-init    { color: var(--muted); }
 .sev-payload { color: var(--fg); }
 
-/* Channel/subsystem (secondary): subtle left marker via border */
-.chan-sys { border-left: 2px solid rgba(255,255,255,0.10); padding-left: 8px; }
-.chan-net { border-left: 2px solid rgba(191,168,255,0.18); padding-left: 8px; }
-.chan-mem { border-left: 2px solid rgba(255,255,255,0.14); padding-left: 8px; }
-.chan-thr { border-left: 2px solid rgba(166,207,201,0.18); padding-left: 8px; }
-.chan-sec { border-left: 2px solid rgba(255,92,92,0.18); padding-left: 8px; }
-.chan-io  { border-left: 2px solid rgba(143,211,255,0.14); padding-left: 8px; }
 
-/* Flags: visually “lingering” but not loud */
-.chan-flag { font-style: italic; opacity: 0.9; }
+/* =========================================================
+   Channel / subsystem (SECONDARY — texture & flavor)
+   Uses subtle color + border; never louder than severity
+   ========================================================= */
 
-/* Input */
-.chan-in { color: var(--fg); }
+/* System authority */
+.chan-sys {
+  border-left: 2px solid rgba(255,255,255,0.10);
+  padding-left: 8px;
+}
+
+/* Networking / routes / abstraction */
+.chan-net {
+  color: #bfa8ff; /* soft purple */
+  border-left: 2px solid rgba(191,168,255,0.18);
+  padding-left: 8px;
+}
+
+/* Threads / execution / flow */
+.chan-thr {
+  color: #8fd3c7; /* green-blue */
+  border-left: 2px solid rgba(166,207,201,0.18);
+  padding-left: 8px;
+}
+
+/* Memory / evidence / dumps */
+.chan-mem {
+  color: #b9d6d3; /* calm archival teal */
+  border-left: 2px solid rgba(185,214,211,0.35);
+  padding-left: 8px;
+}
+
+/* Security / permission boundaries */
+.chan-sec {
+  border-left: 2px solid rgba(255,92,92,0.18);
+  padding-left: 8px;
+}
+
+/* IO / visualization / external interfaces */
+.chan-io {
+  border-left: 2px solid rgba(143,211,255,0.14);
+  padding-left: 8px;
+}
+
+
+/* =========================================================
+   Flags & input
+   ========================================================= */
+
+/* Persistent state markers (RESIDUAL, etc.) */
+.chan-flag {
+  color: #c7b7ff;          /* pale lavender */
+  font-style: italic;
+  letter-spacing: 0.04em;
+  opacity: 0.9;
+}
+
+/* User input / echo */
+.chan-in {
+  color: var(--fg);
+}
