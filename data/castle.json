@@ -1,13 +1,13 @@
 {
-  "current": "silentcache",
-  "expected": "castle",
+  "current": "castle",
+  "expected": "portal",
   "navDelaySec": 10,
   "typeSpeedMs": 14,
   "linePauseMs": 90,
   "bootPauseMs": 160,
   "bootLines": [
-    "[!!] residual mask required",
-    "[crit] final countdown active: 1 phase(s) remain"
+    "[!!] memory residues only",
+    "[crit] phase=terminal"
   ],
   "payloadText": "",
   "acceptAliases": [

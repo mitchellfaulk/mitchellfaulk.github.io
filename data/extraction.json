@@ -7,6 +7,8 @@
   "bootPauseMs": 200,
   "bootLines": [
     "node: /extraction",
+    "[crit] terminal node",
+    "[crit] system health compromised",
     "[!!] checksum_verify(expected=%02x, computed=%02x)",
     "[!!] chk input=\"%02d:%02d\"  source=cache",
     "[warn] index map corrupt: auto-align failed",
