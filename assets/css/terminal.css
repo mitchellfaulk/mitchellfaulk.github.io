@@ -63,6 +63,9 @@ body {
   padding: 0;
 }
 
+.history-line { white-space: pre; line-height: 1.25em; }
+.line-blank { opacity: 0.65; }
+
 /* Severity (primary) */
 .sev-trc  { color: var(--dim); opacity: 0.85; }
 .sev-dbg  { color: var(--dim); }

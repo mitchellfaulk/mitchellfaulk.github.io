@@ -73,6 +73,13 @@
     return div;
   }
 
+  function addBlankLine() {
+    const div = addLine("\u00A0"); // NBSP so it always occupies height
+    div.classList.add("line-blank");
+    return div;
+  }
+
+
   async function typeLine(text, speed) {
     const div = document.createElement("div");
     div.className = "history-line";
@@ -94,7 +101,7 @@
   async function typeLines(lines, speed, pause) {
     for (const line of lines) {
       if (line === "") {
-        addLine("");
+        addBlankLine();
       } else {
         await typeLine(line, speed);
       }
@@ -306,7 +313,7 @@
     const payloadLines = payloadText.split("\n");
 
     for (const pl of payloadLines) {
-      if (pl === "") addLine("");
+      if (pl === "") addBlankLine();
       else await typeLine(pl, speed);
       await sleep(pause);
     }
