@@ -6,7 +6,7 @@
   "linePauseMs": 90,
   "bootPauseMs": 160,
     "bootLines": [
-    "connection stable",
+    "connection stabilized",
     "",
     "no remaining phases",
     "",
