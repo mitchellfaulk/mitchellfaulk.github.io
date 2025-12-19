@@ -52,25 +52,37 @@ body {
 }
 
 /* Hidden real input for capturing keystrokes */
-/* Hidden real input for capturing keystrokes (mobile-friendly) */
 #hiddenCmd {
   position: fixed;
-  left: 8px;
-  bottom: 8px;
-
-  width: calc(100vw - 16px);
-  height: 44px;
-
-  opacity: 0;              /* invisible but focusable */
+  opacity: 0;
   border: 0;
   padding: 0;
   background: transparent;
-
   color: transparent;
   caret-color: transparent;
-
   z-index: 9999;
 }
+
+/* Desktop / fine pointer: keep it truly out of the way */
+@media (hover: hover) and (pointer: fine) {
+  #hiddenCmd {
+    left: -10000px;
+    top: -10000px;
+    width: 1px;
+    height: 1px;
+  }
+}
+
+/* Mobile / touch: keep it on-screen so focus reliably triggers keyboard */
+@media (hover: none) and (pointer: coarse) {
+  #hiddenCmd {
+    left: 8px;
+    bottom: 8px;
+    width: calc(100vw - 16px);
+    height: 44px;
+  }
+}
+
 
 
 .history-line { white-space: pre; line-height: 1.25em; }
