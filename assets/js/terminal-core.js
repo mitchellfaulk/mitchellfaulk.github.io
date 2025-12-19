@@ -168,7 +168,7 @@
   }
 
   function focusInput() {
-    if (!inputEl.disabled) inputEl.focus();
+    if (!inputEl.disabled) inputEl.focus({ preventScroll: true });
   }
 
   /* -----------------------------
@@ -337,7 +337,7 @@
       }
     });
 
-    window.addEventListener("click", focusInput);
+    window.addEventListener("pointerdown", focusInput);
     focusInput();
   }
 
