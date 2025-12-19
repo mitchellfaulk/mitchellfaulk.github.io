@@ -11,6 +11,7 @@
     "[init] nocturne kernel v3.7",
     "[crit] critical malfunction of unknown origin",
     "[crit] path terminating: 1 nodes(s) remain",
+    "[mem ] memblk-09: 10101 ^ 11000",
     ""
   ],
   "payloadText": "   *       *\n\n    *       *              \n             *        ***          *        *",
