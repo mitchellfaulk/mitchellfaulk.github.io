@@ -25,7 +25,7 @@
     "[dbg ] ordering table unavailable",
     "[dbg ] anchors partially recovered",
     "",
-    "[payload] mapping stream follows",
+    "[payload] unordered fragments follow",
     ""
   ],
   "payloadText": "[3] ch\n[1] nvmbr\n[0] nd\n[4] xry\n[2] dlt",
