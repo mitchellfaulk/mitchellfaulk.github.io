@@ -22,7 +22,7 @@
     "[err ] Maps segment verification failed: corrupted span at byte 8192",
     "[dbg ] thread t-441 terminated — releasing capture buffer",
     "",
-    "[dbg ] recovered imprint lacks original cadence",
+    "[dbg ] recovered imprint lacks original square cadence",
     "[flag] RESIDUAL = true",
     "[warn] semantic dispersion: canonical phrase dissolved into linear stream",
     "[mem ] memblk-06: 00101 ^ 01010",
