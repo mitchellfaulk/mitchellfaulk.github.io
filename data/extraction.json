@@ -13,6 +13,7 @@
     "[!!] chk input=\"%02d:%02d\"  source=cache",
     "[warn] index map corrupt: auto-align failed",
     "[dbg] buf[%02d][%02d] ^= 0x%02x  (base=%p)",
+    "[mem ] memblk-10: 01011 ^ 11100",
     "[err ] SIGSEGV (segmentation fault) @ 0x00000018",
     "[crit] entering recovery path: manual alignment required",
     "[warn] emitting raw raster (labels unavailable)",
