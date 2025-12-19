@@ -12,6 +12,7 @@
     "[init] nocturne kernel v3.7",
     "[warn] 03:47 terminal operating beyond certified threshold",
     "[err ] unrecognized activity detected",
+    "[flag] RESIDUAL = true",
     "[warn] security protocols tightening",
     "",
     "[dbg ] spawned thread t-441 initiated — capturing activity",
@@ -22,12 +23,11 @@
     "[err ] Maps segment verification failed: corrupted span at byte 8192",
     "[dbg ] thread t-441 terminated — releasing capture buffer",
     "",
-    "[dbg ] recovered imprint lacks original square cadence",
-    "[flag] RESIDUAL = true",
-    "[warn] semantic dispersion: canonical phrase dissolved into linear stream",
+    "[dbg ] recovered imprint lacks original cadence",
+    "[warn] semantic dispersion possible",
     "[mem ] memblk-06: 00101 ^ 01010",
     "",
-    "[payload] residual sequence extracted",
+    "[payload] imprint released",
     ""
   ],
 
