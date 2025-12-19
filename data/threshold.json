@@ -25,7 +25,7 @@
     "[mem ] memblk-05: 11001 ^ 01010",
     "[err ] sanitization aborted: residual artifacts preserved",
     "",
-    "[ok  ] RESIDUAL = true",
+    "[flag] RESIDUAL = true",
     "",
     "[dbg ] boundary crossed",
     "[dbg ] interpretive guarantees revoked",
