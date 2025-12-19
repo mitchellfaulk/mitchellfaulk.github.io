@@ -178,20 +178,15 @@
   function focusInput(fromUserGesture = false) {
     if (inputEl.disabled) return;
 
-    const doFocus = () => {
-      inputEl.focus({ preventScroll: true });
-    };
+    // Focus immediately; desktop doesn't need the extra retries
+    inputEl.focus({ preventScroll: true });
 
-    // If called from a user gesture, try a couple times (helps iOS Safari)
+    // iOS sometimes needs repeats when called from a gesture
     if (fromUserGesture) {
-      doFocus();
-      requestAnimationFrame(doFocus);
-      setTimeout(doFocus, 50);
-    } else {
-      requestAnimationFrame(doFocus);
+      requestAnimationFrame(() => inputEl.focus({ preventScroll: true }));
+      setTimeout(() => inputEl.focus({ preventScroll: true }), 50);
     }
   }
-
 
   /* -----------------------------
      Endpoint parsing + routing
@@ -362,18 +357,28 @@
     // Focus on interaction (best for mobile). Keep it scoped to the terminal area
     const terminalEl = document.getElementById("terminal") || document.body;
 
-    terminalEl.addEventListener("pointerdown", (e) => {
-      // Avoid breaking link clicks if you add any later
-      const tag = (e.target && e.target.tagName) ? e.target.tagName.toLowerCase() : "";
-      if (tag === "a" || tag === "button") return;
+    terminalEl.addEventListener(
+      "pointerdown",
+      (e) => {
+        if (inputEl.disabled) return;
 
-      focusInput(true);
-    });
+        // If you ever add real interactives, let them work normally
+        if (e.target && e.target.closest && e.target.closest("a,button,input,textarea,select,label")) {
+          return;
+        }
 
+        // Critical: stop the click from taking focus away from the input
+        e.preventDefault();
+
+        focusInput(true);
+      },
+      { passive: false } // required so preventDefault actually works
+    );
     // If focus ever drops while unlocked, snap it back
     inputEl.addEventListener("blur", () => {
       if (inputEl.disabled) return;
       setTimeout(() => focusInput(false), 0);
+      setTimeout(() => focusInput(false), 50);
     });
 
     // Initial attempt (desktop will work; mobile may need a tap)
