@@ -19,7 +19,7 @@
     "[dbg ] lattice capture initialized",
     "[dbg ] awaiting stabilization window",
     "",
-    "[mem ] memblk-04: 9D 07 B3",
+    "[mem ] memblk-04: 00011 ^ 10111",
     "[dbg ] snapshot taken under transient load",
     "",
     "[warn] topology unstable",
