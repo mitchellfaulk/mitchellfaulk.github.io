@@ -146,6 +146,13 @@
     line.appendChild(typed);
     line.appendChild(cursor);
 
+    // Tap/click the "awaiting input" line to focus the real input (mobile keyboard)
+    line.style.cursor = "text";
+    line.addEventListener("pointerdown", (e) => {
+      e.preventDefault();
+      focusInput(true);
+    });
+
     historyEl.appendChild(line);
     window.scrollTo(0, document.body.scrollHeight);
 
@@ -164,12 +171,27 @@
     inputEl.disabled = false;
     inputEl.value = "";
     createLiveLine();
-    inputEl.focus();
+    // Don't aggressively focus here; mobile often needs a user gesture anyway.
+    // We'll refocus via pointerdown / blur handlers below.
   }
 
-  function focusInput() {
-    if (!inputEl.disabled) inputEl.focus({ preventScroll: true });
+  function focusInput(fromUserGesture = false) {
+    if (inputEl.disabled) return;
+
+    const doFocus = () => {
+      inputEl.focus({ preventScroll: true });
+    };
+
+    // If called from a user gesture, try a couple times (helps iOS Safari)
+    if (fromUserGesture) {
+      doFocus();
+      requestAnimationFrame(doFocus);
+      setTimeout(doFocus, 50);
+    } else {
+      requestAnimationFrame(doFocus);
+    }
   }
+
 
   /* -----------------------------
      Endpoint parsing + routing
@@ -337,8 +359,26 @@
       }
     });
 
-    window.addEventListener("pointerdown", focusInput);
-    focusInput();
+    // Focus on interaction (best for mobile). Keep it scoped to the terminal area
+    const terminalEl = document.getElementById("terminal") || document.body;
+
+    terminalEl.addEventListener("pointerdown", (e) => {
+      // Avoid breaking link clicks if you add any later
+      const tag = (e.target && e.target.tagName) ? e.target.tagName.toLowerCase() : "";
+      if (tag === "a" || tag === "button") return;
+
+      focusInput(true);
+    });
+
+    // If focus ever drops while unlocked, snap it back
+    inputEl.addEventListener("blur", () => {
+      if (inputEl.disabled) return;
+      setTimeout(() => focusInput(false), 0);
+    });
+
+    // Initial attempt (desktop will work; mobile may need a tap)
+    focusInput(false);
+
   }
 
   window.addEventListener("DOMContentLoaded", () => {
