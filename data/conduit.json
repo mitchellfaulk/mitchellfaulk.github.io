@@ -24,7 +24,7 @@
     "[err ] Maps segment verification failed: corrupted span at byte 8192",
     "[dbg ] thread t-441 terminated — releasing capture buffer",
     "",
-    "[dbg ] recovered imprint lacks original cadence",
+    "[dbg ] recovered imprint lacks original cadence — symmetry lost in transit",
     "[warn] semantic dispersion possible",
     "[mem ] memblk-06: 00101 ^ 01010",
     "",
