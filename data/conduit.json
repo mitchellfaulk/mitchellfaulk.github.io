@@ -16,7 +16,7 @@
     "[warn] security protocols tightening",
     "",
     "[dbg ] spawned thread t-441 initiated — capturing activity",
-    "[warn] Recast checksum seed misaligned — shuffling recovery order",
+    "[dbg ] Recast capture window under degraded ordering constraints",
     "[warn] A thread-local cache fault detected at offset 0x1A",
     "[warn] Last mutex acquisition attempt exceeded wait threshold (47ms)",
     "[err ] Book index mapping returned invalid block address 0x3F2C",
