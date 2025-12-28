@@ -26,10 +26,34 @@ body {
   white-space: pre-wrap;
 }
 
-/* Lines */
 .history-line {
-  white-space: pre-wrap;
+  white-space: pre-wrap;     /* allow wrapping */
+  overflow-wrap: anywhere;   /* prevent off-screen overflow */
+  word-break: break-word;
+  line-height: 1.25em;
 }
+
+/* Hanging indent layout: [dbg ] | message */
+.history-line.split {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  column-gap: 0.6ch;
+  align-items: start;
+}
+
+/* Keep the prefix from shrinking; message wraps under itself */
+.history-line .prefix {
+  white-space: pre;          /* keep [dbg ] spacing exact */
+}
+
+.history-line .msg {
+  white-space: pre-wrap;     /* wrap long messages */
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  min-width: 0;              /* critical for grid wrapping */
+}
+
+
 
 /* Utility tones */
 .muted { color: var(--muted); }
